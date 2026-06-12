@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matthew LE — Portfolio · En mouvement</title>
+<meta name="description" content="Matthew LE — étudiant en informatique & créateur d'expériences numériques. Toujours en mouvement : code, drone FPV, vidéo, moto.">
+<meta property="og:title" content="Matthew LE — Portfolio · En mouvement">
+<meta property="og:description" content="Code, drone FPV, vidéo, moto — une seule obsession : le mouvement.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191b26'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='28' fill='%23f4f2ea' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try { var th = localStorage.getItem('ml-theme'); if (th) d.setAttribute('data-theme', th); } catch (e) {}
+  try {
+    if (sessionStorage.getItem('ml-nav')) { d.classList.add('navd'); sessionStorage.removeItem('ml-nav'); }
+    else if (!sessionStorage.getItem('ml-seen') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('preload'); }
+  } catch (e) {}
+  setTimeout(function () { d.classList.add('preload-timeout'); }, 4200);
+})();
+</script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+<!-- Préchargeur (1re visite) -->
+<div class="preloader" aria-hidden="true">
+  <div class="pl-center">
+    <div class="pl-mono">ML<sup>®</sup></div>
+    <div class="pl-bar"><i data-pre-bar></i></div>
+    <div class="pl-verb" data-pre-verb>coder</div>
+  </div>
+  <div class="pl-foot">©2026 — En mouvement</div>
+  <div class="pl-count" data-pre-count>000<small>%</small></div>
+</div>
+
+<!-- Rideau de transition entre pages -->
+<div class="curtain" aria-hidden="true"><div class="c-mono">ML</div></div>
+
+<!-- Grain cinéma -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Curseur -->
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<header class="nav">
+  <a href="#top" class="brand" aria-label="Matthew LE — accueil">ML<span class="reg">®</span></a>
+  <div class="nav-right">
+    <span class="nav-clock hidden-clock mono" data-clock>LYON / —</span>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer jour / nuit" data-magnetic="0.3">
+      <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1"/></svg>
+    </button>
+    <button class="menu-btn" aria-expanded="false" data-cursor="ouvrir">
+      <span>MENU</span>
+      <span class="bars"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu plein écran -->
+<nav class="fsmenu" aria-label="Navigation principale">
+  <div class="fsmenu-list">
+    <a href="#top"><span class="idx">01</span>Accueil<span class="serif-it arrow">↗</span></a>
+    <a href="#about"><span class="idx">02</span>À propos<span class="serif-it arrow">↗</span></a>
+    <a href="#parcours"><span class="idx">03</span>Parcours<span class="serif-it arrow">↗</span></a>
+    <a href="projets.html"><span class="idx">04</span>Projets<span class="serif-it arrow">↗</span></a>
+    <a href="#skills"><span class="idx">05</span>Compétences<span class="serif-it arrow">↗</span></a>
+    <a href="contact.html"><span class="idx">06</span>Contact<span class="serif-it arrow">↗</span></a>
+  </div>
+  <div class="fsmenu-foot">
+    <div class="col">
+      <span>Disponible</span>
+      <p>Stage / freelance — 2026</p>
+    </div>
+    <div class="col socials">
+      <a href="#" data-cursor="voir">Instagram</a>
+      <a href="#" data-cursor="voir">LinkedIn</a>
+      <a href="#" data-cursor="voir">YouTube</a>
+    </div>
+    <div class="col">
+      <span>Écrire</span>
+      <a href="mailto:contact@matthewle.fr">contact@matthewle.fr</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-ghost-w"><div class="hero-ghost serif-it">ML</div></div>
+      <div class="hero-sweep"></div>
+    </div>
+    <div class="hero-light" aria-hidden="true"></div>
+    <canvas class="hero-fx" aria-hidden="true"></canvas>
+    <div class="hero-side left mono" aria-hidden="true">45.7640° N — 4.8357° E <span class="tick">/</span> LYON</div>
+    <div class="hero-side right mono" aria-hidden="true">Scène 01 <span class="tick">/</span> Ouverture — En mouvement</div>
+
+    <div class="hero-top wrap">
+      <p>Étudiant en informatique à SUPINFO Lyon, je conçois des expériences numériques où la technique rencontre l'instinct.</p>
+      <div class="meta">
+        PORTFOLIO — V.2026<br>
+        LYON · GENÈVE<br>
+        <span style="color:var(--fpv-deep)">● Disponible</span>
+      </div>
+    </div>
+
+    <div class="hero-main wrap">
+      <h1 class="hero-title">
+        <span class="hm"><span class="ln">Matthew <em>Le</em></span></span>
+        <span class="hm"><span class="ln">en mouvement</span></span>
+      </h1>
+
+      <div class="hero-sub">
+        <div class="hero-verbs">
+          <span class="lead serif-it">Je passe mes journées à&nbsp;</span>
+          <span class="verb-cycle">
+            <b>coder<span class="tld">.</span></b>
+            <b>piloter<span class="tld">.</span></b>
+            <b>monter<span class="tld">.</span></b>
+            <b>rouler<span class="tld">.</span></b>
+            <b>créer<span class="tld">.</span></b>
+          </span>
+        </div>
+        <a href="#immersive" class="scroll-cue" aria-label="Faire défiler">
+          <span class="track"></span>Faites défiler
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE 1 ============ -->
+  <div class="marquee" data-dir="left" data-speed="0.5" aria-hidden="true">
+    <div class="track">
+      <span class="seg"><span>Développement web</span><span class="star serif-it">✦</span><span>Drone FPV</span><span class="star serif-it">✦</span><span>Motion &amp; <em>montage</em></span><span class="star serif-it">✦</span><span>UI / UX</span><span class="star serif-it">✦</span><span>CFMoto 450SR</span><span class="star serif-it">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ============ MANIFESTE — chiffres clés ============ -->
+  <section class="manifesto wrap">
+    <p class="big">
+      <span class="muted">Je ne fais pas une chose à la fois.</span> Le code, le <em>drone</em>, la vidéo, la moto&nbsp;— c'est la même obsession&nbsp;: le <span class="hl">mouvement</span>, la précision, et ce moment où tout <em>s'aligne</em>.
+    </p>
+    <div class="manifesto-foot">
+      <div class="stat reveal" data-d="1"><div class="n"><span data-count="5">5</span><span class="serif-it">+</span></div><p>années à coder</p></div>
+      <div class="stat reveal" data-d="2"><div class="n"><span data-count="12">12</span><span class="serif-it">+</span></div><p>projets livrés</p></div>
+      <div class="stat reveal" data-d="3"><div class="n"><span data-count="inf">∞</span></div><p>heures de vol FPV</p></div>
+      <div class="stat reveal" data-d="4"><div class="n"><span data-count="450">450</span><span class="serif-it">cc</span></div><p>sous le réservoir</p></div>
+    </div>
+  </section>
+
+  <!-- ============ VIDÉO IMMERSIVE ============ -->
+  <section class="immersive" id="immersive" data-navdark>
+    <div class="wrap imv-intro">
+      <span class="eyebrow">(01) — Séquence FPV · immersion</span>
+      <h2 class="line-mask"><span>On ne regarde pas l'image.<br>On <em>entre</em> dedans.</span></h2>
+      <p class="reveal" data-d="1">Continuez de défiler&nbsp;: le cadre s'ouvre, la séquence prend tout l'écran et se joue <em>image par image</em> sous votre doigt. Le vol vous appartient — puis vous en ressortez, et le portfolio reprend.</p>
+      <div class="imv-specs reveal" data-d="2">
+        <div><span>Captation</span><b>CFMoto 450SR · FPV</b></div>
+        <div><span>Format</span><b>4K · 30 fps</b></div>
+        <div><span>Décor</span><b>Lyon · Monts d'Or</b></div>
+        <div><span>Pilotage</span><b>au scroll, 1:1</b></div>
+      </div>
+    </div>
+
+    <div class="imv-track" data-imv>
+      <div class="imv-sticky">
+        <div class="imv-stage">
+          <div class="imv-frame">
+            <video class="imv-video" muted playsinline preload="auto" disablepictureinpicture></video>
+            <canvas class="imv-canvas" aria-hidden="true"></canvas>
+            <div class="imv-vignette" aria-hidden="true"></div>
+            <div class="imv-static" aria-hidden="true"></div>
+            <div class="imv-bar top" aria-hidden="true"></div>
+            <div class="imv-bar bot" aria-hidden="true"></div>
+            <div class="imv-reticle" aria-hidden="true"><i></i></div>
+            <div class="imv-hud" aria-hidden="true">
+              <div class="lbl tl"><span class="rec">REC</span> <span data-tc>00:00:00</span></div>
+              <div class="lbl tr"><span data-alt>ALT 058M</span><br><span data-spd>SPD 086KM/H</span></div>
+              <div class="lbl bl">CFMOTO 450SR · TRACKING</div>
+              <div class="lbl br" data-frame>FRAME 000 / 480</div>
+            </div>
+            <div class="imv-caption">
+              <span class="cap-eye">Lyon · Monts d'Or</span>
+              <h3>On y <em>entre</em>,<br>image par image.</h3>
+            </div>
+            <div class="imv-note" aria-hidden="true">Vol procédural — déposez votre séquence&nbsp;→<br><b>media/immersive.mp4</b> · 10–20&nbsp;s · paysage</div>
+          </div>
+          <div class="imv-brackets" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <div class="imv-launch-label">Séq. 01 — vol FPV <b>· verrouillage</b></div>
+            <div class="imv-count"><span class="digit" data-count-digit>3</span><span class="sub" data-count-sub>Amorçage</span></div>
+          </div>
+          <div class="imv-flash" aria-hidden="true"></div>
+          <div class="imv-hint"><span class="hint-dot"></span>Défilez pour entrer dans la séquence</div>
+          <div class="imv-rail" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ À PROPOS ============ -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="line-mask"><span>À propos <em>— qui je suis</em></span></h2>
+        <span class="num reveal">(02) — Le pilote</span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p class="about-lead reveal">Bienvenue. Je suis <em>Matthew LE</em>, étudiant en informatique basé entre <span class="hl">Lyon</span> et <span class="hl">Genève</span>. Je construis des choses qui doivent tenir en l'air — du code propre aux lignes de vol d'un drone.</p>
+          <p class="about-body reveal" data-d="1">Le développement web et le design interactif sont mon terrain de jeu, mais ma façon de penser vient d'ailleurs&nbsp;: du cadrage d'un montage vidéo, de la trajectoire d'une moto en courbe, du calme qu'il faut pour piloter en FPV. La même rigueur, le même goût du détail, le même instinct du mouvement — appliqués à l'écran.</p>
+        </div>
+        <div class="about-portrait reveal" data-d="2">
+          <div class="portrait-stage" style="--portrait:url('media/portrait.jpg')">
+            <div class="portrait-puzzle"></div>
+            <span class="ph-tag">portrait — media/portrait.jpg</span>
+          </div>
+          <div class="badge"><span>EST. 2005</span><span>LYON · 45.76°N</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARCOURS — chronologie éditoriale ============ -->
+  <section class="parcours" id="parcours">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="line-mask"><span>Le parcours <em>— année par année</em></span></h2>
+        <span class="num reveal">(03) — Repères</span>
+      </div>
+
+      <ol class="par-list">
+        <li class="par-row">
+          <div class="par-yr-mask"><div class="par-yr mono">2017</div></div>
+          <div class="par-text">
+            <span class="par-tag">Créatif</span>
+            <h3>Premier <em>montage</em> vidéo</h3>
+            <p>Découverte du cut, du rythme, du raccord. La narration visuelle devient une seconde langue — couper sur le beat, laisser respirer un plan.</p>
+          </div>
+        </li>
+        <li class="par-row">
+          <div class="par-yr-mask"><div class="par-yr mono">2020</div></div>
+          <div class="par-text">
+            <span class="par-tag">IT</span>
+            <h3>Les premières lignes de <em>code</em></h3>
+            <p>HTML, CSS, JavaScript. Je comprends vite que le code, c'est du montage autrement&nbsp;: de la structure, du rythme et de la précision au service d'une intention.</p>
+          </div>
+        </li>
+        <li class="par-row">
+          <div class="par-yr-mask"><div class="par-yr mono">2023</div></div>
+          <div class="par-text">
+            <span class="par-tag">IT · Drone</span>
+            <h3>SUPINFO Lyon &amp; le <em>vol FPV</em></h3>
+            <p>L'école structure ma rigueur technique pendant que le pilotage FPV m'apprend le sang-froid et l'anticipation. Deux mondes, une même exigence.</p>
+          </div>
+        </li>
+        <li class="par-row">
+          <div class="par-yr-mask"><div class="par-yr mono">2024</div></div>
+          <div class="par-text">
+            <span class="par-tag">Moto · Web</span>
+            <h3>CFMoto <em>450SR</em> &amp; premiers clients</h3>
+            <p>Premiers contrats freelance et la 450SR comme terrain de jeu vidéo — courbes, lumière rasante, vitesse maîtrisée. Le portfolio prend forme.</p>
+          </div>
+        </li>
+        <li class="par-row">
+          <div class="par-yr-mask"><div class="par-yr mono">2026</div></div>
+          <div class="par-text">
+            <span class="par-tag">Now</span>
+            <h3>Ce <em>portfolio</em>, et la suite</h3>
+            <p>Code, image et mouvement réunis dans une seule expérience. La suite&nbsp;? Un stage ou des missions freelance ambitieuses — et les projets qui suivent&nbsp;↓</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE 2 (dark) ============ -->
+  <div class="marquee dark" data-dir="right" data-speed="0.6" data-navdark aria-hidden="true">
+    <div class="track">
+      <span class="seg"><span>Sélection de <em>travaux</em></span><span class="star">✦</span><span>Last works</span><span class="star">✦</span><span>2023 — 2026</span><span class="star">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ============ PROJETS — grandes cartes 2 par 2 ============ -->
+  <section class="projects wrap" id="work">
+    <div class="sec-head">
+      <h2 class="line-mask"><span>Projets <em>sélectionnés</em></span></h2>
+      <span class="num reveal">(04) — IT &amp; créatif mêlés</span>
+    </div>
+
+    <div class="proj-grid">
+      <article class="proj-card" data-cursor="voir" style="--img:url('media/projets/belki.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/belki.jpg</span>
+          <span class="proj-num mono">01</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Site vitrine · Web design</span>
+          <h3 class="name">Cabanes <em>Belki</em></h3>
+          <p class="meta">Hébergements nature haut de gamme. Site immersif, réservation et direction artistique complète.</p>
+          <div class="proj-tags"><span>React</span><span>GSAP</span><span>Design</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cursor="voir" style="--img:url('media/projets/petits-reves.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/petits-reves.jpg</span>
+          <span class="proj-num mono">02</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Site associatif · Multipage</span>
+          <h3 class="name">Petits Rêves <em>d'Enfants</em></h3>
+          <p class="meta">Plateforme d'une association humanitaire. Collecte de dons, accessibilité et clarté du message.</p>
+          <div class="proj-tags"><span>CMS</span><span>SEO</span><span>Don en ligne</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cursor="play" style="--img:url('media/projets/above-lyon.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/above-lyon.jpg</span>
+          <span class="proj-num mono">03</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Film FPV · Montage</span>
+          <h3 class="name">Above <em>Lyon</em></h3>
+          <p class="meta">Court-métrage FPV au-dessus de la ville. Tournage, étalonnage et montage rythmé au son.</p>
+          <div class="proj-tags"><span>Drone</span><span>DaVinci</span><span>Sound design</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cursor="play" style="--img:url('media/projets/sunset-ride.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/sunset-ride.jpg</span>
+          <span class="proj-num mono">04</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Vidéo moto · Réalisation</span>
+          <h3 class="name">450 <em>Sunset Ride</em></h3>
+          <p class="meta">Une sortie au coucher du soleil avec la CFMoto 450SR. Cadrage, vitesse et lumière.</p>
+          <div class="proj-tags"><span>CFMoto</span><span>Color grade</span><span>Edit</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card wide" data-cursor="voir" style="--img:url('media/projets/bde.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/bde.jpg</span>
+          <span class="proj-num mono">05</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Application web · BDE</span>
+          <h3 class="name">BDE <em>SUPINFO</em></h3>
+          <p class="meta">Plateforme d'événements pour le bureau des étudiants. Billetterie et gestion en temps réel.</p>
+          <div class="proj-tags"><span>Vue</span><span>Node</span><span>UI</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div style="margin-top:clamp(40px,6vh,64px)" class="reveal">
+      <a class="btn accent" href="projets.html" data-magnetic="0.45"><span class="fill"></span><span class="dot-arrow"></span><span class="lbl">Voir tous les projets</span></a>
+    </div>
+  </section>
+
+  <!-- ============ COMPÉTENCES ============ -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="line-mask"><span>Ce que je <em>fais</em></span></h2>
+        <span class="num reveal">(05) — La boîte à outils</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill reveal">
+          <button class="skill-head" data-expand aria-expanded="false"><h3>Développement web <span class="pm">++</span></h3><span class="skill-plus" aria-hidden="true"></span></button>
+          <p>Des interfaces sur-mesure, performantes et accessibles. Du concept au déploiement.</p>
+          <div class="chips"><span>HTML/CSS</span><span>JavaScript</span><span>React</span><span>Node</span><span>GSAP</span><span>Three.js</span></div>
+          <div class="skill-detail"><div class="skill-detail-inner"><div class="skill-detail-body">
+            <p>J'aime quand une interface répond au doigt et à l'œil. Je code propre, pensé pour durer et évoluer.</p>
+            <ul><li>Sites vitrines &amp; landing pages animées</li><li>Intégration pixel-perfect depuis Figma</li><li>Animations scroll &amp; micro-interactions (GSAP)</li><li>Performance, SEO technique &amp; responsive</li></ul>
+          </div></div></div>
+        </div>
+        <div class="skill reveal" data-d="1">
+          <button class="skill-head" data-expand aria-expanded="false"><h3>Design interactif <span class="pm">++</span></h3><span class="skill-plus" aria-hidden="true"></span></button>
+          <p>Direction artistique, micro-interactions et animations au service de l'émotion.</p>
+          <div class="chips"><span>UI / UX</span><span>Figma</span><span>Motion</span><span>Prototypage</span></div>
+          <div class="skill-detail"><div class="skill-detail-inner"><div class="skill-detail-body">
+            <p>Le design n'est pas une décoration&nbsp;: c'est une intention. Je conçois des parcours clairs et des détails qui marquent.</p>
+            <ul><li>Direction artistique &amp; systèmes visuels</li><li>Maquettes &amp; prototypes interactifs</li><li>Motion design d'interface</li><li>Tests &amp; itérations centrés utilisateur</li></ul>
+          </div></div></div>
+        </div>
+        <div class="skill reveal" data-d="2">
+          <button class="skill-head" data-expand aria-expanded="false"><h3>Image &amp; montage <span class="pm">++</span></h3><span class="skill-plus" aria-hidden="true"></span></button>
+          <p>Tournage FPV, étalonnage et montage rythmé. Raconter en mouvement.</p>
+          <div class="chips"><span>Drone FPV</span><span>DaVinci</span><span>Premiere</span><span>Sound</span></div>
+          <div class="skill-detail"><div class="skill-detail-inner"><div class="skill-detail-body">
+            <p>De la prise de vue au mixage&nbsp;: je raconte des histoires qui se vivent à pleine vitesse.</p>
+            <ul><li>Tournage drone FPV &amp; cinématique</li><li>Étalonnage couleur (DaVinci Resolve)</li><li>Montage rythmé au son</li><li>Sound design &amp; habillage</li></ul>
+          </div></div></div>
+        </div>
+        <div class="skill reveal" data-d="3">
+          <button class="skill-head" data-expand aria-expanded="false"><h3>Méthode <span class="pm">++</span></h3><span class="skill-plus" aria-hidden="true"></span></button>
+          <p>Rigueur, souci du détail et approche collaborative. Chaque ligne pensée pour durer.</p>
+          <div class="chips"><span>Git</span><span>SEO</span><span>Responsive</span><span>Performance</span></div>
+          <div class="skill-detail"><div class="skill-detail-inner"><div class="skill-detail-body">
+            <p>Un projet réussi, c'est autant de méthode que de talent. Je travaille structuré, transparent et fiable.</p>
+            <ul><li>Versioning &amp; organisation (Git)</li><li>Communication claire avec le client</li><li>Respect des délais &amp; des budgets</li><li>Documentation &amp; maintenabilité</li></ul>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact" data-navdark>
+    <svg class="contact-blob" viewBox="0 0 200 200" aria-hidden="true"><defs><radialGradient id="g" cx="50%" cy="50%"><stop offset="0%" stop-color="var(--fpv)" stop-opacity="0.5"/><stop offset="70%" stop-color="var(--fpv)" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="100" fill="url(#g)"/></svg>
+    <div class="wrap contact-grid">
+      <div>
+        <h2 class="line-mask"><span>Lancez-vous<br><em>avec moi</em></span></h2>
+        <p class="lead reveal" data-d="1">Une idée, un projet, une envie de bouger&nbsp;? Je suis là pour lui donner vie — du code à l'image.</p>
+        <a class="contact-mail reveal" data-d="2" href="mailto:contact@matthewle.fr" data-cursor="écrire">
+          <span class="dot-arrow" style="width:9px;height:9px"></span><span class="u">contact@matthewle.fr</span>
+        </a>
+      </div>
+      <div class="contact-info">
+        <div class="blk reveal"><span>Téléphone</span><a href="tel:+33615802246">(+33) 6 15 80 22 46</a></div>
+        <div class="blk reveal" data-d="1"><span>Localisation</span><p>Lyon, France — 69000</p><p>Genève, Suisse — 1201</p></div>
+        <div class="blk reveal" data-d="2"><span>Réseaux</span><div class="socials"><a href="#" data-cursor="voir">Instagram</a><a href="#" data-cursor="voir">LinkedIn</a><a href="#" data-cursor="voir">YouTube</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot" data-navdark>
+    <div class="wrap">
+      <div class="big-name serif">Matthew <em>Le</em> ↗</div>
+      <div class="foot-row">
+        <small>© 2026 — Conçu &amp; développé avec passion.<br>Toujours en mouvement.</small>
+        <a href="#top" class="totop" data-cursor="haut">↑ Retour en haut</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="js/main.js"></script>
+</body>
+</html>
