@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "senior-backend": {
+      "source": "borghei/claude-skills",
+      "sourceType": "github",
+      "skillPath": "engineering/senior-backend/SKILL.md",
+      "computedHash": "95ea0a6b0a2ba46dc41d20b22a1df73249700524f5336910f423a10637c9dfcb"
+    }
+  }
+}

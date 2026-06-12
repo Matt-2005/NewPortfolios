@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Matthew LE</title>
+<meta name="description" content="Contactez Matthew LE — étudiant en informatique & créateur d'expériences numériques. Lyon · Genève.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191b26'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='28' fill='%23f4f2ea' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try { var th = localStorage.getItem('ml-theme'); if (th) d.setAttribute('data-theme', th); } catch (e) {}
+  try { if (sessionStorage.getItem('ml-nav')) { d.classList.add('navd'); sessionStorage.removeItem('ml-nav'); } } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+<!-- Rideau de transition entre pages -->
+<div class="curtain" aria-hidden="true"><div class="c-mono">ML</div></div>
+
+<!-- Grain cinéma -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Curseur -->
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<header class="nav">
+  <a href="index.html" class="brand" aria-label="Matthew LE — accueil">ML<span class="reg">®</span></a>
+  <div class="nav-right">
+    <span class="nav-clock hidden-clock mono" data-clock>LYON / —</span>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer jour / nuit" data-magnetic="0.3">
+      <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1"/></svg>
+    </button>
+    <button class="menu-btn" aria-expanded="false" data-cursor="ouvrir">
+      <span>MENU</span>
+      <span class="bars"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu plein écran -->
+<nav class="fsmenu" aria-label="Navigation principale">
+  <div class="fsmenu-list">
+    <a href="index.html"><span class="idx">01</span>Accueil<span class="serif-it arrow">↗</span></a>
+    <a href="index.html#about"><span class="idx">02</span>À propos<span class="serif-it arrow">↗</span></a>
+    <a href="index.html#parcours"><span class="idx">03</span>Parcours<span class="serif-it arrow">↗</span></a>
+    <a href="projets.html"><span class="idx">04</span>Projets<span class="serif-it arrow">↗</span></a>
+    <a href="index.html#skills"><span class="idx">05</span>Compétences<span class="serif-it arrow">↗</span></a>
+    <a href="contact.html"><span class="idx">06</span>Contact<span class="serif-it arrow">↗</span></a>
+  </div>
+  <div class="fsmenu-foot">
+    <div class="col">
+      <span>Disponible</span>
+      <p>Stage / freelance — 2026</p>
+    </div>
+    <div class="col socials">
+      <a href="#" data-cursor="voir">Instagram</a>
+      <a href="#" data-cursor="voir">LinkedIn</a>
+      <a href="#" data-cursor="voir">YouTube</a>
+    </div>
+    <div class="col">
+      <span>Écrire</span>
+      <a href="mailto:contact@matthewle.fr">contact@matthewle.fr</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ EN-TÊTE ============ -->
+  <section class="page-head wrap">
+    <a href="index.html" class="page-back" data-cursor="retour">← Accueil</a>
+    <div class="eyebrow">(06) — Contact</div>
+    <h1>Travaillons<br><em>ensemble</em></h1>
+    <p class="intro">Une idée, un projet, une envie de bouger&nbsp;? Dites-m'en plus — je réponds vite, et toujours avec curiosité. Du <em>code</em> à l'<em>image</em>.</p>
+  </section>
+
+  <!-- ============ FORM + INFOS ============ -->
+  <section class="contactpage wrap">
+    <div class="cgrid">
+
+      <!-- Formulaire -->
+      <form class="cform reveal" data-cform novalidate>
+        <div class="crow">
+          <div class="cfield">
+            <label for="f-name">Votre nom</label>
+            <input id="f-name" name="name" type="text" placeholder="Jean Dupont" required>
+          </div>
+          <div class="cfield">
+            <label for="f-email">Votre email</label>
+            <input id="f-email" name="email" type="email" placeholder="jean@exemple.fr" required>
+          </div>
+        </div>
+        <div class="cfield">
+          <label for="f-subject">Sujet</label>
+          <input id="f-subject" name="subject" type="text" placeholder="Site vitrine, film FPV, collaboration…">
+        </div>
+        <div class="cfield">
+          <label for="f-message">Votre message</label>
+          <textarea id="f-message" name="message" placeholder="Parlez-moi de votre projet, du contexte, des délais…" required></textarea>
+        </div>
+        <div class="cform-foot">
+          <button type="submit" class="btn accent" data-magnetic="0.4">
+            <span class="fill"></span><span class="dot-arrow"></span><span class="lbl">Envoyer le message</span>
+          </button>
+          <span class="ok mono" data-ok>✦ Merci — votre client mail va s'ouvrir.</span>
+        </div>
+      </form>
+
+      <!-- Infos directes -->
+      <aside class="cinfo reveal" data-d="1">
+        <div class="blk">
+          <span>Email direct</span>
+          <a class="big-mail" href="mailto:contact@matthewle.fr" data-cursor="écrire"><span class="dot-arrow" style="width:9px;height:9px"></span><span class="u">contact@matthewle.fr</span></a>
+        </div>
+        <div class="blk">
+          <span>Téléphone</span>
+          <a href="tel:+33615802246">(+33) 6 15 80 22 46</a>
+        </div>
+        <div class="blk">
+          <span>Localisation</span>
+          <p>Lyon, France — 69000</p>
+          <p>Genève, Suisse — 1201</p>
+        </div>
+        <div class="blk">
+          <span>Réseaux</span>
+          <div class="socials"><a href="#" data-cursor="voir">Instagram</a><a href="#" data-cursor="voir">LinkedIn</a><a href="#" data-cursor="voir">YouTube</a></div>
+        </div>
+        <div class="blk">
+          <span>Disponibilité</span>
+          <div class="avail">Ouvert — stage / freelance 2026</div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot" data-navdark>
+    <div class="wrap">
+      <div class="big-name serif">Matthew <em>Le</em> ↗</div>
+      <div class="foot-row">
+        <small>© 2026 — Conçu &amp; développé avec passion.<br>Toujours en mouvement.</small>
+        <a href="#top" class="totop" data-cursor="haut">↑ Retour en haut</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="js/main.js"></script>
+<script>
+  /* Formulaire → compose un email (sans backend) */
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('[data-cform]');
+    if (!form) return;
+    var ok = form.querySelector('[data-ok]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var name = (data.get('name') || '').toString().trim();
+      var email = (data.get('email') || '').toString().trim();
+      var subject = (data.get('subject') || '').toString().trim() || 'Prise de contact';
+      var message = (data.get('message') || '').toString().trim();
+      if (!name || !email || !message) {
+        form.querySelectorAll('[required]').forEach(function (el) {
+          if (!el.value.trim()) el.style.borderColor = 'var(--fpv-deep)';
+        });
+        return;
+      }
+      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      var subj = encodeURIComponent(subject + ' — via le portfolio');
+      if (ok) ok.classList.add('show');
+      window.location.href = 'mailto:contact@matthewle.fr?subject=' + subj + '&body=' + body;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — Matthew LE</title>
+<meta name="description" content="Tous les projets de Matthew LE — développement web, films FPV, vidéo moto et applications.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191b26'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='28' fill='%23f4f2ea' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try { var th = localStorage.getItem('ml-theme'); if (th) d.setAttribute('data-theme', th); } catch (e) {}
+  try { if (sessionStorage.getItem('ml-nav')) { d.classList.add('navd'); sessionStorage.removeItem('ml-nav'); } } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+<!-- Rideau de transition entre pages -->
+<div class="curtain" aria-hidden="true"><div class="c-mono">ML</div></div>
+
+<!-- Grain cinéma -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Curseur -->
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<header class="nav">
+  <a href="index.html" class="brand" aria-label="Matthew LE — accueil">ML<span class="reg">®</span></a>
+  <div class="nav-right">
+    <span class="nav-clock hidden-clock mono" data-clock>LYON / —</span>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer jour / nuit" data-magnetic="0.3">
+      <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1"/></svg>
+    </button>
+    <button class="menu-btn" aria-expanded="false" data-cursor="ouvrir">
+      <span>MENU</span>
+      <span class="bars"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu plein écran -->
+<nav class="fsmenu" aria-label="Navigation principale">
+  <div class="fsmenu-list">
+    <a href="index.html"><span class="idx">01</span>Accueil<span class="serif-it arrow">↗</span></a>
+    <a href="index.html#about"><span class="idx">02</span>À propos<span class="serif-it arrow">↗</span></a>
+    <a href="index.html#parcours"><span class="idx">03</span>Parcours<span class="serif-it arrow">↗</span></a>
+    <a href="projets.html"><span class="idx">04</span>Projets<span class="serif-it arrow">↗</span></a>
+    <a href="index.html#skills"><span class="idx">05</span>Compétences<span class="serif-it arrow">↗</span></a>
+    <a href="contact.html"><span class="idx">06</span>Contact<span class="serif-it arrow">↗</span></a>
+  </div>
+  <div class="fsmenu-foot">
+    <div class="col">
+      <span>Disponible</span>
+      <p>Stage / freelance — 2026</p>
+    </div>
+    <div class="col socials">
+      <a href="#" data-cursor="voir">Instagram</a>
+      <a href="#" data-cursor="voir">LinkedIn</a>
+      <a href="#" data-cursor="voir">YouTube</a>
+    </div>
+    <div class="col">
+      <span>Écrire</span>
+      <a href="mailto:contact@matthewle.fr">contact@matthewle.fr</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ EN-TÊTE ============ -->
+  <section class="page-head wrap">
+    <a href="index.html" class="page-back" data-cursor="retour">← Accueil</a>
+    <div class="eyebrow">(04) — Archive complète</div>
+    <h1>Tous les <em>projets</em></h1>
+    <p class="intro">L'ensemble de mes travaux, du <em>code</em> à l'<em>image</em>&nbsp;: sites sur-mesure, films FPV, vidéos moto et applications. Filtrez par discipline pour explorer.</p>
+  </section>
+
+  <!-- ============ GRILLE ============ -->
+  <section class="projects wrap">
+    <div class="proj-toolbar">
+      <div class="proj-filters" data-filters>
+        <button class="active" data-cat="all">Tout</button>
+        <button data-cat="dev">Développement</button>
+        <button data-cat="video">Vidéo</button>
+        <button data-cat="drone">Drone</button>
+        <button data-cat="moto">Moto</button>
+      </div>
+      <div class="proj-count mono"><b data-count-filter>5</b> projets</div>
+    </div>
+
+    <div class="proj-grid" data-grid>
+      <article class="proj-card" data-cat="dev" data-cursor="voir" style="--img:url('media/projets/belki.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/belki.jpg</span>
+          <span class="proj-num mono">01</span>
+          <span class="proj-yr mono">2024</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Site vitrine · Web design · Rôle : design + dev</span>
+          <h3 class="name">Cabanes <em>Belki</em></h3>
+          <p class="meta">Hébergements nature haut de gamme. Site immersif, moteur de réservation et direction artistique complète.</p>
+          <div class="proj-tags"><span>React</span><span>GSAP</span><span>Design</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cat="dev" data-cursor="voir" style="--img:url('media/projets/petits-reves.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/petits-reves.jpg</span>
+          <span class="proj-num mono">02</span>
+          <span class="proj-yr mono">2024</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Site associatif · Multipage · Rôle : intégration</span>
+          <h3 class="name">Petits Rêves <em>d'Enfants</em></h3>
+          <p class="meta">Plateforme d'une association humanitaire. Collecte de dons, accessibilité et clarté du message.</p>
+          <div class="proj-tags"><span>CMS</span><span>SEO</span><span>Don en ligne</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cat="video drone" data-cursor="play" style="--img:url('media/projets/above-lyon.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/above-lyon.jpg</span>
+          <span class="proj-num mono">03</span>
+          <span class="proj-yr mono">2025</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Film FPV · Montage · Rôle : pilote + montage</span>
+          <h3 class="name">Above <em>Lyon</em></h3>
+          <p class="meta">Court-métrage FPV au-dessus de la ville. Tournage drone, étalonnage et montage rythmé au son.</p>
+          <div class="proj-tags"><span>Drone</span><span>DaVinci</span><span>Sound design</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cat="video moto" data-cursor="play" style="--img:url('media/projets/sunset-ride.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/sunset-ride.jpg</span>
+          <span class="proj-num mono">04</span>
+          <span class="proj-yr mono">2025</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Vidéo moto · Réalisation · Rôle : réal + montage</span>
+          <h3 class="name">450 <em>Sunset Ride</em></h3>
+          <p class="meta">Une sortie au coucher du soleil avec la CFMoto 450SR. Cadrage, vitesse et lumière rasante.</p>
+          <div class="proj-tags"><span>CFMoto</span><span>Color grade</span><span>Edit</span></div>
+        </div>
+      </article>
+
+      <article class="proj-card wide" data-cat="dev" data-cursor="voir" style="--img:url('media/projets/bde.jpg')">
+        <div class="proj-media">
+          <span class="ph-tag">media/projets/bde.jpg</span>
+          <span class="proj-num mono">05</span>
+          <span class="proj-yr mono">2025</span>
+          <span class="proj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="proj-info">
+          <span class="kind mono">Application web · BDE · Rôle : full-stack</span>
+          <h3 class="name">BDE <em>SUPINFO</em></h3>
+          <p class="meta">Plateforme d'événements pour le bureau des étudiants. Billetterie, inscriptions et gestion en temps réel.</p>
+          <div class="proj-tags"><span>Vue</span><span>Node</span><span>UI</span></div>
+        </div>
+      </article>
+    </div>
+
+    <p class="proj-empty mono" data-empty hidden style="padding:60px 0;text-align:center;color:var(--ink-soft)">Aucun projet dans cette catégorie pour l'instant.</p>
+  </section>
+
+  <!-- ============ CTA CONTACT ============ -->
+  <section class="contact" data-navdark>
+    <svg class="contact-blob" viewBox="0 0 200 200" aria-hidden="true"><defs><radialGradient id="g" cx="50%" cy="50%"><stop offset="0%" stop-color="var(--fpv)" stop-opacity="0.5"/><stop offset="70%" stop-color="var(--fpv)" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="100" fill="url(#g)"/></svg>
+    <div class="wrap contact-grid">
+      <div>
+        <h2 class="line-mask"><span>Un projet<br><em>en tête&nbsp;?</em></span></h2>
+        <p class="lead reveal" data-d="1">Parlons-en. Du site sur-mesure au film de marque, je donne forme à vos idées.</p>
+        <a class="contact-mail reveal" data-d="2" href="contact.html" data-cursor="écrire">
+          <span class="dot-arrow" style="width:9px;height:9px"></span><span class="u">Me contacter</span>
+        </a>
+      </div>
+      <div class="contact-info">
+        <div class="blk reveal"><span>Écrire</span><a href="mailto:contact@matthewle.fr">contact@matthewle.fr</a></div>
+        <div class="blk reveal" data-d="1"><span>Téléphone</span><a href="tel:+33615802246">(+33) 6 15 80 22 46</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot" data-navdark>
+    <div class="wrap">
+      <div class="big-name serif">Matthew <em>Le</em> ↗</div>
+      <div class="foot-row">
+        <small>© 2026 — Conçu &amp; développé avec passion.<br>Toujours en mouvement.</small>
+        <a href="#top" class="totop" data-cursor="haut">↑ Retour en haut</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="js/main.js"></script>
+<script>
+  /* Filtres projets */
+  document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.querySelector('[data-filters]');
+    if (!bar) return;
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.proj-card'));
+    var countEl = document.querySelector('[data-count-filter]');
+    var emptyEl = document.querySelector('[data-empty]');
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      bar.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.dataset.cat;
+      var n = 0;
+      cards.forEach(function (c) {
+        var cats = (c.dataset.cat || '').split(' ');
+        var show = cat === 'all' || cats.indexOf(cat) !== -1;
+        c.classList.toggle('is-hidden', !show);
+        if (show) n++;
+      });
+      if (countEl) countEl.textContent = n;
+      if (emptyEl) emptyEl.hidden = n > 0;
+      window.dispatchEvent(new Event('scroll')); // relance la révélation des cartes
+    });
+  });
+</script>
+</body>
+</html>
