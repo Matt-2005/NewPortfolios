@@ -45,4 +45,4 @@ legacy/                 l'ancienne version statique (référence — supprimable
   animations, le contenu reste lisible sans WebGL (repli 2D dans le hero).
 - **Déploiement** : c'est une SPA — configurez votre hébergeur pour
   rediriger toutes les routes vers `index.html`
-  (Netlify/Vercel le font automatiquement).
+  (Netlify/Vercel le font automatiquement)
