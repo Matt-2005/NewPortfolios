@@ -3,11 +3,14 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { reduce } from '../lib/motion';
 import { scrollToEl } from '../lib/scroller';
+import { useApp } from '../context/AppContext';
+import { PAGES } from '../data/pages';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const footRef = useRef(null);
+  const { go } = useApp();
 
   /* parallaxe du grand nom */
   useEffect(() => {
@@ -26,6 +29,11 @@ export default function Footer() {
       <div className="wrap">
         <div className="big-name serif">Matthew <em>Le</em> ↗</div>
         <div className="foot-row">
+          <nav className="foot-nav" aria-label="Pages">
+            {PAGES.map(l => (
+              <a key={l.to} href={l.to} onClick={e => { e.preventDefault(); go(l.to); }}>{l.label}</a>
+            ))}
+          </nav>
           <small>© 2026 — Conçu &amp; développé avec passion.<br />Toujours en mouvement.</small>
           <a
             href="#top"

@@ -24,14 +24,18 @@ src/
   lib/
     motion.js           boucle rAF partagée + vélocité de scroll + easings
     scroller.js         Lenis (singleton) branché sur le ticker GSAP
-    flight.js           vol FPV procédural (canvas 2D, piloté au scroll)
+    flight.js           vol FPV procédural (aperçu du showreel sans vidéo)
     flow2d.js           champ de vecteurs 2D (repli si WebGL absent)
   three/
     HeroField.jsx       particules « vent » WebGL du hero (souris + scroll)
     ContactOrb.jsx      orbe d'énergie vert FPV (bruit simplex + fresnel)
   components/           Nav, FsMenu, Cursor, Preloader, Marquee, Footer, ProjectCard…
   hooks/                useReveals, useProjectMotion, useDocumentTitle
-  pages/                Home (+ sections), Projets (filtres), Contact (formulaire)
+  pages/                une page par route :
+                          /          Home (hero, manifeste, showreel, projets choisis)
+                          /a-propos  APropos (portrait, parcours, compétences)
+                          /projets   Projets (filtres)
+                          /contact   Contact (formulaire)
   data/                 projets, parcours, compétences (source unique)
 legacy/                 l'ancienne version statique (référence — supprimable)
 ```

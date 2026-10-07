@@ -4,22 +4,33 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AppContext } from './context/AppContext';
 import { initScroller, scrollTopImmediate, scrollToEl, stopScroll, startScroll } from './lib/scroller';
-import { coarse } from './lib/motion';
+import { coarse, reduce } from './lib/motion';
 import Preloader from './components/Preloader';
+import Intro from './components/Intro';
+import ScrollTop from './components/ScrollTop';
 import Cursor from './components/Cursor';
 import Nav from './components/Nav';
 import FsMenu from './components/FsMenu';
 import Home from './pages/Home';
+import APropos from './pages/APropos';
 import Projets from './pages/Projets';
 import Contact from './pages/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* L'écran d'accueil ne s'affiche qu'une fois par chargement de page
+   (réinitialisé au rechargement complet, jamais lors d'une navigation interne). */
+let introConsumed = false;
 
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(() => {
+    if (introConsumed || reduce) return false;
+    return typeof window === 'undefined' || window.location.pathname === '/';
+  });
   const curtainRef = useRef(null);
   const pendingRef = useRef(null); // { hash } en attente après navigation
 
@@ -116,18 +127,31 @@ export default function App() {
     };
   }, []);
 
+  /* — Écran d'accueil : marqueur + verrou de scroll tant qu'il est affiché — */
+  useEffect(() => { if (showIntro) introConsumed = true; }, [showIntro]);
+  useEffect(() => {
+    if (!showIntro) return;
+    document.body.classList.add('intro-open');
+    stopScroll();
+    return () => { document.body.classList.remove('intro-open'); startScroll(); };
+  }, [showIntro]);
+  const enterSite = useCallback(() => setShowIntro(false), []);
+
   const ctx = useMemo(() => ({ ready, menuOpen, setMenuOpen, go }), [ready, menuOpen, go]);
 
   return (
     <AppContext.Provider value={ctx}>
       <Preloader onDone={() => setReady(true)} />
+      {showIntro && <Intro onEnter={enterSite} />}
       <div className="curtain" ref={curtainRef} aria-hidden="true"><div className="c-mono">ML</div></div>
       <div className="grain" aria-hidden="true" />
       <Cursor />
       <Nav />
       <FsMenu />
+      <ScrollTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/a-propos" element={<APropos />} />
         <Route path="/projets" element={<Projets />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" replace />} />

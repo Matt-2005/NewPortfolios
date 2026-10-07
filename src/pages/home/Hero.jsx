@@ -205,7 +205,7 @@ export default function Hero() {
         <div className="meta">
           PORTFOLIO — V.2026<br />
           GENÈVE · SUISSE<br />
-          <span style={{ color: 'var(--fpv-deep)' }}>● Disponible</span>
+          <span className="avail-chip"><i aria-hidden="true" />Disponible</span>
         </div>
       </div>
 
@@ -221,10 +221,10 @@ export default function Hero() {
             <VerbCycle />
           </div>
           <a
-            href="#immersive"
+            href="#showreel"
             className="scroll-cue"
             aria-label="Faire défiler"
-            onClick={e => { e.preventDefault(); scrollToEl(document.getElementById('immersive')); }}
+            onClick={e => { e.preventDefault(); scrollToEl(document.getElementById('showreel')); }}
           >
             <span className="track" />Faites défiler
           </a>
