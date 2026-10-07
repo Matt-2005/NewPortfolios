@@ -6,7 +6,7 @@ export default function Parcours() {
       <div className="wrap">
         <div className="sec-head">
           <h2 className="line-mask"><span>Le parcours <em>— année par année</em></span></h2>
-          <span className="num reveal">(03) — Repères</span>
+          <span className="num reveal">(02) — Repères</span>
         </div>
 
         <ol className="par-list">

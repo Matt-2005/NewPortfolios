@@ -29,9 +29,9 @@ export default function Projets() {
     <main ref={mainRef}>
       <section className="page-head wrap">
         <a href="/" className="page-back" data-cursor="retour" onClick={e => { e.preventDefault(); go('/'); }}>← Accueil</a>
-        <div className="eyebrow">(04) — Archive complète</div>
+        <div className="eyebrow">(03) — Archive complète</div>
         <h1>Tous les <em>projets</em></h1>
-        <p className="intro">L'ensemble de mes travaux, du <em>code</em> à l'<em>image</em>&nbsp;: sites sur-mesure, films FPV, vidéos moto et applications. Filtrez par discipline pour explorer.</p>
+        <p className="page-intro">L'ensemble de mes travaux, du <em>code</em> à l'<em>image</em>&nbsp;: sites sur-mesure, films FPV, vidéos moto et applications. Filtrez par discipline pour explorer.</p>
       </section>
 
       <section className="projects wrap">

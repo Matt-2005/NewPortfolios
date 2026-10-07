@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { onFrame } from '../lib/motion';
+import { PAGES } from '../data/pages';
 
 export default function Nav() {
   const { go, menuOpen, setMenuOpen } = useApp();
   const location = useLocation();
   const navRef = useRef(null);
+  const linksRef = useRef(null);
+  const pillRef = useRef(null);
   const [clock, setClock] = useState('GENÈVE / —');
 
   /* — horloge — */
@@ -20,33 +23,56 @@ export default function Nav() {
     return () => clearInterval(id);
   }, []);
 
-  /* — pastilles au scroll + bascule de couleur sur zones sombres — */
+  /* — pastilles au scroll + bascule de couleur sur zones sombres —
+     On teste l'élément réellement visible sous la nav (et non les
+     rectangles des sections) : les feuilles qui se recouvrent
+     (showreel) restent ainsi correctes. */
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
-    let zones = [];
-    let sc = null, dk = null;
-    const raf = requestAnimationFrame(() => {
-      zones = Array.from(document.querySelectorAll('[data-navdark]'));
-    });
+    let sc = null, dk = null, lastY = -1, n = 0;
     const off = onFrame(() => {
-      const s = (window.scrollY || 0) > 24;
+      const y = window.scrollY || 0;
+      const s = y > 24;
       if (s !== sc) { sc = s; nav.classList.toggle('scrolled', s); }
+      if (y === lastY && (n++ % 20)) return;
+      lastY = y;
       let dark = false;
-      for (let i = 0; i < zones.length; i++) {
-        const r = zones[i].getBoundingClientRect();
-        if (r.top <= 40 && r.bottom >= 40) { dark = true; break; }
+      const hits = document.elementsFromPoint(window.innerWidth / 2, 40);
+      for (let i = 0; i < hits.length; i++) {
+        const el = hits[i];
+        if (el.closest('.nav, .cursor, .curtain, .fsmenu, .intro, .preloader, .reel-lb')) continue;
+        dark = !!el.closest('[data-navdark]');
+        break;
       }
       if (dark !== dk) { dk = dark; nav.classList.toggle('on-dark', dark); }
     });
-    return () => { cancelAnimationFrame(raf); off(); };
+    return off;
+  }, [location.pathname]);
+
+  /* — pastille active : glisse sous le lien de la page courante — */
+  useEffect(() => {
+    const wrap = linksRef.current, pill = pillRef.current;
+    if (!wrap || !pill) return;
+    const place = () => {
+      const a = wrap.querySelector('a[aria-current="page"]');
+      if (!a) { pill.style.opacity = '0'; return; }
+      pill.style.opacity = '1';
+      pill.style.width = a.offsetWidth + 'px';
+      pill.style.transform = 'translateX(' + a.offsetLeft + 'px)';
+    };
+    place();
+    const ro = new ResizeObserver(place);
+    ro.observe(wrap);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    return () => ro.disconnect();
   }, [location.pathname]);
 
   const toggleTheme = () => {
     const root = document.documentElement;
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    try { localStorage.setItem('ml-theme', next); } catch (e) {}
+    try { localStorage.setItem('ml-theme-v2', next); } catch (e) {}
   };
 
   return (
@@ -59,6 +85,19 @@ export default function Nav() {
       >
         ML<span className="reg">®</span>
       </a>
+      <nav className="nav-links" ref={linksRef} aria-label="Pages">
+        <span className="nav-pill" ref={pillRef} aria-hidden="true" />
+        {PAGES.map(l => (
+          <a
+            key={l.to}
+            href={l.to}
+            aria-current={location.pathname === l.to ? 'page' : undefined}
+            onClick={e => { e.preventDefault(); go(l.to); }}
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
       <div className="nav-right">
         <span className="nav-clock hidden-clock mono">{clock.split(' / ')[0]} <span className="dot">/</span> {clock.split(' / ')[1]}</span>
         <button className="theme-toggle" onClick={toggleTheme} aria-label="Basculer jour / nuit" data-magnetic="0.3">

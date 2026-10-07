@@ -1,24 +1,20 @@
+import { useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-
-const LINKS = [
-  { idx: '01', label: 'Accueil', to: '/' },
-  { idx: '02', label: 'À propos', to: '/#about' },
-  { idx: '03', label: 'Parcours', to: '/#parcours' },
-  { idx: '04', label: 'Projets', to: '/projets' },
-  { idx: '05', label: 'Compétences', to: '/#skills' },
-  { idx: '06', label: 'Contact', to: '/contact' },
-];
+import { PAGES } from '../data/pages';
 
 export default function FsMenu() {
   const { go } = useApp();
+  const { pathname } = useLocation();
 
   return (
     <nav className="fsmenu" aria-label="Navigation principale">
       <div className="fsmenu-list">
-        {LINKS.map(l => (
+        {PAGES.map(l => (
           <a
             key={l.idx}
             href={l.to}
+            className={pathname === l.to ? 'current' : undefined}
+            aria-current={pathname === l.to ? 'page' : undefined}
             onClick={e => { e.preventDefault(); go(l.to); }}
           >
             <span className="idx">{l.idx}</span>{l.label}<span className="serif-it arrow">↗</span>

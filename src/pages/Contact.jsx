@@ -41,9 +41,9 @@ export default function Contact() {
     <main ref={mainRef}>
       <section className="page-head wrap">
         <a href="/" className="page-back" data-cursor="retour" onClick={e => { e.preventDefault(); go('/'); }}>← Accueil</a>
-        <div className="eyebrow">(06) — Contact</div>
+        <div className="eyebrow">(04) — Contact</div>
         <h1>Travaillons<br /><em>ensemble</em></h1>
-        <p className="intro">Une idée, un projet, une envie de bouger&nbsp;? Dites-m'en plus — je réponds vite, et toujours avec curiosité. Du <em>code</em> à l'<em>image</em>.</p>
+        <p className="page-intro">Une idée, un projet, une envie de bouger&nbsp;? Dites-m'en plus — je réponds vite, et toujours avec curiosité. Du <em>code</em> à l'<em>image</em>.</p>
       </section>
 
       <section className="contactpage wrap">

@@ -30,7 +30,7 @@ export default function Skills() {
       <div className="wrap">
         <div className="sec-head">
           <h2 className="line-mask"><span>Ce que je <em>fais</em></span></h2>
-          <span className="num reveal">(05) — La boîte à outils</span>
+          <span className="num reveal">(03) — La boîte à outils</span>
         </div>
         <div className="skills-grid">
           {SKILLS.map((s, i) => <SkillItem s={s} d={i ? String(i) : ''} key={s.title} />)}
