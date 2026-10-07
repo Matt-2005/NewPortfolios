@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { onFrame } from '../lib/motion';
+import { gsap } from 'gsap';
+import { onFrame, reduce } from '../lib/motion';
 import { PAGES } from '../data/pages';
 
 export default function Nav() {
-  const { go, menuOpen, setMenuOpen } = useApp();
+  const { ready, go, menuOpen, setMenuOpen } = useApp();
   const location = useLocation();
   const navRef = useRef(null);
   const linksRef = useRef(null);
@@ -22,6 +23,18 @@ export default function Nav() {
     const id = setInterval(tick, 20000);
     return () => clearInterval(id);
   }, []);
+
+  /* — entrée unique, à la fin du préchargeur. Gérée ici (la nav ne se
+     démonte jamais) et non par le hero : le nettoyage GSAP du hero
+     la laissait invisible en quittant l'accueil. — */
+  const enteredRef = useRef(false);
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!ready || !nav || enteredRef.current) return;
+    enteredRef.current = true;
+    if (reduce) return;
+    gsap.fromTo(nav, { y: -24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.35, ease: 'power4.out', clearProps: 'transform,opacity' });
+  }, [ready]);
 
   /* — pastilles au scroll + bascule de couleur sur zones sombres —
      On teste l'élément réellement visible sous la nav (et non les
