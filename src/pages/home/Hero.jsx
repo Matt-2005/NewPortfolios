@@ -52,9 +52,8 @@ export default function Hero() {
       gsap.set('.hero-title .ln', { yPercent: 115, rotate: 2.4, transformOrigin: '0% 100%' });
       gsap.set('.hero-sweep', { scaleX: 0 });
       gsap.set(['.hero-top > *', '.hero-sub > *'], { y: 26, opacity: 0 });
-      gsap.set('.nav', { y: -24, opacity: 0 });
       gsap.set('.hero-side', { opacity: 0 });
-    }); // pas de scope : .nav vit hors du hero
+    }, heroRef);
     return () => ctx.revert();
   }, []);
 
@@ -69,9 +68,8 @@ export default function Hero() {
         .to('.hero-sweep', { scaleX: 1, duration: 1.2, ease: 'expo.out' }, 0.5)
         .to('.hero-top > *', { y: 0, opacity: 1, duration: 0.9, stagger: 0.08, clearProps: 'opacity,transform' }, 0.55)
         .to('.hero-sub > *', { y: 0, opacity: 1, duration: 0.9, stagger: 0.1, clearProps: 'opacity,transform' }, 0.7)
-        .to('.nav', { y: 0, opacity: 1, duration: 0.8, clearProps: 'all' }, 0.35)
         .to('.hero-side', { opacity: 1, duration: 1.4 }, 0.95);
-    }); // pas de scope : .nav vit hors du hero
+    }, heroRef);
     return () => ctx.revert();
   }, [ready]);
 
