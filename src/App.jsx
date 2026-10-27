@@ -4,9 +4,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AppContext } from './context/AppContext';
 import { initScroller, scrollTopImmediate, scrollToEl, stopScroll, startScroll } from './lib/scroller';
-import { coarse, reduce } from './lib/motion';
-import Preloader from './components/Preloader';
-import Intro from './components/Intro';
 import ScrollTop from './components/ScrollTop';
 import Cursor from './components/Cursor';
 import Nav from './components/Nav';
@@ -18,21 +15,19 @@ import Contact from './pages/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* L'écran d'accueil ne s'affiche qu'une fois par chargement de page
-   (réinitialisé au rechargement complet, jamais lors d'une navigation interne). */
-let introConsumed = false;
-
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showIntro, setShowIntro] = useState(() => {
-    if (introConsumed || reduce) return false;
-    return typeof window === 'undefined' || window.location.pathname === '/';
-  });
   const curtainRef = useRef(null);
   const pendingRef = useRef(null); // { hash } en attente après navigation
+
+  /* — Prêt dès la première image : les entrées (hero, nav) jouent tout de suite — */
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   /* — Lenis + rafraîchissement ScrollTrigger — */
   useEffect(() => {
@@ -99,50 +94,10 @@ export default function App() {
     }));
   }, [location.pathname]);
 
-  /* — Éléments magnétiques (délégation globale) — */
-  useEffect(() => {
-    if (coarse) return;
-    let active = null, activeInner = null;
-    const reset = () => {
-      if (active) { active.style.transform = ''; if (activeInner) activeInner.style.transform = ''; }
-      active = null; activeInner = null;
-    };
-    const onMove = e => {
-      const el = e.target.closest ? e.target.closest('[data-magnetic]') : null;
-      if (el !== active) { reset(); active = el; activeInner = el ? el.querySelector('.lbl') : null; }
-      if (!active) return;
-      const strength = parseFloat(active.getAttribute('data-magnetic')) || 0.4;
-      const r = active.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width / 2;
-      const y = e.clientY - r.top - r.height / 2;
-      active.style.transform = 'translate(' + (x * strength) + 'px,' + (y * strength) + 'px)';
-      if (activeInner) activeInner.style.transform = 'translate(' + (x * strength * 0.35) + 'px,' + (y * strength * 0.35) + 'px)';
-    };
-    document.addEventListener('mousemove', onMove, { passive: true });
-    document.documentElement.addEventListener('mouseleave', reset);
-    return () => {
-      document.removeEventListener('mousemove', onMove);
-      document.documentElement.removeEventListener('mouseleave', reset);
-      reset();
-    };
-  }, []);
-
-  /* — Écran d'accueil : marqueur + verrou de scroll tant qu'il est affiché — */
-  useEffect(() => { if (showIntro) introConsumed = true; }, [showIntro]);
-  useEffect(() => {
-    if (!showIntro) return;
-    document.body.classList.add('intro-open');
-    stopScroll();
-    return () => { document.body.classList.remove('intro-open'); startScroll(); };
-  }, [showIntro]);
-  const enterSite = useCallback(() => setShowIntro(false), []);
-
   const ctx = useMemo(() => ({ ready, menuOpen, setMenuOpen, go }), [ready, menuOpen, go]);
 
   return (
     <AppContext.Provider value={ctx}>
-      <Preloader onDone={() => setReady(true)} />
-      {showIntro && <Intro onEnter={enterSite} />}
       <div className="curtain" ref={curtainRef} aria-hidden="true"><div className="c-mono">ML</div></div>
       <div className="grain" aria-hidden="true" />
       <Cursor />

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { onFrame } from '../lib/motion';
 import { scrollToEl } from '../lib/scroller';
+import { useLang } from '../i18n/lang';
 
 /* Dock flottant en liquid glass : anneau de progression (accent bleu)
    + retour en haut. Apparaît une fois passé le premier écran. */
 export default function ScrollTop() {
+  const { t } = useLang();
   const [show, setShow] = useState(false);
   const btnRef = useRef(null);
   const shownRef = useRef(false);
@@ -28,8 +30,8 @@ export default function ScrollTop() {
       type="button"
       className={'scrolltop' + (show ? ' show' : '')}
       onClick={() => scrollToEl(document.body)}
-      aria-label="Revenir en haut"
-      data-magnetic="0.3"
+      aria-label={t('Revenir en haut', 'Back to top')}
+     
     >
       <span className="st-icon lbl" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.7">

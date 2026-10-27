@@ -1,8 +1,14 @@
 DÉPOSEZ VOS MÉDIAS ICI (public/media/)
 =======================================
 
+0) public/media/cv-matthew-le.pdf   ← LE PLUS IMPORTANT
+   - Votre CV en PDF. Dès qu'il est là, un bouton « Télécharger le CV »
+     apparaît dans le hero, le profil en bref et la page contact.
+   - Conseil Suisse : 1–2 pages, photo, nationalité / statut, langues
+     avec niveaux, dates précises (mois/année).
+
 1) public/media/immersive.mp4
-   - Votre vidéo drone (showreel de l'accueil), format paysage 16:9.
+   - Votre vidéo drone (fin de la page « À propos »), format paysage 16:9.
    - Elle est épinglée sous la page et se DÉVOILE quand la feuille du
      dessus se soulève ; elle tourne en boucle, muette, puis la section
      projets vient la recouvrir. Un bouton « Regarder le film » l'ouvre
@@ -19,6 +25,9 @@ DÉPOSEZ VOS MÉDIAS ICI (public/media/)
 3) public/media/projets/*.jpg
    - Les visuels des projets (ratio 4:3 ; la carte "BDE" est large).
    - Noms attendus :
+       public/media/projets/cff.jpg            (projet data, brouillon)
+       public/media/projets/logement-ge.jpg    (projet data, brouillon)
+       public/media/projets/energie-ch.jpg     (projet data, brouillon)
        public/media/projets/belki.jpg
        public/media/projets/petits-reves.jpg
        public/media/projets/above-lyon.jpg
@@ -28,7 +37,8 @@ DÉPOSEZ VOS MÉDIAS ICI (public/media/)
      du fichier s'affiche à la place.
 
 Gardez exactement ces noms, ou modifiez les chemins dans
-src/data/projects.js (projets), src/pages/apropos/About.jsx (portrait)
+src/data/projects.js (projets), src/data/profile.js (CV),
+src/pages/apropos/About.jsx (portrait)
 et src/pages/home/Showreel.jsx (vidéo).
 
 LANCEMENT : `npm run dev` puis http://localhost:5173 — la détection

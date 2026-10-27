@@ -6,12 +6,17 @@ import { lerp, onFrame, reduce, coarse } from '../../lib/motion';
 import { scrollToEl } from '../../lib/scroller';
 import { Chars } from '../../components/text';
 import HeroField from '../../three/HeroField';
+import CvButton from '../../components/CvButton';
+import { useLang } from '../../i18n/lang';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VERBS = ['coder', 'piloter', 'monter', 'rouler', 'créer'];
+const VERBS = {
+  fr: ['modéliser', 'requêter', 'automatiser', 'visualiser', 'fiabiliser'],
+  en: ['modelling', 'querying', 'automating', 'visualising', 'shipping'],
+};
 
-function VerbCycle() {
+function VerbCycle({ verbs }) {
   const [active, setActive] = useState(0);
   const [leaving, setLeaving] = useState(-1);
 
@@ -21,15 +26,17 @@ function VerbCycle() {
       setActive(a => {
         setLeaving(a);
         setTimeout(() => setLeaving(-1), 650);
-        return (a + 1) % VERBS.length;
+        return (a + 1) % verbs.length;
       });
     }, 1900);
     return () => clearInterval(id);
-  }, []);
+  }, [verbs.length]);
 
   return (
     <span className="verb-cycle">
-      {VERBS.map((v, i) => (
+      {/* tous les verbes superposés et invisibles : la largeur suit le plus large */}
+      <span className="vc-sizer" aria-hidden="true">{verbs.map(v => <span key={v}>{v}.</span>)}</span>
+      {verbs.map((v, i) => (
         <b key={v} className={i === active ? 'active' : i === leaving ? 'exit' : ''}>
           {v}<span className="tld">.</span>
         </b>
@@ -40,6 +47,7 @@ function VerbCycle() {
 
 export default function Hero() {
   const { ready } = useApp();
+  const { lang, t } = useLang();
   const heroRef = useRef(null);
   const lightRef = useRef(null);
 
@@ -57,7 +65,46 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  /* — intro chorégraphiée, déclenchée à la fin du préchargeur — */
+  /* — chaque ligne du titre court d'un bord à l'autre, quelle que soit la langue :
+     on mesure sa largeur réelle et on ajuste la taille (repli CSS au 1er rendu) — */
+  useLayoutEffect(() => {
+    const hero = heroRef.current;
+    const title = hero.querySelector('.hero-title');
+    const lines = Array.from(hero.querySelectorAll('.hero-title .ln'));
+    const fit = () => {
+      const avail = title.clientWidth;
+      if (!avail) return;
+      lines.forEach(ln => {
+        const prev = ln.style.display;
+        ln.style.fontSize = '100px';
+        ln.style.display = 'inline-block';
+        const w = ln.offsetWidth;
+        ln.style.display = prev;
+        ln.style.fontSize = w ? (100 * avail / w * 0.985).toFixed(2) + 'px' : '';
+      });
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(title);
+    /* les polices web arrivent après le 1er rendu : on re-mesure à leur arrivée */
+    let alive = true;
+    const refit = () => { if (alive) fit(); };
+    const fonts = document.fonts;
+    if (fonts) {
+      Promise.all([
+        fonts.load('800 100px "Schibsted Grotesk"'),
+        fonts.load('italic 400 100px "Instrument Serif"'),
+      ]).then(refit, refit);
+      fonts.addEventListener && fonts.addEventListener('loadingdone', refit);
+    }
+    return () => {
+      alive = false;
+      ro.disconnect();
+      if (fonts && fonts.removeEventListener) fonts.removeEventListener('loadingdone', refit);
+    };
+  }, [lang]);
+
+  /* — entrée chorégraphiée, dès que l'app est prête — */
   useEffect(() => {
     if (!ready || reduce) return;
     const ctx = gsap.context(() => {
@@ -195,37 +242,43 @@ export default function Hero() {
       </div>
       <div className="hero-light" ref={lightRef} aria-hidden="true" />
       <HeroField heroRef={heroRef} />
-      <div className="hero-side left mono" aria-hidden="true">46.2044° N — 6.1432° E <span className="tick">/</span> GENÈVE</div>
-      <div className="hero-side right mono" aria-hidden="true">Scène 01 <span className="tick">/</span> Ouverture — En mouvement</div>
+      <div className="hero-side left mono" aria-hidden="true">46.2044° N — 6.1432° E <span className="tick">/</span> {t('GENÈVE', 'GENEVA')}</div>
+      <div className="hero-side right mono" aria-hidden="true">Data Engineering <span className="tick">/</span> Business Intelligence</div>
 
       <div className="hero-top wrap">
-        <p>Étudiant en informatique à SUPINFO Genève, je conçois des expériences numériques où la technique rencontre l'instinct.</p>
+        <p>{t(
+          'Étudiant en Master informatique à SUPINFO Lyon (4e année sur 5), je me spécialise en data engineering et business intelligence.',
+          "Master's student in Computer Science at SUPINFO Lyon (year 4 of 5), specialising in data engineering and business intelligence."
+        )}</p>
         <div className="meta">
-          PORTFOLIO — V.2026<br />
-          GENÈVE · SUISSE<br />
-          <span className="avail-chip"><i aria-hidden="true" />Disponible</span>
+          DATA ENGINEER · BI<br />
+          {t('GENÈVE · SUISSE', 'GENEVA · SWITZERLAND')}<br />
+          <span className="avail-chip"><i aria-hidden="true" />{t('Premier poste · 2028', 'First role · 2028')}</span>
         </div>
       </div>
 
       <div className="hero-main wrap">
-        <h1 className="hero-title">
-          <span className="hm"><span className="ln"><Chars text="Matthew " /><em><Chars text="Le" /></em></span></span>
-          <span className="hm"><span className="ln"><Chars text="en mouvement" /></span></span>
+        <h1 className="hero-title" aria-label={t('Matthew Le — en mouvement', 'Matthew Le — in motion')}>
+          <span className="hm" aria-hidden="true"><span className="ln"><Chars text="Matthew " /><em><Chars text="Le" /></em></span></span>
+          <span className="hm" aria-hidden="true"><span className="ln"><Chars text={t('en mouvement', 'in motion')} /></span></span>
         </h1>
 
         <div className="hero-sub">
           <div className="hero-verbs">
-            <span className="lead serif-it">Je passe mes journées à&nbsp;</span>
-            <VerbCycle />
+            <span className="lead serif-it">{t('Je passe mes journées à', 'I spend my days')}&nbsp;</span>
+            <VerbCycle verbs={VERBS[lang]} />
           </div>
-          <a
-            href="#showreel"
-            className="scroll-cue"
-            aria-label="Faire défiler"
-            onClick={e => { e.preventDefault(); scrollToEl(document.getElementById('showreel')); }}
-          >
-            <span className="track" />Faites défiler
-          </a>
+          <div className="hero-actions">
+            <CvButton />
+            <a
+              href="#profil"
+              className="scroll-cue"
+              aria-label={t('Faire défiler', 'Scroll down')}
+              onClick={e => { e.preventDefault(); scrollToEl(document.getElementById('profil')); }}
+            >
+              <span className="track" />{t('Faites défiler', 'Scroll')}
+            </a>
+          </div>
         </div>
       </div>
     </section>

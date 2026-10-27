@@ -5,12 +5,14 @@ import { reduce } from '../lib/motion';
 import { scrollToEl } from '../lib/scroller';
 import { useApp } from '../context/AppContext';
 import { PAGES } from '../data/pages';
+import { useLang } from '../i18n/lang';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const footRef = useRef(null);
   const { go } = useApp();
+  const { t } = useLang();
 
   /* parallaxe du grand nom */
   useEffect(() => {
@@ -31,17 +33,17 @@ export default function Footer() {
         <div className="foot-row">
           <nav className="foot-nav" aria-label="Pages">
             {PAGES.map(l => (
-              <a key={l.to} href={l.to} onClick={e => { e.preventDefault(); go(l.to); }}>{l.label}</a>
+              <a key={l.to} href={l.to} onClick={e => { e.preventDefault(); go(l.to); }}>{t(l.label)}</a>
             ))}
           </nav>
-          <small>© 2026 — Conçu &amp; développé avec passion.<br />Toujours en mouvement.</small>
+          <small>{t('© 2026 Matthew LE — conçu & développé par mes soins.', '© 2026 Matthew LE — designed & built by me.')}<br />{t('Genève · Suisse', 'Geneva · Switzerland')}</small>
           <a
             href="#top"
             className="totop"
-            data-cursor="haut"
+            data-cursor={t('haut', 'top')}
             onClick={e => { e.preventDefault(); scrollToEl(document.body); }}
           >
-            ↑ Retour en haut
+            {t('↑ Retour en haut', '↑ Back to top')}
           </a>
         </div>
       </div>

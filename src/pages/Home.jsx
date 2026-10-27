@@ -1,79 +1,94 @@
 import { useRef } from 'react';
 import { useApp } from '../context/AppContext';
+import { useLang } from '../i18n/lang';
 import { useReveals } from '../hooks/useReveals';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useProjectMotion } from '../hooks/useProjectMotion';
-import { PROJECTS } from '../data/projects';
+import { HOME_PROJECTS } from '../data/projects';
 import Marquee from '../components/Marquee';
 import ProjectCard from '../components/ProjectCard';
+import ProfileFacts from '../components/ProfileFacts';
+import CvButton from '../components/CvButton';
 import Footer from '../components/Footer';
 import NextPage from '../components/NextPage';
 import Hero from './home/Hero';
 import Manifesto from './home/Manifesto';
-import Showreel from './home/Showreel';
 import ContactSection from './home/ContactSection';
 
 export default function Home() {
   const { go } = useApp();
+  const { lang, t } = useLang();
   const mainRef = useRef(null);
   const gridRef = useRef(null);
   useDocumentTitle(
-    'Matthew LE — Portfolio · En mouvement',
-    "Matthew LE — étudiant en informatique & créateur d'expériences numériques. Toujours en mouvement : code, drone FPV, vidéo, moto."
+    t('Matthew LE — Data Engineer & BI · Genève', 'Matthew LE — Data Engineer & BI · Geneva'),
+    t(
+      'Matthew LE — étudiant en Master informatique à SUPINFO Lyon, futur Data Engineer / ingénieur BI. SQL, Python, Power BI. Basé à Genève, Suisse.',
+      "Matthew LE — Master's student in Computer Science at SUPINFO Lyon, aspiring Data Engineer / BI Engineer. SQL, Python, Power BI. Based in Geneva, Switzerland."
+    )
   );
-  useReveals(mainRef);
+  useReveals(mainRef, lang);
   useProjectMotion(gridRef);
 
   return (
     <main ref={mainRef}>
-      {/* feuille du haut : elle se soulève et dévoile le showreel épinglé dessous */}
-      <div className="sheet sheet-lift">
-        <Hero />
+      {/* Hero et manifeste sont remontés au changement de langue (texte découpé) */}
+      <Hero key={'hero-' + lang} />
 
-        <Marquee
-          seg={<>
-            <span>Développement web</span><span className="star serif-it">✦</span>
-            <span>Drone FPV</span><span className="star serif-it">✦</span>
-            <span>Motion &amp; <em>montage</em></span><span className="star serif-it">✦</span>
-            <span>UI / UX</span><span className="star serif-it">✦</span>
-            <span>CFMoto 450SR</span><span className="star serif-it">✦</span>
-          </>}
-        />
+      <Marquee
+        seg={<>
+          <span>SQL</span><span className="star serif-it">✦</span>
+          <span>Python</span><span className="star serif-it">✦</span>
+          <span>Power BI</span><span className="star serif-it">✦</span>
+          <span>ETL <em>&amp;</em> pipelines</span><span className="star serif-it">✦</span>
+          <span>{t('Modélisation', 'Data modelling')}</span><span className="star serif-it">✦</span>
+          <span>Data <em>viz</em></span><span className="star serif-it">✦</span>
+        </>}
+      />
 
-        <Manifesto />
-      </div>
-      <Showreel />
+      <Manifesto key={'manifesto-' + lang} />
 
-      <div className="sheet sheet-cover">
-        <section className="projects wrap" id="work">
-          <div className="sec-head">
-            <h2 className="line-mask"><span>Projets <em>sélectionnés</em></span></h2>
-            <span className="num reveal">(02) — IT &amp; créatif mêlés</span>
-          </div>
-          <div className="proj-grid" ref={gridRef}>
-            {PROJECTS.slice(0, 4).map(p => <ProjectCard p={p} key={p.id} />)}
-          </div>
-          <div style={{ marginTop: 'clamp(40px,6vh,64px)' }} className="reveal">
-            <a
-              className="btn accent"
-              href="/projets"
-              data-magnetic="0.45"
-              onClick={e => { e.preventDefault(); go('/projets'); }}
-            >
-              <span className="fill" /><span className="dot-arrow" /><span className="lbl">Voir tous les projets</span>
-            </a>
-          </div>
-        </section>
+      <section className="profile wrap" id="profil">
+        <div className="sec-head">
+          <h2 className="line-mask"><span>{t(<>Profil <em>en bref</em></>, <>At a <em>glance</em></>)}</span></h2>
+          <span className="num reveal">{t('(01) — Pour les recruteurs', '(01) — For recruiters')}</span>
+        </div>
+        <ProfileFacts />
+        <div className="profile-actions reveal">
+          <CvButton />
+          <a className="btn" href="/a-propos" onClick={e => { e.preventDefault(); go('/a-propos'); }}>
+            <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Parcours & compétences', 'Background & skills')}</span>
+          </a>
+        </div>
+      </section>
 
-        <NextPage to="/a-propos" label="À propos" kicker="Qui est derrière l'écran ?" />
-      </div>
+      <section className="projects wrap" id="work">
+        <div className="sec-head">
+          <h2 className="line-mask"><span>{t(<>Projets <em>sélectionnés</em></>, <>Selected <em>work</em></>)}</span></h2>
+          <span className="num reveal">{t('(02) — Data, web & applications', '(02) — Data, web & apps')}</span>
+        </div>
+        <div className="proj-grid" ref={gridRef}>
+          {HOME_PROJECTS.map(p => <ProjectCard p={p} key={p.id} />)}
+        </div>
+        <div style={{ marginTop: 'clamp(40px,6vh,64px)' }} className="reveal">
+          <a
+            className="btn accent"
+            href="/projets"
+            onClick={e => { e.preventDefault(); go('/projets'); }}
+          >
+            <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Voir tous les projets', 'See all projects')}</span>
+          </a>
+        </div>
+      </section>
+
+      <NextPage to="/a-propos" label={t('À propos', 'About')} kicker={t("Qui est derrière l'écran ?", "Who's behind the screen?")} />
 
       <Marquee
         dark dir="right" speed={0.6}
         seg={<>
-          <span>Travaillons <em>ensemble</em></span><span className="star">✦</span>
-          <span>Disponible 2026</span><span className="star">✦</span>
-          <span>Genève · Suisse</span><span className="star">✦</span>
+          <span>{t(<>Parlons <em>data</em></>, <>Let's talk <em>data</em></>)}</span><span className="star">✦</span>
+          <span>Data Engineer · BI</span><span className="star">✦</span>
+          <span>{t('Genève · Suisse', 'Geneva · Switzerland')}</span><span className="star">✦</span>
         </>}
       />
 

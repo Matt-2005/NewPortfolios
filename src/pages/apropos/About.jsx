@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { clamp, coarse, lerp, onFrame, reduce } from '../../lib/motion';
+import { useLang } from '../../i18n/lang';
+
+const DEV = import.meta.env.DEV;
 
 const PORTRAIT = '/media/portrait.jpg';
 
@@ -8,6 +11,7 @@ const PORTRAIT = '/media/portrait.jpg';
    2. parallaxe interne très douce au scroll
    3. au survol : inclinaison de quelques degrés + reflet qui suit le curseur */
 function Portrait() {
+  const { t } = useLang();
   const stageRef = useRef(null);
   const [hasPhoto, setHasPhoto] = useState(false);
   const [inView, setInView] = useState(reduce);
@@ -77,8 +81,8 @@ function Portrait() {
       <div className="portrait-tilt">
         <div className="portrait-clip">
           {hasPhoto
-            ? <img className="portrait-img" src={PORTRAIT} alt="Portrait de Matthew LE" />
-            : <span className="ph-tag">portrait — public/media/portrait.jpg</span>}
+            ? <img className="portrait-img" src={PORTRAIT} alt={t('Portrait de Matthew LE', 'Portrait of Matthew LE')} />
+            : DEV && <span className="ph-tag">portrait — public/media/portrait.jpg</span>}
           <span className="portrait-glare" aria-hidden="true" />
         </div>
         <span className="portrait-corners" aria-hidden="true"><i /><i /><i /><i /></span>
@@ -88,17 +92,28 @@ function Portrait() {
 }
 
 export default function About() {
+  const { t } = useLang();
   return (
     <section className="about" id="about">
       <div className="wrap">
         <div className="about-grid">
           <div>
-            <p className="about-lead reveal">Bienvenue. Je suis <em>Matthew LE</em>, étudiant en informatique basé à <span className="hl">Genève</span>, en <span className="hl">Suisse</span>. Je construis des choses qui doivent tenir en l'air — du code propre aux lignes de vol d'un drone.</p>
-            <p className="about-body reveal" data-d="1">Le développement web et le design interactif sont mon terrain de jeu, mais ma façon de penser vient d'ailleurs&nbsp;: du cadrage d'un montage vidéo, de la trajectoire d'une moto en courbe, du calme qu'il faut pour piloter en FPV. La même rigueur, le même goût du détail, le même instinct du mouvement — appliqués à l'écran.</p>
+            <p className="about-lead reveal">{t(
+              <>Bonjour, je suis <em>Matthew LE</em>, étudiant en 4e année à SUPINFO Lyon, en cycle Master informatique. Je me forme pour devenir <span className="hl">data engineer</span> ou ingénieur BI en <span className="hl">Suisse</span> : construire des flux de données fiables et les rendre utiles à ceux qui décident.</>,
+              <>Hi, I'm <em>Matthew LE</em>, a fourth-year student at SUPINFO Lyon, in the Master's cycle in Computer Science. I'm training to become a <span className="hl">data engineer</span> or BI engineer in <span className="hl">Switzerland</span>: building reliable data flows and making them useful to decision-makers.</>
+            )}</p>
+            <p className="about-body reveal" data-d="1">{t(
+              <>Avant la data, il y a eu le développement web — des sites et applications livrés à de vrais clients — et la vidéo&nbsp;: montage, drone FPV. J'en garde une méthode&nbsp;: préparer, structurer, vérifier, puis présenter clairement. C'est exactement ce que demandent un bon pipeline et un bon dashboard.</>,
+              <>Before data, there was web development — websites and apps delivered to real clients — and video: editing and FPV drone flying. They gave me a method: prepare, structure, check, then present clearly. That is exactly what a good pipeline and a good dashboard require.</>
+            )}</p>
+            <p className="about-body reveal" data-d="2">{t(
+              <>Je parle français, anglais et russe, et je vise un premier poste en Suisse à la fin de mon Master, en 2028.</>,
+              <>I speak French, English and Russian, and I'm aiming for a first role in Switzerland after my Master's, in 2028.</>
+            )}</p>
           </div>
           <div className="about-portrait">
             <Portrait />
-            <div className="badge"><span>EST. 2005</span><span>GENÈVE · 46.20°N</span></div>
+            <div className="badge"><span>EST. 2005</span><span>{t('GENÈVE', 'GENEVA')} · 46.20°N</span></div>
           </div>
         </div>
       </div>

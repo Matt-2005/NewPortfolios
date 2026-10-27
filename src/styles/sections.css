@@ -107,7 +107,7 @@
   font-size: clamp(44px, 13.2vw, 350px); text-transform: uppercase;
 }
 .hero-title .hm { display: block; overflow: hidden; padding-bottom: 0.04em; margin-bottom: -0.04em; }
-.hero-title .ln { display: block; will-change: transform; white-space: nowrap; }
+.hero-title .ln { display: block; will-change: transform; white-space: nowrap; letter-spacing: -0.04em; }
 /* Chaque ligne est calibrée pour courir d'un bord à l'autre de l'écran
    (largeurs mesurées : « Matthew Le » 6,165 em · « EN MOUVEMENT » 7,986 em) */
 .hero-title .hm:first-child .ln { font-size: calc((100vw - var(--gut) * 2) / 6.25); }
@@ -123,7 +123,7 @@
 }
 .hero-verbs { font-size: clamp(20px,2.4vw,30px); display: flex; align-items: baseline; gap: 0.4em; }
 .hero-verbs .lead { color: var(--ink-soft); }
-.verb-cycle { position: relative; display: inline-block; min-width: 6.5ch; height: 1.2em; overflow: hidden; vertical-align: bottom; }
+.verb-cycle { position: relative; display: inline-block; height: 1.2em; overflow: hidden; vertical-align: bottom; }
 .verb-cycle b {
   position: absolute; left: 0; top: 0; color: var(--ink);
   font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
@@ -727,3 +727,65 @@ html:not(.anim-ready) .reel-shade { opacity: 0; }
   html.anim-ready .par-row .par-yr { transform: none !important; }
   html.anim-ready .par-row .par-text > * { opacity: 1 !important; transform: none !important; }
 }
+
+/* ============================================================
+   HERO — verbes (largeur calée sur le plus long) + actions
+   ============================================================ */
+.verb-cycle .vc-sizer {
+  display: inline-grid; visibility: hidden; padding-right: 0.08em;
+  font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
+}
+.verb-cycle .vc-sizer > span { grid-area: 1 / 1; white-space: nowrap; }
+.hero-actions { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 30px); flex-wrap: wrap; }
+
+/* ============================================================
+   PROFIL EN BREF — la fiche que lit un recruteur
+   ============================================================ */
+.profile { padding-block: clamp(40px, 8vh, 100px) clamp(20px, 4vh, 50px); }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 clamp(24px, 3vw, 48px); margin: 0; }
+.fact { border-top: 1px solid var(--line); padding: 20px 0 26px; min-width: 0; }
+.fact dt {
+  font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
+}
+.fact dd { margin: 0; font-size: clamp(17px, 1.45vw, 20px); line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); }
+.fact.accent dd { color: var(--fpv-deep); display: flex; align-items: baseline; gap: 10px; }
+.fact.accent dd::before {
+  content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--fpv);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--fpv) 22%, transparent);
+  animation: availpulse 1.9s var(--ease-io) infinite;
+}
+.facts.compact { grid-template-columns: repeat(2, 1fr); }
+.profile-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: clamp(30px, 5vh, 50px); }
+@media (max-width: 1000px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .facts, .facts.compact { grid-template-columns: 1fr; } }
+
+/* page contact : la fiche sous le formulaire */
+.contact-facts { margin-top: clamp(70px, 11vh, 130px); }
+.contact-facts .sec-head { margin-bottom: clamp(24px, 4vh, 40px); }
+.cinfo-cv:empty { display: none; }
+
+/* ============================================================
+   PROJETS — badge brouillon (dev uniquement)
+   ============================================================ */
+.proj-draft {
+  position: absolute; left: 14px; bottom: 14px; z-index: 4;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fpv-ink); background: oklch(0.58 0.20 264 / 0.88);
+  border-radius: 100px; padding: 5px 10px;
+}
+.proj-card.is-draft .proj-media { outline: 1px dashed color-mix(in oklch, var(--fpv) 60%, transparent); outline-offset: -1px; }
+
+/* ============================================================
+   COMPÉTENCES — pastille « en cours »
+   ============================================================ */
+.skill h3 .skill-learning {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fpv-deep); border: 1px solid color-mix(in oklch, var(--fpv) 45%, transparent);
+  padding: 4px 9px; border-radius: 100px; align-self: center;
+}
+
+/* la feuille du haut de « À propos » garde ses coins arrondis
+   au-dessus du fond coloré des compétences */
+.sheet-clip { overflow: clip; }

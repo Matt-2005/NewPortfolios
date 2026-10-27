@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext';
 import { gsap } from 'gsap';
 import { onFrame, reduce } from '../lib/motion';
 import { PAGES } from '../data/pages';
+import { useLang } from '../i18n/lang';
 
 export default function Nav() {
   const { ready, go, menuOpen, setMenuOpen } = useApp();
@@ -11,14 +12,12 @@ export default function Nav() {
   const navRef = useRef(null);
   const linksRef = useRef(null);
   const pillRef = useRef(null);
-  const [clock, setClock] = useState('GENÈVE / —');
+  const { lang, setLang, t } = useLang();
+  const [time, setTime] = useState('—');
 
-  /* — horloge — */
+  /* — horloge (heure de Genève) — */
   useEffect(() => {
-    const tick = () => {
-      const t = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Zurich' });
-      setClock('GENÈVE / ' + t);
-    };
+    const tick = () => setTime(new Date().toLocaleTimeString('fr-CH', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Zurich' }));
     tick();
     const id = setInterval(tick, 20000);
     return () => clearInterval(id);
@@ -54,7 +53,7 @@ export default function Nav() {
       const hits = document.elementsFromPoint(window.innerWidth / 2, 40);
       for (let i = 0; i < hits.length; i++) {
         const el = hits[i];
-        if (el.closest('.nav, .cursor, .curtain, .fsmenu, .intro, .preloader, .reel-lb')) continue;
+        if (el.closest('.nav, .cursor, .curtain, .fsmenu, .reel-lb')) continue;
         dark = !!el.closest('[data-navdark]');
         break;
       }
@@ -79,7 +78,7 @@ export default function Nav() {
     ro.observe(wrap);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
     return () => ro.disconnect();
-  }, [location.pathname]);
+  }, [location.pathname, lang]);
 
   const toggleTheme = () => {
     const root = document.documentElement;
@@ -93,12 +92,12 @@ export default function Nav() {
       <a
         href="/"
         className="brand"
-        aria-label="Matthew LE — accueil"
+        aria-label={t('Matthew LE — accueil', 'Matthew LE — home')}
         onClick={e => { e.preventDefault(); go('/'); }}
       >
         ML<span className="reg">®</span>
       </a>
-      <nav className="nav-links" ref={linksRef} aria-label="Pages">
+      <nav className="nav-links" ref={linksRef} aria-label={t('Pages', 'Pages')}>
         <span className="nav-pill" ref={pillRef} aria-hidden="true" />
         {PAGES.map(l => (
           <a
@@ -107,20 +106,28 @@ export default function Nav() {
             aria-current={location.pathname === l.to ? 'page' : undefined}
             onClick={e => { e.preventDefault(); go(l.to); }}
           >
-            {l.label}
+            {t(l.label)}
           </a>
         ))}
       </nav>
       <div className="nav-right">
-        <span className="nav-clock hidden-clock mono">{clock.split(' / ')[0]} <span className="dot">/</span> {clock.split(' / ')[1]}</span>
-        <button className="theme-toggle" onClick={toggleTheme} aria-label="Basculer jour / nuit" data-magnetic="0.3">
+        <span className="nav-clock hidden-clock mono">{t('GENÈVE', 'GENEVA')} <span className="dot">/</span> {time}</span>
+        <button
+          className="lang-toggle mono"
+          onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+          aria-label={t('Switch to English', 'Passer en français')}
+          lang={lang === 'fr' ? 'en' : 'fr'}
+        >
+          <span className={lang === 'fr' ? 'on' : ''}>FR</span><i aria-hidden="true">/</i><span className={lang === 'en' ? 'on' : ''}>EN</span>
+        </button>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label={t('Basculer jour / nuit', 'Toggle light / dark')}>
           <svg className="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
           <svg className="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="4.4" /><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M19.2 4.8l-2.1 2.1M6.9 17.1l-2.1 2.1" /></svg>
         </button>
         <button
           className="menu-btn"
           aria-expanded={menuOpen}
-          data-cursor={menuOpen ? 'fermer' : 'ouvrir'}
+          data-cursor={menuOpen ? t('fermer', 'close') : t('ouvrir', 'open')}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <span>MENU</span>

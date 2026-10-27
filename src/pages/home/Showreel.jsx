@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { clamp, easeOutCubic, onFrame, reduce, smooth } from '../../lib/motion';
 import { createFlight } from '../../lib/flight';
 import { startScroll, stopScroll } from '../../lib/scroller';
+import { useLang } from '../../i18n/lang';
 
 const VIDEO_SRC = '/media/immersive.mp4';
 
@@ -18,6 +19,7 @@ const VIDEO_SRC = '/media/immersive.mp4';
    TOTAL-2 → -1 recouvrement par la section suivante
    ============================================================ */
 export default function Showreel() {
+  const { t } = useLang();
   const [hasVideo, setHasVideo] = useState(false);
   const [lightbox, setLightbox] = useState(false);
   const trackRef = useRef(null);
@@ -137,29 +139,32 @@ export default function Showreel() {
           <div className="reel-shade" ref={shadeRef} aria-hidden="true" />
 
           <div className="reel-copy wrap" ref={copyRef}>
-            <span className="reel-eye" data-l>(01) — Séquence FPV</span>
+            <span className="reel-eye" data-l>{t('(03) — En dehors du code', '(03) — Away from the keyboard')}</span>
             <h2>
-              <span className="reel-ln" data-l>Au-dessus</span>
-              <span className="reel-ln" data-l>de <em>Genève.</em></span>
+              <span className="reel-ln" data-l>{t('Au-dessus', 'Above')}</span>
+              <span className="reel-ln" data-l>{t(<>de <em>Genève.</em></>, <><em>Geneva.</em></>)}</span>
             </h2>
             <div className="reel-actions" data-l>
-              <p>Pilotée, filmée et montée par moi — un vol FPV entre lac et Salève.</p>
+              <p>{t(
+                "Pilote de drone FPV et monteur vidéo. Préparer le vol, l'exécuter sans filet, vérifier chaque image : la même rigueur que dans un pipeline.",
+                'FPV drone pilot and video editor. Plan the flight, fly it with no safety net, check every frame: the same rigour I bring to a pipeline.'
+              )}</p>
               {hasVideo && (
-                <button className="reel-play" onClick={openFilm} data-cursor="play" data-magnetic="0.35">
+                <button className="reel-play" onClick={openFilm} data-cursor="play">
                   <span className="reel-play-ic" aria-hidden="true" />
-                  <span className="lbl">Regarder le film</span>
+                  <span className="lbl">{t('Regarder le film', 'Watch the film')}</span>
                 </button>
               )}
             </div>
           </div>
 
           <div className="reel-meta wrap" ref={metaRef} aria-hidden="true">
-            <span><i className="reel-rec" />{hasVideo ? <span ref={tcRef}>00:00:00</span> : 'Aperçu'}</span>
+            <span><i className="reel-rec" />{hasVideo ? <span ref={tcRef}>00:00:00</span> : t('Aperçu', 'Preview')}</span>
             <span>Drone FPV · 4K</span>
             <span>46.20°N — 6.14°E</span>
           </div>
 
-          {!hasVideo && (
+          {!hasVideo && import.meta.env.DEV && (
             <div className="reel-note" aria-hidden="true">
               Aperçu procédural — déposez <b>public/media/immersive.mp4</b>
             </div>
@@ -167,13 +172,13 @@ export default function Showreel() {
         </div>
       </div>
 
-      {lightbox && <FilmLightbox src={VIDEO_SRC} onClose={closeFilm} />}
+      {lightbox && <FilmLightbox src={VIDEO_SRC} onClose={closeFilm} t={t} />}
     </section>
   );
 }
 
 /* Lecteur plein écran, avec le son et les contrôles natifs. */
-function FilmLightbox({ src, onClose }) {
+function FilmLightbox({ src, onClose, t }) {
   const [shown, setShown] = useState(false);
   const closeRef = useRef(null);
 
@@ -196,12 +201,12 @@ function FilmLightbox({ src, onClose }) {
   const close = () => { setShown(false); setTimeout(onClose, 520); };
 
   return (
-    <div className={'reel-lb' + (shown ? ' show' : '')} role="dialog" aria-modal="true" aria-label="Film FPV — Au-dessus de Genève" onClick={close}>
+    <div className={'reel-lb' + (shown ? ' show' : '')} role="dialog" aria-modal="true" aria-label={t('Film FPV — Au-dessus de Genève', 'FPV film — Above Geneva')} onClick={close}>
       <div className="reel-lb-frame" onClick={e => e.stopPropagation()}>
         <video src={src} controls autoPlay playsInline />
       </div>
-      <button className="reel-lb-close" ref={closeRef} onClick={close} data-cursor="fermer">
-        Fermer <span aria-hidden="true">✕</span>
+      <button className="reel-lb-close" ref={closeRef} onClick={close} data-cursor={t('fermer', 'close')}>
+        {t('Fermer', 'Close')} <span aria-hidden="true">✕</span>
       </button>
     </div>
   );

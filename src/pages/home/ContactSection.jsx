@@ -1,28 +1,31 @@
 import ContactOrb from '../../three/ContactOrb';
+import { PROFILE } from '../../data/profile';
+import { useLang } from '../../i18n/lang';
+import Socials from '../../components/Socials';
 
 /* Section contact de l'accueil — avec l'orbe d'énergie Three.js. */
 export default function ContactSection() {
+  const { t } = useLang();
   return (
     <section className="contact" id="contact" data-navdark>
       <ContactOrb />
       <div className="wrap contact-grid">
         <div>
-          <h2 className="line-mask"><span>Lancez-vous<br /><em>avec moi</em></span></h2>
-          <p className="lead reveal" data-d="1">Une idée, un projet, une envie de bouger&nbsp;? Je suis là pour lui donner vie — du code à l'image.</p>
-          <a className="contact-mail reveal" data-d="2" href="mailto:contact@matthewle.fr" data-cursor="écrire">
-            <span className="dot-arrow" style={{ width: 9, height: 9 }} /><span className="u">contact@matthewle.fr</span>
+          <h2 className="line-mask"><span>{t(<>Parlons<br /><em>data</em></>, <>Let's talk<br /><em>data</em></>)}</span></h2>
+          <p className="lead reveal" data-d="1">{t(
+            'Recruteur, manager ou équipe data en Suisse ? Je suis ouvert aux échanges dès maintenant — et à un premier poste à la fin de mon Master, en 2028.',
+            "Recruiter, hiring manager or data team in Switzerland? I'm happy to talk right now — and I'm looking for a first full-time role after my Master's, in 2028."
+          )}</p>
+          <a className="contact-mail reveal" data-d="2" href={'mailto:' + PROFILE.email} data-cursor={t('écrire', 'write')}>
+            <span className="dot-arrow" style={{ width: 9, height: 9 }} /><span className="u">{PROFILE.email}</span>
           </a>
         </div>
         <div className="contact-info">
-          <div className="blk reveal"><span>Téléphone</span><a href="tel:+33615802246">(+33) 6 15 80 22 46</a></div>
-          <div className="blk reveal" data-d="1"><span>Localisation</span><p>Genève, Suisse — 1201</p></div>
+          <div className="blk reveal"><span>{t('Téléphone', 'Phone')}</span><a href={PROFILE.phoneHref}>{PROFILE.phone}</a></div>
+          <div className="blk reveal" data-d="1"><span>{t('Localisation', 'Location')}</span><p>{t(PROFILE.location)}</p></div>
           <div className="blk reveal" data-d="2">
-            <span>Réseaux</span>
-            <div className="socials">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" data-cursor="voir">Instagram</a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" data-cursor="voir">LinkedIn</a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" data-cursor="voir">YouTube</a>
-            </div>
+            <span>{t('Profils', 'Profiles')}</span>
+            <Socials />
           </div>
         </div>
       </div>
