@@ -56,10 +56,10 @@ export default function Manifesto() {
       <p className="big">
         {t(
           <><span className="muted"><Words text="Une donnée qui dort ne vaut rien." /></span>{' '}
-            <Words text="Je construis les flux qui la mettent en" /> <span className="hl"><Words text="mouvement" /></span><Words text=" — de la source brute au" />{' '}
+            <Words text="Je construis les flux qui la font" /> <span className="hl"><Words text="circuler" /></span><Words text=" — de la source brute au" />{' '}
             <em><Words text="dashboard" /></em> <Words text="qui aide à décider. Fiables, documentés," /> <em><Words text="précis" /></em><Words text="." /></>,
           <><span className="muted"><Words text="Data at rest is worth nothing." /></span>{' '}
-            <Words text="I build the pipelines that put it in" /> <span className="hl"><Words text="motion" /></span><Words text=" — from raw source to the" />{' '}
+            <Words text="I build the pipelines that keep it" /> <span className="hl"><Words text="flowing" /></span><Words text=" — from raw source to the" />{' '}
             <em><Words text="dashboard" /></em> <Words text="that drives decisions. Reliable, documented," /> <em><Words text="precise" /></em><Words text="." /></>
         )}
       </p>

@@ -2,7 +2,7 @@
    CONTACT ORB — orbe d'énergie bleu roi (Three.js).
    Une sphère déformée par du bruit simplex, rim-light fresnel,
    en rotation lente, qui respire et suit doucement le curseur.
-   « Toujours en mouvement », même à l'arrêt.
+   Toujours vivante, même à l’arrêt.
    ============================================================ */
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';

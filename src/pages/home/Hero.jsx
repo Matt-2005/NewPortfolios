@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useApp } from '../../context/AppContext';
 import { lerp, onFrame, reduce, coarse } from '../../lib/motion';
 import { scrollToEl } from '../../lib/scroller';
-import { Chars } from '../../components/text';
 import HeroField from '../../three/HeroField';
 import CvButton from '../../components/CvButton';
 import { useLang } from '../../i18n/lang';
@@ -55,7 +54,6 @@ export default function Hero() {
   useLayoutEffect(() => {
     if (reduce) return;
     const ctx = gsap.context(() => {
-      gsap.set('.hero-ghost', { scale: 1.14, opacity: 0 });
       gsap.set('.hero-grid', { opacity: 0 });
       gsap.set('.hero-title .ln', { yPercent: 115, rotate: 2.4, transformOrigin: '0% 100%' });
       gsap.set('.hero-sweep', { scaleX: 0 });
@@ -109,8 +107,7 @@ export default function Hero() {
     if (!ready || reduce) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-      tl.to('.hero-ghost', { scale: 1, opacity: 1, duration: 1.7, ease: 'power2.out' }, 0)
-        .to('.hero-grid', { opacity: 1, duration: 1.3 }, 0)
+      tl.to('.hero-grid', { opacity: 1, duration: 1.3 }, 0)
         .to('.hero-title .ln', { yPercent: 0, rotate: 0, duration: 1.25, stagger: 0.095 }, 0.1)
         .to('.hero-sweep', { scaleX: 1, duration: 1.2, ease: 'expo.out' }, 0.5)
         .to('.hero-top > *', { y: 0, opacity: 1, duration: 0.9, stagger: 0.08, clearProps: 'opacity,transform' }, 0.55)
@@ -127,28 +124,12 @@ export default function Hero() {
       const stHero = { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 0.4 };
       gsap.to('.hero-main', { yPercent: -14, opacity: 0.25, ease: 'none', scrollTrigger: stHero });
       gsap.to('.hero-top', { yPercent: -80, opacity: 0, ease: 'none', scrollTrigger: { ...stHero, end: '55% top' } });
-      gsap.to('.hero-ghost-w', { yPercent: 24, scale: 1.16, ease: 'none', scrollTrigger: stHero });
       gsap.to(['.hero-grid', '.hero-sweep', '.hero-fx', '.hero-side'], {
         opacity: 0, ease: 'none',
         scrollTrigger: { ...stHero, start: '12% top', end: '70% top' },
       });
     }, heroRef);
     return () => ctx.revert();
-  }, []);
-
-  /* — le monogramme fantôme suit la souris — */
-  useEffect(() => {
-    if (reduce || coarse) return;
-    const hero = heroRef.current;
-    const ghost = hero.querySelector('.hero-ghost');
-    const gx = gsap.quickTo(ghost, 'x', { duration: 0.9, ease: 'power3' });
-    const gy = gsap.quickTo(ghost, 'y', { duration: 0.9, ease: 'power3' });
-    const onMove = e => {
-      gx((e.clientX / window.innerWidth * 2 - 1) * 16);
-      gy((e.clientY / window.innerHeight * 2 - 1) * 10);
-    };
-    hero.addEventListener('mousemove', onMove);
-    return () => hero.removeEventListener('mousemove', onMove);
   }, []);
 
   /* — halo lumineux : suit le curseur, dérive seul au tactile — */
@@ -187,57 +168,10 @@ export default function Hero() {
     };
   }, []);
 
-  /* — titre vivant : la graisse des lettres répond au curseur — */
-  useEffect(() => {
-    if (reduce || coarse) return;
-    const hero = heroRef.current;
-    const chs = Array.from(hero.querySelectorAll('.hero-title .ch'))
-      .filter(el => !el.closest('em'))
-      .map(el => ({ el, w: 800, applied: 800 }));
-    if (!chs.length) return;
-    let mx = -1, my = 0;
-    const onMove = e => { mx = e.clientX; my = e.clientY; };
-    const onLeave = () => { mx = -1; };
-    hero.addEventListener('mousemove', onMove);
-    hero.addEventListener('mouseleave', onLeave);
-    const R2 = 140 * 140;
-    const off = onFrame(() => {
-      if (mx < 0) {
-        let busy = false;
-        for (let i = 0; i < chs.length; i++) if (Math.abs(chs[i].w - 800) > 0.4) { busy = true; break; }
-        if (!busy) return;
-      }
-      const targets = [];
-      for (let i = 0; i < chs.length; i++) { // lectures d'abord, écritures ensuite
-        let t = 800;
-        if (mx >= 0) {
-          const r = chs[i].el.getBoundingClientRect();
-          const dx = r.left + r.width / 2 - mx;
-          const dy = r.top + r.height / 2 - my;
-          t = 800 + 100 * Math.exp(-(dx * dx + dy * dy) / R2);
-        }
-        targets.push(t);
-      }
-      for (let i = 0; i < chs.length; i++) {
-        const c = chs[i];
-        c.w = lerp(c.w, targets[i], 0.18);
-        if (Math.abs(c.w - c.applied) < 0.3) continue;
-        c.applied = c.w;
-        c.el.style.fontVariationSettings = '"wght" ' + c.w.toFixed(1);
-      }
-    });
-    return () => {
-      off();
-      hero.removeEventListener('mousemove', onMove);
-      hero.removeEventListener('mouseleave', onLeave);
-    };
-  }, []);
-
   return (
     <section className="hero" ref={heroRef}>
       <div className="hero-bg">
         <div className="hero-grid" />
-        <div className="hero-ghost-w"><div className="hero-ghost serif-it">ML</div></div>
         <div className="hero-sweep" />
       </div>
       <div className="hero-light" ref={lightRef} aria-hidden="true" />
@@ -251,16 +185,16 @@ export default function Hero() {
           'Master of Engineering student (Data Engineering) at SUPINFO Lyon, working as a developer & BI engineer at SNCF on a work-study contract.'
         )}</p>
         <div className="meta">
-          DATA ENGINEER · BI<br />
+          {t('ALTERNANT · SNCF', 'WORK-STUDY · SNCF')}<br />
           {t('LYON · MOBILE EN SUISSE', 'LYON · OPEN TO SWITZERLAND')}<br />
           <span className="avail-chip"><i aria-hidden="true" />{t('Premier poste · 2028', 'First role · 2028')}</span>
         </div>
       </div>
 
       <div className="hero-main wrap">
-        <h1 className="hero-title" aria-label={t('Matthew Le — en mouvement', 'Matthew Le — in motion')}>
-          <span className="hm" aria-hidden="true"><span className="ln"><Chars text="Matthew " /><em><Chars text="Le" /></em></span></span>
-          <span className="hm" aria-hidden="true"><span className="ln"><Chars text={t('en mouvement', 'in motion')} /></span></span>
+        <h1 className="hero-title" aria-label="Matthew Le — Data Engineer">
+          <span className="hm" aria-hidden="true"><span className="ln">Matthew <em>Le</em></span></span>
+          <span className="hm" aria-hidden="true"><span className="ln">Data Engineer</span></span>
         </h1>
 
         <div className="hero-sub">
