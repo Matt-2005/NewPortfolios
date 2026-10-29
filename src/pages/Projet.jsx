@@ -5,7 +5,8 @@ import { useLang } from '../i18n/lang';
 import { useReveals } from '../hooks/useReveals';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useProjectMotion } from '../hooks/useProjectMotion';
-import { VISIBLE_PROJECTS, childProjects, findProject, projectPath } from '../data/projects';
+import { VISIBLE_PROJECTS, childProjects, findProject, motionFor, projectPath } from '../data/projects';
+import MotionScene from '../components/MotionScene';
 import ProjectCard from '../components/ProjectCard';
 import NextPage from '../components/NextPage';
 import Footer from '../components/Footer';
@@ -39,6 +40,7 @@ function ProjetPage({ p }) {
   const [hasPhoto, setHasPhoto] = useState(false);
 
   const isExp = p.type === 'exp';
+  const [scene, seed, accent] = motionFor(p);
   const d = p.detail || {};
   const name = t(p.name);
   const title = name.join('').trim();
@@ -95,7 +97,8 @@ function ProjetPage({ p }) {
           style={p.img ? { '--img': `url('${p.img}')` } : undefined}
           data-navdark={isExp ? '' : undefined}
         >
-          {!hasPhoto && <span className="proj-mark" aria-hidden="true">{isExp ? p.company : title}</span>}
+          {!hasPhoto && <MotionScene scene={scene} seed={seed} accent={accent} />}
+          {!hasPhoto && scene !== 'flight' && <span className="proj-mark" aria-hidden="true">{isExp ? p.company : title}</span>}
           {p.period && <span className="proj-yr mono">{t(p.period)}</span>}
         </div>
       </section>

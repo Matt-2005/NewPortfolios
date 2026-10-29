@@ -940,3 +940,33 @@ html:not(.anim-ready) .reel-shade { opacity: 0; }
 }
 /* l'email direct garde sa grande taille (la règle générale des liens de bloc l'écrasait) */
 .cinfo .blk .big-mail { font-size: clamp(21px, 2.3vw, 30px); }
+
+/* ============================================================
+   EN-TÊTES ANIMÉS (canvas) — cartes et bandeaux de projet
+   ============================================================ */
+.motion-scene {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; display: block; pointer-events: none;
+  color: var(--ink); /* couleur de trait lue par le canvas */
+}
+.proj-card.is-exp .motion-scene, .pp-banner.is-exp .motion-scene { color: var(--on-void); }
+/* avec une animation, les rayures du placeholder disparaissent */
+.proj-media:has(.motion-scene), .pp-banner:has(.motion-scene) { background-image: none; }
+.proj-card.is-exp .proj-media:has(.motion-scene) {
+  background-image:
+    radial-gradient(circle at 82% 18%, oklch(0.58 0.2 264 / 0.45), transparent 55%),
+    radial-gradient(circle at 8% 92%, oklch(0.66 0.16 205 / 0.26), transparent 50%);
+}
+.pp-banner.is-exp:has(.motion-scene) {
+  background-image:
+    radial-gradient(circle at 82% 18%, oklch(0.58 0.2 264 / 0.45), transparent 55%),
+    radial-gradient(circle at 8% 92%, oklch(0.66 0.16 205 / 0.26), transparent 50%);
+}
+/* le nom reste lisible au-dessus de l'animation */
+.proj-media:has(.motion-scene) .proj-mark, .pp-banner:has(.motion-scene) .proj-mark {
+  color: var(--ink); text-shadow: 0 0 28px var(--paper-2), 0 0 8px var(--paper-2);
+}
+.proj-card.is-exp .proj-media:has(.motion-scene) .proj-mark,
+.pp-banner.is-exp:has(.motion-scene) .proj-mark {
+  color: var(--on-void); text-shadow: 0 0 30px var(--void), 0 0 10px var(--void);
+}

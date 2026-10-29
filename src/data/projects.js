@@ -442,3 +442,22 @@ export const FILTERS = [
   { cat: 'dev', label: { fr: 'Web & applications', en: 'Web & apps' } },
   { cat: 'creative', label: { fr: 'Vidéo & drone', en: 'Video & drone' } },
 ];
+
+/* Scène animée de l'en-tête (affichée tant qu'il n'y a pas de photo) :
+   [scène, graine, couleur d'accent facultative] — voir src/lib/scenes.js */
+const MOTION = {
+  sncf: ['flow', 1],            // données → tableau de bord
+  vicat: ['network', 2],        // messages Kafka entre serveurs
+  webdesignco: ['layout', 3],   // maquettes de sites
+  'hola-la-deco': ['layout', 4, 'oklch(0.64 0.11 195)'],  // bleu-vert
+  thermipose: ['layout', 5, 'oklch(0.64 0.19 30)'],       // orange chaud
+  'geae-batiment': ['layout', 6, 'oklch(0.74 0.15 75)'],  // ambre chantier
+  belki: ['layout', 7, 'oklch(0.6 0.12 150)'],             // vert forêt
+  'petits-reves': ['layout', 8, 'oklch(0.64 0.15 330)'],   // rose-violet
+  cff: ['chart', 9],
+  'logement-ge': ['chart', 10],
+  'energie-ch': ['chart', 11],
+  'above-geneve': ['flight', 12],
+  'sunset-ride': ['flight', 13],
+};
+export const motionFor = p => MOTION[p.id] || [p.cats.includes('data') ? 'chart' : 'layout', p.id.length];

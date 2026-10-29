@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { useLang } from '../i18n/lang';
-import { projectPath } from '../data/projects';
+import { motionFor, projectPath } from '../data/projects';
+import MotionScene from './MotionScene';
 import Icon from './Icon';
 
 const DEV = import.meta.env.DEV;
@@ -29,6 +30,7 @@ export default function ProjectCard({ p, showYear = false, cardRef }) {
 
   const name = t(p.name);
   const mark = isExp ? p.company : name.join('').trim();
+  const [scene, seed, accent] = motionFor(p);
 
   return (
     <article
@@ -43,7 +45,8 @@ export default function ProjectCard({ p, showYear = false, cardRef }) {
       style={p.img ? { '--img': `url('${p.img}')` } : undefined}
     >
       <div className="proj-media">
-        {!hasPhoto && <span className="proj-mark" aria-hidden="true">{mark}</span>}
+        {!hasPhoto && <MotionScene scene={scene} seed={seed} accent={accent} />}
+        {!hasPhoto && scene !== 'flight' && <span className="proj-mark" aria-hidden="true">{mark}</span>}
         {!hasPhoto && !isExp && DEV && p.img && <span className="ph-tag">{p.img.replace(/^\//, '')}</span>}
         <span className="proj-num mono">{isExp ? t('Expérience', 'Experience') : t('Projet', 'Project')}</span>
         {(p.period || (showYear && p.yr)) && <span className="proj-yr mono">{p.period ? t(p.period) : p.yr}</span>}
