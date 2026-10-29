@@ -461,3 +461,15 @@ const MOTION = {
   'sunset-ride': ['flight', 13],
 };
 export const motionFor = p => MOTION[p.id] || [p.cats.includes('data') ? 'chart' : 'layout', p.id.length];
+
+/* Logos des entreprises (public/media/), intégrés aux scènes animées.
+   tone 'light' : logo clair → posé sur une plaque sombre quand le fond est clair. */
+const LOGOS = {
+  sncf: { src: '/media/LogoSNCF.webp' },
+  vicat: { src: '/media/logoVicat.webp' },
+  webdesignco: { src: '/media/logowdc.png' },
+  'hola-la-deco': { src: '/media/logoHolalaDeco.webp', tone: 'light' },
+  thermipose: { src: '/media/logoThermipose.png' },
+  'geae-batiment': { src: '/media/logoGEAE.png' },
+};
+export const logoFor = p => LOGOS[p.id] || null;

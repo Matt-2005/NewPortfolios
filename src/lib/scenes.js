@@ -6,7 +6,9 @@
      layout   maquette de site qui se construit (projets web)
      chart    séries temporelles qui défilent (projets data)
    Une scène = fabrique (W, H, rand) → { draw(ctx, t, pal) }
-   pal = { ink, accent, accent2 } ; t en secondes.
+   pal = { ink, accent, accent2, bg, lightSurface, logo? } ; t en secondes.
+   pal.logo = { img, tone } : logo de l'entreprise, intégré à la scène
+   (tone 'light' = logo clair, posé sur une plaque sombre si le fond est clair).
    ============================================================ */
 import { clamp, easeOutCubic } from './motion';
 
@@ -25,9 +27,32 @@ function rrect(ctx, x, y, w, h, r) {
   else ctx.rect(x, y, w, h);
 }
 
+/* Logo sur une plaque aux couleurs du fond (les traits passent dessous).
+   Renvoie le rectangle occupé, ou null s'il n'y a pas de logo. */
+function drawLogo(ctx, pal, cx, cy, maxW, maxH, { alpha = 1, glow = 0, plate = true } = {}) {
+  const L = pal.logo;
+  if (!L || !L.img.naturalWidth || alpha <= 0) return null;
+  const ar = L.img.naturalWidth / L.img.naturalHeight;
+  let w = maxW, h = w / ar;
+  if (h > maxH) { h = maxH; w = h * ar; }
+  const needsDark = L.tone === 'light' && pal.lightSurface;
+  if (plate || needsDark) {
+    const pad = Math.max(plate ? 12 : 5, Math.min(w, h) * (plate ? 0.24 : 0.12));
+    const pw = w + pad * 2, ph = h + pad * 2, x = cx - pw / 2, y = cy - ph / 2;
+    ctx.globalAlpha = 0.9 * alpha; ctx.fillStyle = needsDark ? '#0f1115' : pal.bg;
+    rrect(ctx, x, y, pw, ph, Math.min(18, ph * 0.24)); ctx.fill();
+    ctx.lineWidth = 1; ctx.strokeStyle = glow > 0.05 ? pal.accent : pal.ink;
+    ctx.globalAlpha = (0.16 + 0.7 * glow) * alpha; ctx.stroke();
+  }
+  ctx.globalAlpha = alpha;
+  ctx.drawImage(L.img, cx - w / 2, cy - h / 2, w, h);
+  return { w, h };
+}
+
 /* ---------- flow : pipelines → dashboard ---------- */
 function flow(W, H, rand) {
-  const N = 7, cx = W * 0.6, cy = H * 0.5;
+  const N = 7, cx = W * 0.5, cy = H * 0.5;
+  let glow = 0;
   const tracks = [];
   for (let i = 0; i < N; i++) {
     const y0 = H * (0.06 + 0.88 * i / (N - 1)) + (rand() - 0.5) * H * 0.05;
@@ -55,7 +80,7 @@ function flow(W, H, rand) {
       // paquets de données (avec traînée) ; à l'arrivée, une barre monte
       for (const p of packets) {
         const u = (t * p.sp + p.ph) % 1;
-        if (u < p.last) bars[p.bar].bump = 1;
+        if (u < p.last) { bars[p.bar].bump = 1; glow = 1; }
         p.last = u;
         const fade = clamp(u * 8, 0, 1) * clamp((1 - u) * 10, 0, 1);
         for (let j = 0; j < 7; j++) {
@@ -67,6 +92,9 @@ function flow(W, H, rand) {
           dot(ctx, x, y, j ? 1.5 : 2.4);
         }
       }
+      // le logo, point de convergence : il s'illumine à chaque arrivée
+      drawLogo(ctx, pal, cx, cy, Math.min(W * 0.2, 250), H * 0.24, { glow });
+      glow *= 0.94;
       // tableau de bord : barres + courbe
       const x0 = W * 0.68, x1 = W * 0.95, base = H * 0.8, top = H * 0.2;
       const slot = (x1 - x0) / bars.length, bw = slot * 0.58;
@@ -98,15 +126,25 @@ function network(W, H, rand) {
       nodes.push({ x: x + (rand() - 0.5) * step * 0.6, y: y + (rand() - 0.5) * step * 0.55, pulse: 0, big: rand() < 0.2, nb: [] });
     }
   }
+  // nœud central (le logo) : on dégage la zone autour
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    if (Math.abs(nodes[i].x - W / 2) < Math.max(W * 0.14, 70) && Math.abs(nodes[i].y - H / 2) < Math.max(H * 0.2, 50)) nodes.splice(i, 1);
+  }
+  const HUB = nodes.length;
+  nodes.push({ x: W / 2, y: H / 2, pulse: 0, hub: true, nb: [] });
   const edges = [];
   nodes.forEach((n, i) => {
-    const near = nodes.map((m, j) => [j, (m.x - n.x) ** 2 + (m.y - n.y) ** 2]).filter(([j]) => j !== i).sort((a, b) => a[1] - b[1]).slice(0, 2);
+    const near = nodes.map((m, j) => [j, (m.x - n.x) ** 2 + (m.y - n.y) ** 2]).filter(([j]) => j !== i && j !== HUB && !n.hub).sort((a, b) => a[1] - b[1]).slice(0, n.hub ? 0 : 2);
     near.forEach(([j]) => {
       if (!n.nb.includes(j)) { n.nb.push(j); nodes[j].nb.push(i); edges.push([i, j]); }
     });
   });
-  const packets = Array.from({ length: Math.max(4, Math.round(nodes.length * 0.45)) }, () => {
-    const a = Math.floor(rand() * nodes.length);
+  // le nœud central est relié à ses 5 voisins les plus proches
+  nodes.map((m, j) => [j, (m.x - W / 2) ** 2 + (m.y - H / 2) ** 2]).filter(([j]) => j !== HUB).sort((a, b) => a[1] - b[1]).slice(0, 5)
+    .forEach(([j]) => { nodes[HUB].nb.push(j); nodes[j].nb.push(HUB); edges.push([HUB, j]); });
+  const pool = nodes.map((n, i) => i).filter(i => nodes[i].nb.length); // nœuds reliés uniquement
+  const packets = pool.length < 2 ? [] : Array.from({ length: Math.max(4, Math.round(nodes.length * 0.45)) }, () => {
+    const a = pool[Math.floor(rand() * pool.length)];
     const b = nodes[a].nb[Math.floor(rand() * nodes[a].nb.length)];
     return { a, b, u: rand(), sp: 0.5 + rand() * 0.6 };
   });
@@ -140,6 +178,18 @@ function network(W, H, rand) {
       }
       // nœuds (serveurs) + onde à la réception
       for (const n of nodes) {
+        if (n.hub) {
+          // serveur central : le logo, avec une onde à chaque message reçu
+          const r = drawLogo(ctx, pal, n.x, n.y, Math.min(W * 0.16, 190), H * 0.26, { glow: n.pulse });
+          if (r && n.pulse > 0.02) {
+            const grow = (1 - n.pulse) * 26, pw = r.w + 30 + grow * 2, ph = r.h + 30 + grow * 2;
+            ctx.globalAlpha = n.pulse * 0.45; ctx.strokeStyle = pal.accent; ctx.lineWidth = 1;
+            rrect(ctx, n.x - pw / 2, n.y - ph / 2, pw, ph, 18 + grow * 0.4); ctx.stroke();
+          }
+          if (!r) { ctx.globalAlpha = 0.6; ctx.strokeStyle = pal.ink; rrect(ctx, n.x - 9, n.y - 9, 18, 18, 3); ctx.stroke(); }
+          n.pulse *= 0.955;
+          continue;
+        }
         if (n.pulse > 0.02) {
           ctx.globalAlpha = n.pulse * 0.5; ctx.strokeStyle = pal.accent;
           ctx.beginPath(); ctx.arc(n.x, n.y, 5 + (1 - n.pulse) * 20, 0, TAU); ctx.stroke();
@@ -169,6 +219,8 @@ function layout(W, H, rand, seed) {
     const barH = fh * 0.1;
     add({ k: 'frame', x: fx, y: fy, w: fw, h: fh }, 0);
     for (let i = 0; i < 3; i++) add({ k: 'dot', x: fx + 14 + i * 12, y: fy + barH / 2, w: 0, h: 0 }, 0.1 + i * 0.05);
+    add({ k: 'navlogo', x: fx + 14, y: fy + barH / 2, w: fw * 0.14, h: barH * 0.56 }, 0.15);
+    add({ k: 'hero', x: fx + fw / 2, y: fy + fh * 0.45, w: fw * 0.3, h: fh * 0.28 }, 0.45);
     const navN = 3 + Math.floor(r() * 2);
     for (let i = 0; i < navN; i++) {
       const w = fw * (0.06 + r() * 0.03), x = fx + fw - 16 - (navN - i) * (fw * 0.1);
@@ -228,10 +280,18 @@ function layout(W, H, rand, seed) {
         const e = easeOutCubic(clamp((local - b.d) / 0.7, 0, 1)) * (1 - out);
         if (e <= 0) continue;
         ctx.lineWidth = 1;
-        if (b.k === 'frame') {
-          ctx.globalAlpha = 0.22 * e; ctx.strokeStyle = pal.ink; rrect(ctx, b.x, b.y, b.w, b.h * e, 10); ctx.stroke();
+        if (b.k === 'navlogo' || b.k === 'hero') {
+          if (!pal.logo || !pal.logo.img.naturalWidth) continue;
+          if (b.k === 'hero') drawLogo(ctx, pal, b.x, b.y + (1 - e) * 10, b.w, b.h, { alpha: e });
+          else {
+            const ar = pal.logo.img.naturalWidth / pal.logo.img.naturalHeight, w = Math.min(b.w, b.h * ar);
+            drawLogo(ctx, pal, b.x + w / 2, b.y, b.w, b.h, { alpha: e, plate: false });
+          }
         } else if (b.k === 'dot') {
+          if (pal.logo) continue; // le logo remplace les trois points
           ctx.globalAlpha = 0.4 * e; ctx.fillStyle = pal.ink; dot(ctx, b.x, b.y, 2.6);
+        } else if (b.k === 'frame') {
+          ctx.globalAlpha = 0.22 * e; ctx.strokeStyle = pal.ink; rrect(ctx, b.x, b.y, b.w, b.h * e, 10); ctx.stroke();
         } else if (b.k === 'pill') {
           ctx.globalAlpha = 0.18 * e; ctx.fillStyle = pal.ink; rrect(ctx, b.x, b.y, b.w * e, b.h, 20); ctx.fill();
         } else if (b.k === 'rule') {
