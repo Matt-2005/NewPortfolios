@@ -17,8 +17,8 @@ export default function APropos() {
   useDocumentTitle(
     t('À propos — Matthew LE', 'About — Matthew LE'),
     t(
-      'Qui est Matthew LE — étudiant en Master informatique à SUPINFO Lyon, orienté data engineering et BI. Parcours, compétences et projets.',
-      "Who is Matthew LE — Master's student in Computer Science at SUPINFO Lyon, focused on data engineering and BI. Background, skills and projects."
+      'Qui est Matthew LE — étudiant en Master of Engineering (Ingénierie Data) à SUPINFO Lyon, alternant développeur & ingénieur BI à la SNCF. Parcours et compétences.',
+      'Who is Matthew LE — Master of Engineering student (Data Engineering) at SUPINFO Lyon, work-study developer & BI engineer at SNCF. Background and skills.'
     )
   );
   useReveals(mainRef, lang);
@@ -32,8 +32,8 @@ export default function APropos() {
           <div className="eyebrow">{t('(02) — À propos', '(02) — About')}</div>
           <h1>{t(<>Qui <em>je suis</em></>, <>Who <em>I am</em></>)}</h1>
           <p className="page-intro">{t(
-            <>Étudiant en Master informatique à SUPINFO Lyon, futur <em>data engineer</em>. J'aime quand la donnée circule proprement — de la source au tableau de bord.</>,
-            <>Master's student in Computer Science at SUPINFO Lyon, future <em>data engineer</em>. I like data that flows cleanly — from source to dashboard.</>
+            <>Étudiant en Ingénierie Data à SUPINFO Lyon, alternant à la SNCF, futur <em>data engineer</em>. J'aime quand la donnée circule proprement — de la source au tableau de bord.</>,
+            <>Data Engineering student at SUPINFO Lyon, work-study at SNCF, future <em>data engineer</em>. I like data that flows cleanly — from source to dashboard.</>
           )}</p>
         </section>
 
@@ -45,7 +45,7 @@ export default function APropos() {
       <Showreel />
 
       <div className="sheet sheet-cover">
-        <NextPage to="/projets" label={t('Projets', 'Projects')} />
+        <NextPage to="/projets" label={t('Expériences', 'Experience')} />
       </div>
       <Footer />
     </main>

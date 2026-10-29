@@ -99,21 +99,21 @@ export default function About() {
         <div className="about-grid">
           <div>
             <p className="about-lead reveal">{t(
-              <>Bonjour, je suis <em>Matthew LE</em>, étudiant en 4e année à SUPINFO Lyon, en cycle Master informatique. Je me forme pour devenir <span className="hl">data engineer</span> ou ingénieur BI en <span className="hl">Suisse</span> : construire des flux de données fiables et les rendre utiles à ceux qui décident.</>,
-              <>Hi, I'm <em>Matthew LE</em>, a fourth-year student at SUPINFO Lyon, in the Master's cycle in Computer Science. I'm training to become a <span className="hl">data engineer</span> or BI engineer in <span className="hl">Switzerland</span>: building reliable data flows and making them useful to decision-makers.</>
+              <>Bonjour, je suis <em>Matthew LE</em>, étudiant en 4e année à SUPINFO Lyon (Master of Engineering, Ingénierie Data) et alternant développeur & <span className="hl">ingénieur BI</span> à la SNCF. Mon objectif : devenir <span className="hl">data engineer</span> en <span className="hl">Suisse</span>, construire des flux de données fiables et les rendre utiles à ceux qui décident.</>,
+              <>Hi, I'm <em>Matthew LE</em>, a fourth-year student at SUPINFO Lyon (Master of Engineering, Data Engineering) and a work-study developer & <span className="hl">BI engineer</span> at SNCF. My goal: becoming a <span className="hl">data engineer</span> in <span className="hl">Switzerland</span>, building reliable data flows and making them useful to decision-makers.</>
             )}</p>
             <p className="about-body reveal" data-d="1">{t(
-              <>Avant la data, il y a eu le développement web — des sites et applications livrés à de vrais clients — et la vidéo&nbsp;: montage, drone FPV. J'en garde une méthode&nbsp;: préparer, structurer, vérifier, puis présenter clairement. C'est exactement ce que demandent un bon pipeline et un bon dashboard.</>,
-              <>Before data, there was web development — websites and apps delivered to real clients — and video: editing and FPV drone flying. They gave me a method: prepare, structure, check, then present clearly. That is exactly what a good pipeline and a good dashboard require.</>
+              <>Un an d'alternance dans deux grands groupes — ingénieur DevOps chez VICAT, puis développeur et ingénieur BI à la SNCF — m'a appris ce que demande un système d'information de grande taille&nbsp;: comprendre l'existant, documenter, tester, ne rien casser. Avant ça, il y a eu le web, avec la cofondation de WebDesign&amp;Co, et la vidéo&nbsp;: montage et drone FPV.</>,
+              <>A year of work-study in two large groups — DevOps engineer at VICAT, then developer and BI engineer at SNCF — taught me what large information systems demand: understand what exists, document, test, break nothing. Before that came the web, co-founding WebDesign&amp;Co, and video: editing and FPV drone flying.</>
             )}</p>
             <p className="about-body reveal" data-d="2">{t(
-              <>Je parle français, anglais et russe, et je vise un premier poste en Suisse à la fin de mon Master, en 2028.</>,
-              <>I speak French, English and Russian, and I'm aiming for a first role in Switzerland after my Master's, in 2028.</>
+              <>Je parle français et russe (langues maternelles) ainsi qu'anglais, et je vise un premier poste en Suisse à la fin de mon Master, en 2028.</>,
+              <>I'm a native speaker of French and Russian, I also speak English, and I'm aiming for a first role in Switzerland after my Master's, in 2028.</>
             )}</p>
           </div>
           <div className="about-portrait">
             <Portrait />
-            <div className="badge"><span>EST. 2005</span><span>{t('GENÈVE', 'GENEVA')} · 46.20°N</span></div>
+            <div className="badge"><span>EST. 2005</span><span>LYON · 45.76°N</span></div>
           </div>
         </div>
       </div>

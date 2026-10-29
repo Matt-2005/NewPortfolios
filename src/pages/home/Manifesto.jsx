@@ -8,9 +8,9 @@ import { useLang } from '../../i18n/lang';
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { count: 5, suffix: '+', label: { fr: 'années à coder', en: 'years of coding' } },
-  { count: 12, suffix: '+', label: { fr: 'projets livrés', en: 'projects delivered' } },
-  { count: 3, suffix: '', label: { fr: 'langues · FR EN RU', en: 'languages · FR EN RU' } },
+  { count: 2, suffix: '', label: { fr: 'alternances en grand groupe', en: 'work-study roles in large groups' } },
+  { count: 1000, suffix: '', label: { fr: 'projets suivis dans l’app que je développe', en: 'projects tracked in the app I build' } },
+  { count: 3, suffix: '', label: { fr: 'langues · FR RU EN', en: 'languages · FR RU EN' } },
   { count: 2028, pop: true, suffix: '', label: { fr: 'fin du Master', en: "Master's graduation" } },
 ];
 

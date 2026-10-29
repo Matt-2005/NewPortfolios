@@ -247,12 +247,12 @@ export default function Hero() {
 
       <div className="hero-top wrap">
         <p>{t(
-          'Étudiant en Master informatique à SUPINFO Lyon (4e année sur 5), je me spécialise en data engineering et business intelligence.',
-          "Master's student in Computer Science at SUPINFO Lyon (year 4 of 5), specialising in data engineering and business intelligence."
+          'Étudiant en Master of Engineering (Ingénierie Data) à SUPINFO Lyon, en alternance comme développeur & ingénieur BI à la SNCF.',
+          'Master of Engineering student (Data Engineering) at SUPINFO Lyon, working as a developer & BI engineer at SNCF on a work-study contract.'
         )}</p>
         <div className="meta">
           DATA ENGINEER · BI<br />
-          {t('GENÈVE · SUISSE', 'GENEVA · SWITZERLAND')}<br />
+          {t('LYON · MOBILE EN SUISSE', 'LYON · OPEN TO SWITZERLAND')}<br />
           <span className="avail-chip"><i aria-hidden="true" />{t('Premier poste · 2028', 'First role · 2028')}</span>
         </div>
       </div>

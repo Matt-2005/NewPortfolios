@@ -2,35 +2,35 @@
 
 export const PARCOURS = [
   {
-    yr: '2020', tag: { fr: 'Code', en: 'Code' },
-    title: { fr: ['Les premières lignes de ', 'code', ''], en: ['First lines of ', 'code', ''] },
-    text: {
-      fr: "HTML, CSS, JavaScript, puis mes premières bases de données. Je comprends vite que coder, c'est structurer : poser les bonnes fondations avant d'empiler quoi que ce soit.",
-      en: 'HTML, CSS, JavaScript, then my first databases. I quickly learned that coding is about structure: laying the right foundations before stacking anything on top.',
-    },
-  },
-  {
     yr: '2023', tag: { fr: 'Formation', en: 'Education' },
     title: { fr: ['Entrée à ', 'SUPINFO', ' Lyon'], en: ['Joining ', 'SUPINFO', ' Lyon'] },
     text: {
-      fr: "Cycle Bachelor en informatique : algorithmique, bases de données relationnelles, systèmes, réseaux et développement. La rigueur technique devient une méthode.",
-      en: "Bachelor's cycle in computer science: algorithms, relational databases, systems, networking and software development. Technical rigour becomes a method.",
+      fr: "Master of Engineering en 5 ans, spécialité Ingénierie Data : bases de données, développement, réseaux, cloud. En parallèle, je deviens président du BDE et ambassadeur de l'école.",
+      en: 'Five-year Master of Engineering, majoring in Data Engineering: databases, software development, networking, cloud. Alongside, I become student union president and a school ambassador.',
     },
   },
   {
-    yr: '2024', tag: { fr: 'Projets clients', en: 'Client work' },
-    title: { fr: ['Premiers ', 'projets', ' livrés'], en: ['First ', 'projects', ' delivered'] },
+    yr: '2024', tag: { fr: 'Entrepreneuriat', en: 'Entrepreneurship' },
+    title: { fr: ['Cofondation de ', 'WebDesign&Co', ''], en: ['Co-founding ', 'WebDesign&Co', ''] },
     text: {
-      fr: "Sites et applications web pour de vrais clients : cahier des charges, modèle de données, délais tenus et mise en production. J'apprends à livrer, pas seulement à coder.",
-      en: 'Websites and web apps for real clients: specifications, data models, deadlines met and production releases. I learned to ship, not just to code.',
+      fr: "Je cofonde une agence de création de sites web et j'enchaîne avec un stage chez Hola la Déco, seul sur le projet. J'apprends à livrer pour de vrais clients, pas seulement à coder.",
+      en: 'I co-found a web design agency, then take on an internship at Hola la Déco as the only person on the project. I learn to deliver for real clients, not just to code.',
     },
   },
   {
-    yr: '2026', tag: { fr: 'Master · Data', en: "Master's · Data" },
-    title: { fr: ['Master, cap sur la ', 'data', ''], en: ["Master's, heading for ", 'data', ''] },
+    yr: '2025', tag: { fr: 'Alternance', en: 'Work-study' },
+    title: { fr: ['Ingénieur ', 'DevOps', ' chez VICAT'], en: ['DevOps ', 'engineer', ' at VICAT'] },
     text: {
-      fr: "4e année sur 5 à SUPINFO Lyon, première année du cycle Master. Je me concentre sur la donnée : SQL, Python, modélisation, dashboards Power BI — et je monte en compétence sur le cloud et les pipelines (dbt, Airflow).",
-      en: "Year 4 of 5 at SUPINFO Lyon, the first year of the Master's cycle. My focus is data: SQL, Python, data modelling, Power BI dashboards — while building up cloud and pipeline skills (dbt, Airflow).",
+      fr: "Premier pas dans un grand groupe industriel international : pipelines GitLab CI/CD, infrastructure AWS en Terraform, Docker, Kafka et la montée de version de la passerelle d'API du groupe.",
+      en: "My first role in a large international industrial group: GitLab CI/CD pipelines, AWS infrastructure in Terraform, Docker, Kafka and the upgrade of the group's API gateway.",
+    },
+  },
+  {
+    yr: '2026', tag: { fr: 'Alternance · Data', en: 'Work-study · Data' },
+    title: { fr: ['Développeur & ', 'ingénieur BI', ' à la SNCF'], en: ['Developer & ', 'BI engineer', ' at SNCF'] },
+    text: {
+      fr: "À la direction Cybersécurité de la SNCF Holding : je développe l'application qui suit la conformité de tous les projets du groupe et je construis son reporting Power BI. En parallèle, j'entre en cycle Master (4e année sur 5).",
+      en: "In SNCF Holding's cybersecurity division, I develop the application that tracks compliance for every project in the group and build its Power BI reporting. Meanwhile, I start the Master's cycle (year 4 of 5).",
     },
   },
   {
@@ -45,68 +45,67 @@ export const PARCOURS = [
 
 export const SKILLS = [
   {
-    title: { fr: 'Data engineering', en: 'Data engineering' },
-    desc: {
-      fr: 'Extraire, nettoyer et structurer la donnée pour qu’elle soit fiable et prête à l’emploi.',
-      en: 'Extracting, cleaning and structuring data so it is reliable and ready to use.',
-    },
-    chips: ['SQL', 'Python', 'pandas', 'ETL', 'API'],
-    detail: {
-      fr: 'Une donnée fausse coûte plus cher qu’une donnée absente. Je construis des traitements lisibles, testables et reproductibles.',
-      en: 'Wrong data costs more than missing data. I build processing that is readable, testable and reproducible.',
-    },
-    points: {
-      fr: ['Requêtes SQL analytiques (jointures, agrégations)', 'Nettoyage et transformation avec Python / pandas', 'Modélisation relationnelle', 'Scripts d’ingestion depuis fichiers et API'],
-      en: ['Analytical SQL queries (joins, aggregations)', 'Cleaning and transforming with Python / pandas', 'Relational data modelling', 'Ingestion scripts from files and APIs'],
-    },
-  },
-  {
     title: { fr: 'BI & data visualisation', en: 'BI & data visualisation' },
     desc: {
-      fr: 'Transformer des tables en décisions : des dashboards clairs, que l’on comprend en dix secondes.',
-      en: 'Turning tables into decisions: clear dashboards you understand in ten seconds.',
+      fr: 'Transformer des tables en décisions : des tableaux de bord clairs, construits pour la direction de la SNCF.',
+      en: 'Turning tables into decisions: clear dashboards, built for senior management at SNCF.',
     },
-    chips: ['Power BI', 'Tableau', 'KPI', 'Modèle en étoile'],
+    chips: ['Power BI', 'DAX', { fr: 'Modèle en étoile', en: 'Star schema' }, 'KPI'],
     detail: {
-      fr: 'Des années de montage vidéo m’ont appris à raconter : un bon dashboard, c’est aussi un récit, avec un rythme et une chute.',
-      en: 'Years of video editing taught me storytelling: a good dashboard is a story too, with pace and a punchline.',
+      fr: 'Formé en Power BI aux niveaux intermédiaire et expert pendant mon alternance. Le montage vidéo m’a aussi appris à raconter : un bon dashboard a un rythme et une chute.',
+      en: 'Trained in Power BI at intermediate and expert level during my work-study. Video editing also taught me storytelling: a good dashboard has pace and a punchline.',
     },
     points: {
-      fr: ['Dashboards Power BI et Tableau', 'Modèles en étoile (faits / dimensions)', 'Définition et suivi d’indicateurs (KPI)', 'Mise en forme pensée pour les décideurs'],
-      en: ['Power BI and Tableau dashboards', 'Star schemas (facts / dimensions)', 'Defining and tracking KPIs', 'Design built for decision-makers'],
+      fr: ['Croisement de plusieurs sources de données', 'Nettoyage des tables avant modélisation', 'Modèles en étoile (faits / dimensions)', 'Mesures DAX dynamiques qui suivent les filtres'],
+      en: ['Combining several data sources', 'Cleaning tables before modelling', 'Star schemas (facts / dimensions)', 'Dynamic DAX measures that follow filters'],
     },
   },
   {
-    title: { fr: 'Cloud & pipelines', en: 'Cloud & pipelines' },
+    title: { fr: 'Data engineering', en: 'Data engineering' },
     desc: {
-      fr: 'En cours d’apprentissage pendant mon Master : l’industrialisation des flux de données.',
-      en: "Currently learning during my Master's: running data flows at production scale.",
+      fr: 'Structurer, requêter et faire circuler la donnée pour qu’elle soit fiable et rapide à exploiter.',
+      en: 'Structuring, querying and moving data so it is reliable and fast to use.',
     },
-    chips: ['Azure', 'AWS', 'dbt', 'Airflow', 'Docker'],
+    chips: ['SQL', 'PostgreSQL', 'Python', 'Kafka', 'Spark'],
     detail: {
-      fr: 'Mon objectif d’ici la fin du Master : savoir concevoir et opérer un pipeline de bout en bout, de l’ingestion à l’entrepôt.',
-      en: "My goal by the end of my Master's: designing and running an end-to-end pipeline, from ingestion to warehouse.",
+      fr: 'Une donnée fausse coûte plus cher qu’une donnée absente. En cours d’apprentissage pendant le Master : dbt, Airflow et Spark.',
+      en: 'Wrong data costs more than missing data. Currently learning during my Master’s: dbt, Airflow and Spark.',
     },
     points: {
-      fr: ['Orchestration de pipelines (Airflow)', 'Transformations versionnées (dbt)', 'Services data cloud (Azure, AWS)', 'Conteneurisation (Docker)'],
-      en: ['Pipeline orchestration (Airflow)', 'Version-controlled transformations (dbt)', 'Cloud data services (Azure, AWS)', 'Containerisation (Docker)'],
+      fr: ['Requêtes SQL et optimisation des temps d’exécution', 'Modélisation relationnelle (entités, associations)', 'Messagerie distribuée avec Kafka (topics, abonnements)', 'Scripts Python de traitement'],
+      en: ['SQL queries and execution-time optimisation', 'Relational modelling (entities, relationships)', 'Distributed messaging with Kafka (topics, subscriptions)', 'Python processing scripts'],
     },
-    learning: true,
+  },
+  {
+    title: { fr: 'Cloud & DevOps', en: 'Cloud & DevOps' },
+    desc: {
+      fr: 'Un an de pratique en alternance chez VICAT : déployer, automatiser et sécuriser l’infrastructure.',
+      en: 'A year of hands-on practice at VICAT: deploying, automating and securing infrastructure.',
+    },
+    chips: ['AWS', 'Terraform', 'Docker', 'GitLab CI/CD'],
+    detail: {
+      fr: 'Décrire une infrastructure en code oblige à penser chaque accès et chaque permission : la sécurité se prévoit dès le début, pas à la fin.',
+      en: 'Describing infrastructure as code forces you to think through every access rule and permission: security is planned from day one, not at the end.',
+    },
+    points: {
+      fr: ['Infrastructure AWS décrite en Terraform', 'Pipelines CI/CD GitLab (YAML)', 'Conteneurisation et architecture Docker', 'Migrations vers le cloud et montées de version'],
+      en: ['AWS infrastructure defined in Terraform', 'GitLab CI/CD pipelines (YAML)', 'Docker containerisation and architecture', 'Cloud migrations and version upgrades'],
+    },
   },
   {
     title: { fr: 'Développement & méthode', en: 'Development & method' },
     desc: {
-      fr: 'Un bagage de développeur web et une façon de travailler structurée, transparente et fiable.',
-      en: 'A web developer background and a way of working that is structured, transparent and reliable.',
+      fr: 'Des applications full-stack en production, et une façon de travailler structurée et fiable.',
+      en: 'Full-stack applications in production, and a structured, reliable way of working.',
     },
-    chips: ['JavaScript', 'React', 'Node', 'Git'],
+    chips: ['Angular', 'Spring Boot', 'React', 'Java', 'Git'],
     detail: {
-      fr: 'Avoir livré des projets à de vrais clients m’a appris l’essentiel : comprendre le besoin, documenter, tenir les délais.',
-      en: 'Shipping projects to real clients taught me the essentials: understand the need, document, meet deadlines.',
+      fr: 'J’ai souvent repris le code de quelqu’un d’autre : comprendre l’existant avant de le faire évoluer, sans rien casser, est devenu un réflexe.',
+      en: 'I have often taken over someone else’s code: understanding what exists before changing it, without breaking anything, has become second nature.',
     },
     points: {
-      fr: ['Versioning et travail en équipe (Git)', 'Applications web full-stack', 'Documentation et maintenabilité', 'Communication claire avec les métiers'],
-      en: ['Version control and teamwork (Git)', 'Full-stack web applications', 'Documentation and maintainability', 'Clear communication with business teams'],
+      fr: ['Reprise et évolution de projets existants', 'Gestion des droits et sécurité des API', 'Documentation et versioning (Git)', 'Priorisation des besoins avec les utilisateurs'],
+      en: ['Taking over and evolving existing projects', 'Access rights and API security', 'Documentation and version control (Git)', 'Prioritising needs with users'],
     },
   },
 ];

@@ -18,7 +18,7 @@ function SkillItem({ s, d }) {
         <span className="skill-plus" aria-hidden="true" />
       </button>
       <p>{t(s.desc)}</p>
-      <div className="chips">{s.chips.map(c => <span key={c}>{c}</span>)}</div>
+      <div className="chips">{s.chips.map(c => { const l = t(c); return <span key={l}>{l}</span>; })}</div>
       <div className="skill-detail">
         <div className="skill-detail-inner">
           <div className="skill-detail-body">

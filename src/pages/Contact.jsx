@@ -18,8 +18,8 @@ export default function Contact() {
   useDocumentTitle(
     t('Contact — Matthew LE', 'Contact — Matthew LE'),
     t(
-      'Contacter Matthew LE — futur Data Engineer / ingénieur BI, basé à Genève, Suisse.',
-      'Contact Matthew LE — aspiring Data Engineer / BI Engineer based in Geneva, Switzerland.'
+      'Contacter Matthew LE — futur Data Engineer / ingénieur BI, basé à Lyon, mobile en Suisse.',
+      'Contact Matthew LE — aspiring Data Engineer / BI Engineer based in Lyon, open to Switzerland.'
     )
   );
   useReveals(mainRef, lang);
@@ -55,8 +55,8 @@ export default function Contact() {
         <div className="eyebrow">{t('(04) — Contact', '(04) — Contact')}</div>
         <h1>{t(<>Travaillons<br /><em>ensemble</em></>, <>Let's work<br /><em>together</em></>)}</h1>
         <p className="page-intro">{t(
-          <>Un poste en <em>data engineering</em> ou en <em>BI</em>, une question sur mon parcours, un échange autour d'un café à Genève&nbsp;? Écrivez-moi : je réponds rapidement.</>,
-          <>A role in <em>data engineering</em> or <em>BI</em>, a question about my background, a coffee chat in Geneva? Drop me a line: I reply quickly.</>
+          <>Un poste en <em>data engineering</em> ou en <em>BI</em>, une question sur mon parcours, un échange en visio ou à Genève&nbsp;? Écrivez-moi : je réponds rapidement.</>,
+          <>A role in <em>data engineering</em> or <em>BI</em>, a question about my background, a video call or a coffee in Geneva? Drop me a line: I reply quickly.</>
         )}</p>
       </section>
 
