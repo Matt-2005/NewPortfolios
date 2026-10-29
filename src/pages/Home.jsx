@@ -14,6 +14,7 @@ import NextPage from '../components/NextPage';
 import Hero from './home/Hero';
 import Manifesto from './home/Manifesto';
 import ContactSection from './home/ContactSection';
+import Icon from '../components/Icon';
 
 export default function Home() {
   const { go } = useApp();
@@ -21,7 +22,7 @@ export default function Home() {
   const mainRef = useRef(null);
   const gridRef = useRef(null);
   useDocumentTitle(
-    t('Matthew LE — Data Engineer & BI · Lyon → Suisse', 'Matthew LE — Data Engineer & BI · Lyon → Switzerland'),
+    t('Matthew LE — Data Engineer & BI · Lyon · Suisse', 'Matthew LE — Data Engineer & BI · Lyon · Switzerland'),
     t(
       'Matthew LE — étudiant en Master of Engineering (Ingénierie Data) à SUPINFO Lyon, alternant développeur & ingénieur BI à la SNCF. SQL, Power BI, AWS. Mobile en Suisse.',
       'Matthew LE — Master of Engineering student (Data Engineering) at SUPINFO Lyon, work-study developer & BI engineer at SNCF. SQL, Power BI, AWS. Open to Switzerland.'
@@ -37,14 +38,14 @@ export default function Home() {
 
       <Marquee
         seg={<>
-          <span>SQL</span><span className="star serif-it">✦</span>
-          <span>Python</span><span className="star serif-it">✦</span>
-          <span>Power BI</span><span className="star serif-it">✦</span>
-          <span>AWS</span><span className="star serif-it">✦</span>
-          <span>Kafka</span><span className="star serif-it">✦</span>
-          <span>ETL <em>&amp;</em> pipelines</span><span className="star serif-it">✦</span>
-          <span>{t('Modélisation', 'Data modelling')}</span><span className="star serif-it">✦</span>
-          <span>Data <em>viz</em></span><span className="star serif-it">✦</span>
+          <span>SQL</span><span className="star"><Icon name="spark" /></span>
+          <span>Python</span><span className="star"><Icon name="spark" /></span>
+          <span>Power BI</span><span className="star"><Icon name="spark" /></span>
+          <span>AWS</span><span className="star"><Icon name="spark" /></span>
+          <span>Kafka</span><span className="star"><Icon name="spark" /></span>
+          <span>ETL <em>&amp;</em> pipelines</span><span className="star"><Icon name="spark" /></span>
+          <span>{t('Modélisation', 'Data modelling')}</span><span className="star"><Icon name="spark" /></span>
+          <span>Data <em>viz</em></span><span className="star"><Icon name="spark" /></span>
         </>}
       />
 
@@ -88,9 +89,9 @@ export default function Home() {
       <Marquee
         dark dir="right" speed={0.6}
         seg={<>
-          <span>{t(<>Parlons <em>data</em></>, <>Let's talk <em>data</em></>)}</span><span className="star">✦</span>
-          <span>Data Engineer · BI</span><span className="star">✦</span>
-          <span>{t(<>Cap sur la <em>Suisse</em></>, <>Next stop <em>Switzerland</em></>)}</span><span className="star">✦</span>
+          <span>{t(<>Parlons <em>data</em></>, <>Let's talk <em>data</em></>)}</span><span className="star"><Icon name="spark" /></span>
+          <span>Data Engineer · BI</span><span className="star"><Icon name="spark" /></span>
+          <span>{t(<>Cap sur la <em>Suisse</em></>, <>Next stop <em>Switzerland</em></>)}</span><span className="star"><Icon name="spark" /></span>
         </>}
       />
 

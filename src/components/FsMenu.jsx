@@ -4,6 +4,7 @@ import { PAGES, isActive } from '../data/pages';
 import { PROFILE } from '../data/profile';
 import { useLang } from '../i18n/lang';
 import Socials from './Socials';
+import Icon from './Icon';
 
 export default function FsMenu() {
   const { go } = useApp();
@@ -21,7 +22,7 @@ export default function FsMenu() {
             aria-current={isActive(pathname, l.to) ? 'page' : undefined}
             onClick={e => { e.preventDefault(); go(l.to); }}
           >
-            <span className="idx">{l.idx}</span>{t(l.label)}<span className="serif-it arrow">↗</span>
+            <span className="idx">{l.idx}</span>{t(l.label)}<span className="arrow"><Icon name="arrow-up-right" strokeWidth={1.4} /></span>
           </a>
         ))}
       </div>

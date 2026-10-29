@@ -9,6 +9,7 @@ import { PROFILE } from '../data/profile';
 import ProjectCard from '../components/ProjectCard';
 import ContactOrb from '../three/ContactOrb';
 import Footer from '../components/Footer';
+import Icon from '../components/Icon';
 
 /* On ne propose que les filtres qui ont au moins un projet. */
 const ACTIVE_FILTERS = FILTERS.filter(f => f.cat === 'all' || VISIBLE_PROJECTS.some(p => p.cats.includes(f.cat)));
@@ -37,7 +38,7 @@ export default function Projets() {
   return (
     <main ref={mainRef}>
       <section className="page-head wrap">
-        <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}>{t('← Accueil', '← Home')}</a>
+        <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}><Icon name="arrow-left" /> {t('Accueil', 'Home')}</a>
         <div className="eyebrow">{t('(03) — Expériences & projets', '(03) — Experience & projects')}</div>
         <h1>{t(<>Expériences <em>&amp; projets</em></>, <>Experience <em>&amp; projects</em></>)}</h1>
         <p className="page-intro">{t(

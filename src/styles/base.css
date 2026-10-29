@@ -362,7 +362,7 @@ body.menu-open .fsmenu { clip-path: inset(0 0 0% 0); pointer-events: auto; }
 }
 .fsmenu-list a .idx { font-family: "JetBrains Mono", monospace; font-size: 14px; opacity: 0.5; transform: translateY(-0.9em); }
 .fsmenu-list a.current .arrow { opacity: 1; transform: none; }
-.fsmenu-list a .arrow { font-family: "Instrument Serif", serif; font-style: italic; color: var(--fpv); opacity: 0; transform: translateX(-20px); transition: 0.4s var(--ease); }
+.fsmenu-list a .arrow { display: inline-flex; width: 0.55em; height: 0.55em; align-self: center; color: var(--fpv); opacity: 0; transform: translateX(-20px); transition: 0.4s var(--ease); }
 .fsmenu-list a:hover { color: var(--fpv); }
 .fsmenu-list a:hover .arrow { opacity: 1; transform: translateX(0); }
 body.menu-open .fsmenu-list a { opacity: 1; transform: translateY(0); }
@@ -482,3 +482,5 @@ html.anim-ready .line-mask.in-view > * { transform: translateY(0); }
 .lang-toggle span.on { opacity: 1; }
 .lang-toggle i { font-style: normal; color: var(--fpv); }
 .lang-toggle:hover span:not(.on) { opacity: 0.8; }
+
+.fsmenu-list a .arrow .icon { width: 100%; height: 100%; }

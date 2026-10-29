@@ -9,6 +9,7 @@ import { VISIBLE_PROJECTS, childProjects, findProject, projectPath } from '../da
 import ProjectCard from '../components/ProjectCard';
 import NextPage from '../components/NextPage';
 import Footer from '../components/Footer';
+import Icon from '../components/Icon';
 
 const DEV = import.meta.env.DEV;
 
@@ -73,7 +74,7 @@ function ProjetPage({ p }) {
   return (
     <main ref={mainRef}>
       <section className="page-head wrap pp-head">
-        <a href={backTo} className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go(backTo); }}>← {backLabel}</a>
+        <a href={backTo} className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go(backTo); }}><Icon name="arrow-left" /> {backLabel}</a>
         <div className="eyebrow">
           {isExp ? t('Expérience', 'Experience') : t('Projet', 'Project')} — {isExp ? p.company + ' · ' + t(p.place) : t(p.kind)}
         </div>
@@ -82,7 +83,7 @@ function ProjetPage({ p }) {
         {p.url && (
           <div className="pp-actions">
             <a className="btn" href={p.url} target="_blank" rel="noreferrer" data-cursor={t('voir', 'view')}>
-              <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Voir le site', 'Visit website')} ↗</span>
+              <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Voir le site', 'Visit website')} <Icon name="arrow-up-right" /></span>
             </a>
           </div>
         )}

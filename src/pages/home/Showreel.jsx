@@ -3,6 +3,7 @@ import { clamp, easeOutCubic, onFrame, reduce, smooth } from '../../lib/motion';
 import { createFlight } from '../../lib/flight';
 import { startScroll, stopScroll } from '../../lib/scroller';
 import { useLang } from '../../i18n/lang';
+import Icon from '../../components/Icon';
 
 const VIDEO_SRC = '/media/immersive.mp4';
 
@@ -206,7 +207,7 @@ function FilmLightbox({ src, onClose, t }) {
         <video src={src} controls autoPlay playsInline />
       </div>
       <button className="reel-lb-close" ref={closeRef} onClick={close} data-cursor={t('fermer', 'close')}>
-        {t('Fermer', 'Close')} <span aria-hidden="true">✕</span>
+        {t('Fermer', 'Close')} <Icon name="close" />
       </button>
     </div>
   );

@@ -9,6 +9,7 @@ import Skills from './apropos/Skills';
 import Showreel from './home/Showreel';
 import NextPage from '../components/NextPage';
 import Footer from '../components/Footer';
+import Icon from '../components/Icon';
 
 export default function APropos() {
   const { go } = useApp();
@@ -28,7 +29,7 @@ export default function APropos() {
       {/* feuille du haut : elle se soulève et dévoile le film FPV épinglé dessous */}
       <div className="sheet sheet-lift sheet-clip">
         <section className="page-head wrap">
-          <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}>{t('← Accueil', '← Home')}</a>
+          <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}><Icon name="arrow-left" /> {t('Accueil', 'Home')}</a>
           <div className="eyebrow">{t('(02) — À propos', '(02) — About')}</div>
           <h1>{t(<>Qui <em>je suis</em></>, <>Who <em>I am</em></>)}</h1>
           <p className="page-intro">{t(

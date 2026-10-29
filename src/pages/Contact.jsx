@@ -8,6 +8,7 @@ import ProfileFacts from '../components/ProfileFacts';
 import CvButton from '../components/CvButton';
 import Socials from '../components/Socials';
 import Footer from '../components/Footer';
+import Icon from '../components/Icon';
 
 export default function Contact() {
   const { go } = useApp();
@@ -51,7 +52,7 @@ export default function Contact() {
   return (
     <main ref={mainRef}>
       <section className="page-head wrap">
-        <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}>{t('← Accueil', '← Home')}</a>
+        <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}><Icon name="arrow-left" /> {t('Accueil', 'Home')}</a>
         <div className="eyebrow">{t('(04) — Contact', '(04) — Contact')}</div>
         <h1>{t(<>Travaillons<br /><em>ensemble</em></>, <>Let's work<br /><em>together</em></>)}</h1>
         <p className="page-intro">{t(
@@ -91,7 +92,7 @@ export default function Contact() {
               <button type="submit" className="btn accent">
                 <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Envoyer le message', 'Send message')}</span>
               </button>
-              <span className={'ok mono' + (sent ? ' show' : '')}>{t("✦ Merci — votre client mail va s'ouvrir.", '✦ Thanks — your email app will open.')}</span>
+              <span className={'ok mono' + (sent ? ' show' : '')}><Icon name="spark" /> {t("Merci — votre client mail va s'ouvrir.", 'Thanks — your email app will open.')}</span>
             </div>
           </form>
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { useLang } from '../i18n/lang';
 import { projectPath } from '../data/projects';
+import Icon from './Icon';
 
 const DEV = import.meta.env.DEV;
 
@@ -62,7 +63,7 @@ export default function ProjectCard({ p, showYear = false, cardRef }) {
         </h3>
         <p className="meta">{t(p.meta)}</p>
         <div className="proj-tags">{p.tags.map(tag => { const l = t(tag); return <span key={l}>{l}</span>; })}</div>
-        <span className="proj-more mono" aria-hidden="true">{t('Voir le détail', 'See details')} →</span>
+        <span className="proj-more mono" aria-hidden="true">{t('Voir le détail', 'See details')} <Icon name="arrow-right" /></span>
       </div>
     </article>
   );

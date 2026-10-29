@@ -37,8 +37,8 @@ export const PARCOURS = [
     yr: '2028', tag: { fr: 'Objectif', en: 'Goal' },
     title: { fr: ['Diplôme & premier poste ', 'data', ' en Suisse'], en: ['Degree & first ', 'data', ' role in Switzerland'] },
     text: {
-      fr: "Fin du Master et premier poste de Data Engineer ou d'ingénieur BI, en Suisse romande ou ailleurs en Suisse. Je suis ouvert aux échanges dès aujourd'hui ↓",
-      en: "Finishing my Master's and starting a first role as a Data Engineer or BI Engineer, in French-speaking Switzerland or elsewhere in the country. Happy to talk today ↓",
+      fr: "Fin du Master et premier poste de Data Engineer ou d'ingénieur BI, en Suisse romande ou ailleurs en Suisse. Je suis ouvert aux échanges dès aujourd'hui.",
+      en: "Finishing my Master's and starting a first role as a Data Engineer or BI Engineer, in French-speaking Switzerland or elsewhere in the country. Happy to talk today.",
     },
   },
 ];

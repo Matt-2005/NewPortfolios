@@ -549,7 +549,7 @@ html.anim-ready .proj-card { opacity: var(--rv, 0); transform: translateY(calc((
 .contact-mail .u::after { content: ""; position: absolute; left: 0; bottom: -3px; height: 1.5px; width: 100%; background: var(--fpv); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease); }
 .contact-mail:hover .u::after { transform: scaleX(1); }
 .contact-info { display: flex; flex-direction: column; gap: 30px; }
-.contact-info .blk span { display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--on-void-soft); margin-bottom: 10px; }
+.contact-info .blk > span { display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--on-void-soft); margin-bottom: 10px; }
 .contact-info .blk a, .contact-info .blk p { display: block; font-size: 17px; }
 .contact-info .socials { display: flex; gap: 18px; flex-wrap: wrap; }
 .contact-info .socials a {
@@ -641,7 +641,7 @@ html.anim-ready .proj-card { opacity: var(--rv, 0); transform: translateY(calc((
 .cinfo .big-mail .u { position: relative; }
 .cinfo .big-mail .u::after { content:""; position:absolute; left:0; bottom:-3px; height:1.5px; width:100%; background: var(--fpv); transform: scaleX(0); transform-origin:left; transition: transform .5s var(--ease); }
 .cinfo .big-mail:hover .u::after { transform: scaleX(1); }
-.cinfo .blk span { display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-soft); margin-bottom: 10px; }
+.cinfo .blk > span { display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-soft); margin-bottom: 10px; }
 .cinfo .blk a, .cinfo .blk p { display: block; font-size: 17px; }
 .cinfo .socials { display: flex; gap: 14px; flex-wrap: wrap; }
 .cinfo .socials a {
@@ -900,3 +900,43 @@ html:not(.anim-ready) .reel-shade { opacity: 0; }
 }
 .pp-todo b { color: var(--fpv-deep); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
 .pp-todo ul { margin: 12px 0 0; padding-left: 18px; }
+
+/* ============================================================
+   ICÔNES SVG (remplacent les flèches et symboles en texte)
+   ============================================================ */
+.icon { display: inline-block; width: 1em; height: 1em; flex: none; vertical-align: -0.14em; }
+.next-title .next-arrow { width: 0.62em; height: 0.62em; vertical-align: 0.06em; }
+.next-title .next-arrow .icon { width: 100%; height: 100%; vertical-align: top; }
+.foot .big-name .big-arrow { width: 0.5em; height: 0.5em; vertical-align: 0.08em; }
+.marquee .star .icon { width: 0.7em; height: 0.7em; vertical-align: 0.05em; }
+.proj-more { display: inline-flex; align-items: center; gap: 8px; }
+.proj-more .icon { width: 1.2em; height: 1.2em; }
+.page-back .icon { width: 1.25em; height: 1.25em; }
+.foot .totop .icon { width: 1.25em; height: 1.25em; }
+.cform .ok .icon { width: 0.85em; height: 0.85em; vertical-align: -0.05em; }
+.btn .lbl .icon { width: 0.95em; height: 0.95em; margin-left: 4px; vertical-align: -0.12em; }
+.reel-lb-close .icon { width: 1.1em; height: 1.1em; }
+
+/* ============================================================
+   MOBILE — passe de lisibilité
+   ============================================================ */
+@media (max-width: 900px) {
+  /* menu plein écran opaque : on ne doit plus lire la page à travers */
+  .fsmenu { background: var(--void); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  /* pages projet : moins de vide entre les blocs */
+  .pp-block { padding-block: clamp(24px, 4vh, 36px); }
+  .pp-facts { padding-block: 32px 0; }
+  .pp-missions { padding-block: 40px 10px; }
+}
+@media (max-width: 720px) {
+  /* le bouton flottant recouvrait le texte ; le pied de page garde « Retour en haut » */
+  .scrolltop { display: none !important; }
+}
+@media (max-width: 720px) {
+  /* grands titres : la taille suit la largeur de l'écran (testé de 320 à 390 px) */
+  .page-head h1, .next-title { font-size: clamp(32px, 12vw, 64px); }
+  .pp-head h1 { font-size: clamp(32px, 11vw, 56px); }
+  .fsmenu-list a { font-size: min(40px, 9.6vw); }
+}
+/* l'email direct garde sa grande taille (la règle générale des liens de bloc l'écrasait) */
+.cinfo .blk .big-mail { font-size: clamp(21px, 2.3vw, 30px); }

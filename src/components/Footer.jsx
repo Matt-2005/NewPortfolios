@@ -6,6 +6,7 @@ import { scrollToEl } from '../lib/scroller';
 import { useApp } from '../context/AppContext';
 import { PAGES } from '../data/pages';
 import { useLang } from '../i18n/lang';
+import Icon from './Icon';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +30,7 @@ export default function Footer() {
   return (
     <footer className="foot" data-navdark ref={footRef}>
       <div className="wrap">
-        <div className="big-name serif">Matthew <em>Le</em> ↗</div>
+        <div className="big-name serif">Matthew <em>Le</em> <Icon name="arrow-up-right" className="big-arrow" strokeWidth={1.2} /></div>
         <div className="foot-row">
           <nav className="foot-nav" aria-label="Pages">
             {PAGES.map(l => (
@@ -43,7 +44,7 @@ export default function Footer() {
             data-cursor={t('haut', 'top')}
             onClick={e => { e.preventDefault(); scrollToEl(document.body); }}
           >
-            {t('↑ Retour en haut', '↑ Back to top')}
+            <Icon name="arrow-up" /> {t('Retour en haut', 'Back to top')}
           </a>
         </div>
       </div>
