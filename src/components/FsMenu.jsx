@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { PAGES } from '../data/pages';
+import { PAGES, isActive } from '../data/pages';
 import { PROFILE } from '../data/profile';
 import { useLang } from '../i18n/lang';
 import Socials from './Socials';
@@ -17,8 +17,8 @@ export default function FsMenu() {
           <a
             key={l.idx}
             href={l.to}
-            className={pathname === l.to ? 'current' : undefined}
-            aria-current={pathname === l.to ? 'page' : undefined}
+            className={isActive(pathname, l.to) ? 'current' : undefined}
+            aria-current={isActive(pathname, l.to) ? 'page' : undefined}
             onClick={e => { e.preventDefault(); go(l.to); }}
           >
             <span className="idx">{l.idx}</span>{t(l.label)}<span className="serif-it arrow">↗</span>

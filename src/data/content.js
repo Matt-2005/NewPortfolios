@@ -29,8 +29,8 @@ export const PARCOURS = [
     yr: '2026', tag: { fr: 'Alternance · Data', en: 'Work-study · Data' },
     title: { fr: ['Développeur & ', 'ingénieur BI', ' à la SNCF'], en: ['Developer & ', 'BI engineer', ' at SNCF'] },
     text: {
-      fr: "À la direction Cybersécurité de la SNCF Holding : je développe l'application qui suit la conformité de tous les projets du groupe et je construis son reporting Power BI. En parallèle, j'entre en cycle Master (4e année sur 5).",
-      en: "In SNCF Holding's cybersecurity division, I develop the application that tracks compliance for every project in the group and build its Power BI reporting. Meanwhile, I start the Master's cycle (year 4 of 5).",
+      fr: "À la direction Cybersécurité de la SNCF Holding : je développe l'application qui suit la conformité de tous les projets du groupe et je construis son reporting Power BI. C'est ma 2e année d'alternance, et j'entre en cycle Master (4e année sur 5).",
+      en: "In SNCF Holding's cybersecurity division, I develop the application that tracks compliance for every project in the group and build its Power BI reporting. This is my second year of work-study, as I start the Master's cycle (year 4 of 5).",
     },
   },
   {
@@ -79,8 +79,8 @@ export const SKILLS = [
   {
     title: { fr: 'Cloud & DevOps', en: 'Cloud & DevOps' },
     desc: {
-      fr: 'Un an de pratique en alternance chez VICAT : déployer, automatiser et sécuriser l’infrastructure.',
-      en: 'A year of hands-on practice at VICAT: deploying, automating and securing infrastructure.',
+      fr: 'Neuf mois de pratique en alternance chez VICAT : déployer, automatiser et sécuriser l’infrastructure.',
+      en: 'Nine months of hands-on practice at VICAT: deploying, automating and securing infrastructure.',
     },
     chips: ['AWS', 'Terraform', 'Docker', 'GitLab CI/CD'],
     detail: {

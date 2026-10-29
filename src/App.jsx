@@ -11,6 +11,7 @@ import FsMenu from './components/FsMenu';
 import Home from './pages/Home';
 import APropos from './pages/APropos';
 import Projets from './pages/Projets';
+import Projet from './pages/Projet';
 import Contact from './pages/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -108,6 +109,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/a-propos" element={<APropos />} />
         <Route path="/projets" element={<Projets />} />
+        <Route path="/projets/:id" element={<Projet />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

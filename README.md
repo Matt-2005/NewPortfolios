@@ -36,7 +36,8 @@ src/
   pages/                une page par route :
                           /          Home (hero, manifeste, profil en bref, projets choisis)
                           /a-propos  APropos (portrait, parcours, compétences, film FPV)
-                          /projets   Projets (filtres)
+                          /projets   Expériences & projets (filtres)
+                          /projets/:id  page détaillée d'une expérience ou d'un projet
                           /contact   Contact (formulaire)
   data/                 profile.js (contact, statut, langues, liens, CV),
                         projets, parcours, compétences — FR + EN
@@ -57,6 +58,6 @@ legacy/                 l'ancienne version statique (référence — supprimable
   Tout fonctionne sans eux (placeholders + vol FPV procédural).
 - **Accessibilité / robustesse** : `prefers-reduced-motion` désactive les
   animations, le contenu reste lisible sans WebGL (repli 2D dans le hero).
-- **Déploiement** : c'est une SPA — configurez votre hébergeur pour
-  rediriger toutes les routes vers `index.html`
-  (Netlify/Vercel le font automatiquement)
+- **Déploiement** : c'est une SPA. Sur Vercel, `vercel.json` renvoie toutes
+  les routes vers `index.html` (sans lui, ouvrir directement /a-propos
+  ou /projets/sncf donne une erreur 404).

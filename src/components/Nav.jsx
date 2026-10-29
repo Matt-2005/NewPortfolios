@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { gsap } from 'gsap';
 import { onFrame, reduce } from '../lib/motion';
-import { PAGES } from '../data/pages';
+import { PAGES, isActive } from '../data/pages';
 import { useLang } from '../i18n/lang';
 
 export default function Nav() {
@@ -103,7 +103,7 @@ export default function Nav() {
           <a
             key={l.to}
             href={l.to}
-            aria-current={location.pathname === l.to ? 'page' : undefined}
+            aria-current={isActive(location.pathname, l.to) ? 'page' : undefined}
             onClick={e => { e.preventDefault(); go(l.to); }}
           >
             {t(l.label)}

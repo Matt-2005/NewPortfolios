@@ -5,3 +5,7 @@ export const PAGES = [
   { idx: '03', label: { fr: 'Expériences', en: 'Experience' }, to: '/projets' },
   { idx: '04', label: { fr: 'Contact', en: 'Contact' }, to: '/contact' },
 ];
+
+/* Une page reste « active » sur ses sous-pages (ex. /projets/sncf → Expériences). */
+export const isActive = (pathname, to) =>
+  pathname === to || (to !== '/' && pathname.startsWith(to + '/'));

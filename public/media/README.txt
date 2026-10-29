@@ -24,15 +24,17 @@ DÉPOSEZ VOS MÉDIAS ICI (public/media/)
 
 3) public/media/projets/*.jpg
    - Les visuels des projets (ratio 4:3 ; la carte "BDE" est large).
-   - Noms attendus :
+   - Noms attendus (ils servent sur la carte ET sur la page du projet) :
+       public/media/projets/hola-la-deco.jpg   (site WebDesign&Co)
+       public/media/projets/thermipose.jpg     (site WebDesign&Co)
+       public/media/projets/geae-batiment.jpg  (site WebDesign&Co)
+       public/media/projets/belki.jpg
+       public/media/projets/petits-reves.jpg
+       public/media/projets/above-lyon.jpg     (film FPV)
+       public/media/projets/sunset-ride.jpg    (vidéo moto)
        public/media/projets/cff.jpg            (projet data, brouillon)
        public/media/projets/logement-ge.jpg    (projet data, brouillon)
        public/media/projets/energie-ch.jpg     (projet data, brouillon)
-       public/media/projets/belki.jpg
-       public/media/projets/petits-reves.jpg
-       public/media/projets/above-lyon.jpg
-       public/media/projets/sunset-ride.jpg
-       public/media/projets/bde.jpg
    - Tant qu'aucune image n'est déposée, le nom du projet s'affiche en grand
      (le chemin du fichier attendu n'apparaît qu'en développement).
    - Les EXPÉRIENCES (SNCF, VICAT…) n'ont pas besoin d'image : la carte

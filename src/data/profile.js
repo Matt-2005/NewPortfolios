@@ -29,8 +29,8 @@ export const FACTS = [
   {
     k: { fr: 'Expérience', en: 'Experience' },
     v: {
-      fr: '1 an d’alternance : ingénieur DevOps chez VICAT, puis développeur & ingénieur BI à la SNCF',
-      en: '1 year of work-study: DevOps engineer at VICAT, then developer & BI engineer at SNCF',
+      fr: '2e année d’alternance : ingénieur DevOps chez VICAT (2025–2026), puis développeur & ingénieur BI à la SNCF (depuis juillet 2026)',
+      en: '2nd year of work-study: DevOps engineer at VICAT (2025–2026), then developer & BI engineer at SNCF (since July 2026)',
     },
   },
   {
