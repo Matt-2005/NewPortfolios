@@ -20,10 +20,10 @@ export default function Projets() {
   const gridRef = useRef(null);
   const [cat, setCat] = useState('all');
   useDocumentTitle(
-    t('Projets — Matthew LE', 'Projects — Matthew LE'),
+    t('Expériences & projets — Matthew LE', 'Experience & projects — Matthew LE'),
     t(
-      'Les projets de Matthew LE — data, développement web et applications, et quelques films FPV.',
-      "Matthew LE's projects — data, web development and apps, plus a few FPV films."
+      'Expériences et projets de Matthew LE — alternances à la SNCF et chez VICAT, entrepreneuriat, data et développement.',
+      "Matthew LE's experience and projects — work-study at SNCF and VICAT, entrepreneurship, data and development."
     )
   );
   useReveals(mainRef, lang);
@@ -38,11 +38,11 @@ export default function Projets() {
     <main ref={mainRef}>
       <section className="page-head wrap">
         <a href="/" className="page-back" data-cursor={t('retour', 'back')} onClick={e => { e.preventDefault(); go('/'); }}>{t('← Accueil', '← Home')}</a>
-        <div className="eyebrow">{t('(03) — Archive complète', '(03) — Full archive')}</div>
-        <h1>{t(<>Tous les <em>projets</em></>, <>All <em>projects</em></>)}</h1>
+        <div className="eyebrow">{t('(03) — Expériences & projets', '(03) — Experience & projects')}</div>
+        <h1>{t(<>Expériences <em>&amp; projets</em></>, <>Experience <em>&amp; projects</em></>)}</h1>
         <p className="page-intro">{t(
-          <>Des projets <em>data</em>, des sites et applications livrés à de vrais clients, et quelques films tournés au drone. Filtrez par discipline.</>,
-          <><em>Data</em> projects, websites and apps delivered to real clients, and a few drone films. Filter by discipline.</>
+          <>Deux alternances en grand groupe, une agence web cofondée et une sélection de <em>projets</em>. Ouvrez une expérience pour voir le détail des missions.</>,
+          <>Two work-study roles in large groups, a web agency I co-founded and a selection of <em>projects</em>. Open an experience to see the key missions.</>
         )}</p>
       </section>
 
@@ -60,7 +60,7 @@ export default function Projets() {
             ))}
           </div>
           <div className="proj-count mono">
-            <b>{visible.length}</b> {t('projet', 'project')}{visible.length > 1 ? 's' : ''}
+            <b>{visible.length}</b> {t('élément', 'item')}{visible.length > 1 ? 's' : ''}
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export default function Projets() {
 
         {visible.length === 0 && (
           <p className="proj-empty mono" style={{ padding: '60px 0', textAlign: 'center', color: 'var(--ink-soft)' }}>
-            {t("Aucun projet dans cette catégorie pour l'instant.", 'No projects in this category yet.')}
+            {t("Rien dans cette catégorie pour l'instant.", 'Nothing in this category yet.')}
           </p>
         )}
       </section>

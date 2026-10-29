@@ -21,10 +21,10 @@ export default function Home() {
   const mainRef = useRef(null);
   const gridRef = useRef(null);
   useDocumentTitle(
-    t('Matthew LE — Data Engineer & BI · Genève', 'Matthew LE — Data Engineer & BI · Geneva'),
+    t('Matthew LE — Data Engineer & BI · Lyon → Suisse', 'Matthew LE — Data Engineer & BI · Lyon → Switzerland'),
     t(
-      'Matthew LE — étudiant en Master informatique à SUPINFO Lyon, futur Data Engineer / ingénieur BI. SQL, Python, Power BI. Basé à Genève, Suisse.',
-      "Matthew LE — Master's student in Computer Science at SUPINFO Lyon, aspiring Data Engineer / BI Engineer. SQL, Python, Power BI. Based in Geneva, Switzerland."
+      'Matthew LE — étudiant en Master of Engineering (Ingénierie Data) à SUPINFO Lyon, alternant développeur & ingénieur BI à la SNCF. SQL, Power BI, AWS. Mobile en Suisse.',
+      'Matthew LE — Master of Engineering student (Data Engineering) at SUPINFO Lyon, work-study developer & BI engineer at SNCF. SQL, Power BI, AWS. Open to Switzerland.'
     )
   );
   useReveals(mainRef, lang);
@@ -40,6 +40,8 @@ export default function Home() {
           <span>SQL</span><span className="star serif-it">✦</span>
           <span>Python</span><span className="star serif-it">✦</span>
           <span>Power BI</span><span className="star serif-it">✦</span>
+          <span>AWS</span><span className="star serif-it">✦</span>
+          <span>Kafka</span><span className="star serif-it">✦</span>
           <span>ETL <em>&amp;</em> pipelines</span><span className="star serif-it">✦</span>
           <span>{t('Modélisation', 'Data modelling')}</span><span className="star serif-it">✦</span>
           <span>Data <em>viz</em></span><span className="star serif-it">✦</span>
@@ -64,8 +66,8 @@ export default function Home() {
 
       <section className="projects wrap" id="work">
         <div className="sec-head">
-          <h2 className="line-mask"><span>{t(<>Projets <em>sélectionnés</em></>, <>Selected <em>work</em></>)}</span></h2>
-          <span className="num reveal">{t('(02) — Data, web & applications', '(02) — Data, web & apps')}</span>
+          <h2 className="line-mask"><span>{t(<>Expériences <em>&amp; projets</em></>, <>Experience <em>&amp; projects</em></>)}</span></h2>
+          <span className="num reveal">{t('(02) — Alternances, entrepreneuriat & projets', '(02) — Work-study, entrepreneurship & projects')}</span>
         </div>
         <div className="proj-grid" ref={gridRef}>
           {HOME_PROJECTS.map(p => <ProjectCard p={p} key={p.id} />)}
@@ -76,7 +78,7 @@ export default function Home() {
             href="/projets"
             onClick={e => { e.preventDefault(); go('/projets'); }}
           >
-            <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Voir tous les projets', 'See all projects')}</span>
+            <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Tout le parcours', 'Full background')}</span>
           </a>
         </div>
       </section>
@@ -88,7 +90,7 @@ export default function Home() {
         seg={<>
           <span>{t(<>Parlons <em>data</em></>, <>Let's talk <em>data</em></>)}</span><span className="star">✦</span>
           <span>Data Engineer · BI</span><span className="star">✦</span>
-          <span>{t('Genève · Suisse', 'Geneva · Switzerland')}</span><span className="star">✦</span>
+          <span>{t(<>Cap sur la <em>Suisse</em></>, <>Next stop <em>Switzerland</em></>)}</span><span className="star">✦</span>
         </>}
       />
 

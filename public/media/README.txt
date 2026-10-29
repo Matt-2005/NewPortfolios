@@ -25,6 +25,7 @@ DÉPOSEZ VOS MÉDIAS ICI (public/media/)
 3) public/media/projets/*.jpg
    - Les visuels des projets (ratio 4:3 ; la carte "BDE" est large).
    - Noms attendus :
+       public/media/projets/istore.jpg         (projet iStore — sinon le nom s'affiche en grand)
        public/media/projets/cff.jpg            (projet data, brouillon)
        public/media/projets/logement-ge.jpg    (projet data, brouillon)
        public/media/projets/energie-ch.jpg     (projet data, brouillon)
@@ -33,8 +34,10 @@ DÉPOSEZ VOS MÉDIAS ICI (public/media/)
        public/media/projets/above-lyon.jpg
        public/media/projets/sunset-ride.jpg
        public/media/projets/bde.jpg
-   - Tant qu'aucune image n'est déposée, un cadre rayé avec le chemin
-     du fichier s'affiche à la place.
+   - Tant qu'aucune image n'est déposée, le nom du projet s'affiche en grand
+     (le chemin du fichier attendu n'apparaît qu'en développement).
+   - Les EXPÉRIENCES (SNCF, VICAT…) n'ont pas besoin d'image : la carte
+     affiche le nom de l'entreprise en grand.
 
 Gardez exactement ces noms, ou modifiez les chemins dans
 src/data/projects.js (projets), src/data/profile.js (CV),
