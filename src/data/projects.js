@@ -98,19 +98,6 @@ export const PROJECTS = [
 
   /* ——————————————— Projets ——————————————— */
   {
-    id: 'istore', type: 'proj', home: true, wide: true, cats: ['data', 'dev'],
-    yr: '2025', period: { fr: 'Février 2025', en: 'February 2025' },
-    img: '/media/projets/istore.jpg',
-    kind: { fr: 'Projet académique · Application', en: 'Academic project · Application' },
-    role: { fr: 'Développeur & data', en: 'Developer & data' },
-    name: { fr: ['Application ', 'iStore'], en: ['iStore ', 'application'] },
-    meta: {
-      fr: "Application de gestion de magasins, d'employés et d'articles : modèle de données relationnel en SQL, logique métier en Java, code documenté avec JavaDoc.",
-      en: 'Store, staff and inventory management application: relational data model in SQL, business logic in Java, code documented with JavaDoc.',
-    },
-    tags: ['Java', 'SQL', { fr: 'Modélisation', en: 'Data modelling' }],
-  },
-  {
     id: 'cff', type: 'proj', draft: true, yr: '2026', cats: ['data'],
     img: '/media/projets/cff.jpg',
     kind: { fr: 'Pipeline de données · Dashboard', en: 'Data pipeline · Dashboard' },
@@ -147,7 +134,7 @@ export const PROJECTS = [
     tags: ['Kafka', 'Python', 'Power BI'],
   },
   {
-    id: 'bde', type: 'proj', yr: '2025', cats: ['dev'],
+    id: 'bde', type: 'proj', home: true, yr: '2025', cats: ['dev'],
     img: '/media/projets/bde.jpg',
     kind: { fr: 'Application web · Full-stack', en: 'Web application · Full-stack' },
     role: { fr: 'Full-stack', en: 'Full-stack' },

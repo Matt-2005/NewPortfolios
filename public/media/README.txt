@@ -25,7 +25,6 @@ DÉPOSEZ VOS MÉDIAS ICI (public/media/)
 3) public/media/projets/*.jpg
    - Les visuels des projets (ratio 4:3 ; la carte "BDE" est large).
    - Noms attendus :
-       public/media/projets/istore.jpg         (projet iStore — sinon le nom s'affiche en grand)
        public/media/projets/cff.jpg            (projet data, brouillon)
        public/media/projets/logement-ge.jpg    (projet data, brouillon)
        public/media/projets/energie-ch.jpg     (projet data, brouillon)
