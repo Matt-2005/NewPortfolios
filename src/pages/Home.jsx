@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { useLang } from '../i18n/lang';
 import { useReveals } from '../hooks/useReveals';
@@ -12,8 +12,6 @@ import CvButton from '../components/CvButton';
 import Footer from '../components/Footer';
 import NextPage from '../components/NextPage';
 import Hero from './home/Hero';
-import BookStage from '../three/book/BookStage';
-import { useMedia } from '../hooks/useMedia';
 import Manifesto from './home/Manifesto';
 import ContactSection from './home/ContactSection';
 import Icon from '../components/Icon';
@@ -23,9 +21,6 @@ export default function Home() {
   const { lang, t } = useLang();
   const mainRef = useRef(null);
   const gridRef = useRef(null);
-  /* ordinateur (souris) : le livre à feuilleter ; mobile ou sans WebGL : le hero */
-  const desktop = useMedia('(min-width: 901px) and (hover: hover) and (pointer: fine)');
-  const [bookFailed, setBookFailed] = useState(false);
   useDocumentTitle(
     t('Matthew LE — Data Engineer & BI · Lyon · Suisse', 'Matthew LE — Data Engineer & BI · Lyon · Switzerland'),
     t(
@@ -39,9 +34,7 @@ export default function Home() {
   return (
     <main ref={mainRef}>
       {/* Hero et manifeste sont remontés au changement de langue (texte découpé) */}
-      {desktop && !bookFailed
-        ? <BookStage onFail={() => setBookFailed(true)} />
-        : <Hero key={'hero-' + lang} />}
+      <Hero key={'hero-' + lang} />
 
       <Marquee
         seg={<>

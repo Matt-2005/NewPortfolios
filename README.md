@@ -30,8 +30,6 @@ src/
   three/
     HeroField.jsx       particules « vent » WebGL du hero (souris + scroll)
     ContactOrb.jsx      orbe d'énergie vert FPV (bruit simplex + fresnel)
-    book/               livre 3D de l'accueil (ordinateur) : bureau, lampe,
-                        pages qui se courbent ; pages.js = contenu des pages
   components/           Nav, FsMenu, Cursor, Marquee, Footer, ProjectCard,
                         ProfileFacts (profil en bref), CvButton, Socials…
   hooks/                useReveals, useProjectMotion, useDocumentTitle
