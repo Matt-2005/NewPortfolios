@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 const STATS = [
   { count: 2, suffix: '', label: { fr: 'alternances en grand groupe', en: 'work-study roles in large groups' } },
   { count: 1000, suffix: '', label: { fr: 'projets suivis dans l’app que je développe', en: 'projects tracked in the app I build' } },
-  { count: 3, suffix: '', label: { fr: 'langues · FR RU EN', en: 'languages · FR RU EN' } },
-  { count: 2028, pop: true, suffix: '', label: { fr: 'fin du Master', en: "Master's graduation" } },
+  { count: 3, suffix: '', label: { fr: 'langues : français, russe, anglais', en: 'languages: French, Russian, English' } },
+  { count: 2028, pop: true, suffix: '', label: { fr: 'fin du Master, premier poste', en: "Master's degree, first full-time role" } },
 ];
 
 export default function Manifesto() {
@@ -55,12 +55,12 @@ export default function Manifesto() {
     <section className="manifesto wrap" ref={ref}>
       <p className="big">
         {t(
-          <><span className="muted"><Words text="Une donnée qui dort ne vaut rien." /></span>{' '}
-            <Words text="Je construis les flux qui la font" /> <span className="hl"><Words text="circuler" /></span><Words text=" — de la source brute au" />{' '}
-            <em><Words text="dashboard" /></em> <Words text="qui aide à décider. Fiables, documentés," /> <em><Words text="précis" /></em><Words text="." /></>,
-          <><span className="muted"><Words text="Data at rest is worth nothing." /></span>{' '}
-            <Words text="I build the pipelines that keep it" /> <span className="hl"><Words text="flowing" /></span><Words text=" — from raw source to the" />{' '}
-            <em><Words text="dashboard" /></em> <Words text="that drives decisions. Reliable, documented," /> <em><Words text="precise" /></em><Words text="." /></>
+          <><Words text="À la SNCF, je développe l’application qui suit la conformité cybersécurité d’environ" />{' '}
+            <span className="hl"><Words text="1 000 projets" /></span><Words text=", et j’en construis le" /> <em><Words text="reporting" /></em> <Words text="Power BI." />{' '}
+            <span className="muted"><Words text="Avant, chez VICAT, j’automatisais les déploiements sur AWS." /></span></>,
+          <><Words text="At SNCF, I develop the application that tracks cybersecurity compliance for around" />{' '}
+            <span className="hl"><Words text="1,000 projects" /></span><Words text=", and I build its Power BI" /> <em><Words text="reporting" /></em><Words text="." />{' '}
+            <span className="muted"><Words text="Before that, at VICAT, I automated deployments on AWS." /></span></>
         )}
       </p>
       <div className="manifesto-foot">

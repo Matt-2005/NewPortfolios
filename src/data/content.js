@@ -13,8 +13,8 @@ export const PARCOURS = [
     yr: '2024', tag: { fr: 'Entrepreneuriat', en: 'Entrepreneurship' },
     title: { fr: ['Cofondation de ', 'WebDesign&Co', ''], en: ['Co-founding ', 'WebDesign&Co', ''] },
     text: {
-      fr: "Je cofonde une agence de création de sites web et j'enchaîne avec un stage chez Hola la Déco, seul sur le projet. J'apprends à livrer pour de vrais clients, pas seulement à coder.",
-      en: 'I co-found a web design agency, then take on an internship at Hola la Déco as the only person on the project. I learn to deliver for real clients, not just to code.',
+      fr: "Je cofonde une agence de création de sites web et j'enchaîne avec un stage chez Hola la Déco, seul sur le projet. J'y apprends à mener un site pour un client, du besoin à la mise en ligne.",
+      en: 'I co-found a web design agency, then take on an internship at Hola la Déco as the only person on the project. I learn to take a client website from brief to launch.',
     },
   },
   {
@@ -38,7 +38,7 @@ export const PARCOURS = [
     title: { fr: ['Diplôme & premier poste ', 'data', ' en Suisse'], en: ['Degree & first ', 'data', ' role in Switzerland'] },
     text: {
       fr: "Fin du Master et premier poste de Data Engineer ou d'ingénieur BI, en Suisse romande ou ailleurs en Suisse. Je suis ouvert aux échanges dès aujourd'hui.",
-      en: "Finishing my Master's and starting a first role as a Data Engineer or BI Engineer, in French-speaking Switzerland or elsewhere in the country. Happy to talk today.",
+      en: "Finishing my Master's and starting a first role as a Data Engineer or BI Engineer, in French-speaking Switzerland or elsewhere in the country. I'm open to a conversation now.",
     },
   },
 ];
@@ -47,13 +47,13 @@ export const SKILLS = [
   {
     title: { fr: 'BI & data visualisation', en: 'BI & data visualisation' },
     desc: {
-      fr: 'Transformer des tables en décisions : des tableaux de bord clairs, construits pour la direction de la SNCF.',
-      en: 'Turning tables into decisions: clear dashboards, built for senior management at SNCF.',
+      fr: 'Des tableaux de bord Power BI pour la direction de la SNCF, construits sur un modèle en étoile.',
+      en: 'Power BI dashboards for senior management at SNCF, built on a star schema.',
     },
     chips: ['Power BI', 'DAX', { fr: 'Modèle en étoile', en: 'Star schema' }, 'KPI'],
     detail: {
-      fr: 'Formé en Power BI aux niveaux intermédiaire et expert pendant mon alternance. Le montage vidéo m’a aussi appris à raconter : un bon dashboard a un rythme et une chute.',
-      en: 'Trained in Power BI at intermediate and expert level during my work-study. Video editing also taught me storytelling: a good dashboard has pace and a punchline.',
+      fr: 'Formé en Power BI aux niveaux intermédiaire et expert pendant mon alternance.',
+      en: 'Trained in Power BI at intermediate and expert level during my work-study.',
     },
     points: {
       fr: ['Croisement de plusieurs sources de données', 'Nettoyage des tables avant modélisation', 'Modèles en étoile (faits / dimensions)', 'Mesures DAX dynamiques qui suivent les filtres'],
@@ -63,13 +63,13 @@ export const SKILLS = [
   {
     title: { fr: 'Data engineering', en: 'Data engineering' },
     desc: {
-      fr: 'Structurer, requêter et faire circuler la donnée pour qu’elle soit fiable et rapide à exploiter.',
-      en: 'Structuring, querying and moving data so it is reliable and fast to use.',
+      fr: 'Modéliser une base, écrire et optimiser des requêtes SQL, faire circuler des messages avec Kafka.',
+      en: 'Modelling databases, writing and tuning SQL queries, moving messages with Kafka.',
     },
-    chips: ['SQL', 'PostgreSQL', 'Python', 'Kafka', 'Spark'],
+    chips: ['SQL', 'PostgreSQL', 'Python', 'Kafka'],
     detail: {
-      fr: 'Une donnée fausse coûte plus cher qu’une donnée absente. En cours d’apprentissage pendant le Master : dbt, Airflow et Spark.',
-      en: 'Wrong data costs more than missing data. Currently learning during my Master’s: dbt, Airflow and Spark.',
+      fr: 'En cours d’apprentissage pendant le Master : dbt, Airflow et Spark.',
+      en: 'Currently learning during my Master’s: dbt, Airflow and Spark.',
     },
     points: {
       fr: ['Requêtes SQL et optimisation des temps d’exécution', 'Modélisation relationnelle (entités, associations)', 'Messagerie distribuée avec Kafka (topics, abonnements)', 'Scripts Python de traitement'],
@@ -84,8 +84,8 @@ export const SKILLS = [
     },
     chips: ['AWS', 'Terraform', 'Docker', 'GitLab CI/CD'],
     detail: {
-      fr: 'Décrire une infrastructure en code oblige à penser chaque accès et chaque permission : la sécurité se prévoit dès le début, pas à la fin.',
-      en: 'Describing infrastructure as code forces you to think through every access rule and permission: security is planned from day one, not at the end.',
+      fr: 'Avec Terraform, chaque règle réseau et chaque permission est écrite et relue avant d’être déployée.',
+      en: 'With Terraform, every network rule and permission is written down and reviewed before it is deployed.',
     },
     points: {
       fr: ['Infrastructure AWS décrite en Terraform', 'Pipelines CI/CD GitLab (YAML)', 'Conteneurisation et architecture Docker', 'Migrations vers le cloud et montées de version'],
@@ -95,8 +95,8 @@ export const SKILLS = [
   {
     title: { fr: 'Développement & méthode', en: 'Development & method' },
     desc: {
-      fr: 'Des applications full-stack en production, et une façon de travailler structurée et fiable.',
-      en: 'Full-stack applications in production, and a structured, reliable way of working.',
+      fr: 'Des applications full-stack en production : Angular et Spring Boot à la SNCF, React pour WebDesign&Co.',
+      en: 'Full-stack applications in production: Angular and Spring Boot at SNCF, React for WebDesign&Co.',
     },
     chips: ['Angular', 'Spring Boot', 'React', 'Java', 'Git'],
     detail: {

@@ -56,8 +56,8 @@ export default function Contact() {
         <div className="eyebrow">{t('(04) — Contact', '(04) — Contact')}</div>
         <h1>{t(<>Travaillons<br /><em>ensemble</em></>, <>Let's work<br /><em>together</em></>)}</h1>
         <p className="page-intro">{t(
-          <>Un poste en <em>data engineering</em> ou en <em>BI</em>, une question sur mon parcours, un échange en visio ou à Genève&nbsp;? Écrivez-moi : je réponds rapidement.</>,
-          <>A role in <em>data engineering</em> or <em>BI</em>, a question about my background, a video call or a coffee in Geneva? Drop me a line: I reply quickly.</>
+          <>Pour un poste en <em>data engineering</em> ou en <em>BI</em>, une question sur mon parcours, ou un échange en visio ou à Genève, écrivez-moi.</>,
+          <>For a role in <em>data engineering</em> or <em>BI</em>, a question about my background, or a video call or coffee in Geneva, write to me.</>
         )}</p>
       </section>
 
@@ -92,7 +92,7 @@ export default function Contact() {
               <button type="submit" className="btn accent">
                 <span className="fill" /><span className="dot-arrow" /><span className="lbl">{t('Envoyer le message', 'Send message')}</span>
               </button>
-              <span className={'ok mono' + (sent ? ' show' : '')}><Icon name="spark" /> {t("Merci — votre client mail va s'ouvrir.", 'Thanks — your email app will open.')}</span>
+              <span className={'ok mono' + (sent ? ' show' : '')}><Icon name="spark" /> {t('Votre messagerie s’ouvre avec le message prêt à envoyer', 'Your email app opens with the message ready to send')}</span>
             </div>
           </form>
 

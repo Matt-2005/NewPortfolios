@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      <NextPage to="/a-propos" label={t('À propos', 'About')} kicker={t("Qui est derrière l'écran ?", "Who's behind the screen?")} />
+      <NextPage to="/a-propos" label={t('À propos', 'About')} kicker={t('Parcours année par année, compétences', 'Year-by-year background, skills')} />
 
       <Marquee
         dark dir="right" speed={0.6}

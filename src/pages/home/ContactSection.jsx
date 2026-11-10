@@ -13,8 +13,8 @@ export default function ContactSection() {
         <div>
           <h2 className="line-mask"><span>{t(<>Parlons<br /><em>data</em></>, <>Let's talk<br /><em>data</em></>)}</span></h2>
           <p className="lead reveal" data-d="1">{t(
-            'Recruteur, manager ou équipe data en Suisse ? Je suis ouvert aux échanges dès maintenant — et à un premier poste à la fin de mon Master, en 2028.',
-            "Recruiter, hiring manager or data team in Switzerland? I'm happy to talk right now — and I'm looking for a first full-time role after my Master's, in 2028."
+            'Recruteur, manager ou équipe data en Suisse : je suis ouvert aux échanges dès maintenant, et je cherche un premier poste pour la fin de mon Master, en 2028.',
+            "Recruiters, hiring managers and data teams in Switzerland: I'm open to a conversation now, and looking for a first full-time role after my Master's, in 2028."
           )}</p>
           <a className="contact-mail reveal" data-d="2" href={'mailto:' + PROFILE.email} data-cursor={t('écrire', 'write')}>
             <span className="dot-arrow" style={{ width: 9, height: 9 }} /><span className="u">{PROFILE.email}</span>

@@ -99,8 +99,8 @@ export default function About() {
         <div className="about-grid">
           <div>
             <p className="about-lead reveal">{t(
-              <>Bonjour, je suis <em>Matthew LE</em>, étudiant en 4e année à SUPINFO Lyon (Master of Engineering, Ingénierie Data) et alternant développeur & <span className="hl">ingénieur BI</span> à la SNCF. Mon objectif : devenir <span className="hl">data engineer</span> en <span className="hl">Suisse</span>, construire des flux de données fiables et les rendre utiles à ceux qui décident.</>,
-              <>Hi, I'm <em>Matthew LE</em>, a fourth-year student at SUPINFO Lyon (Master of Engineering, Data Engineering) and a work-study developer & <span className="hl">BI engineer</span> at SNCF. My goal: becoming a <span className="hl">data engineer</span> in <span className="hl">Switzerland</span>, building reliable data flows and making them useful to decision-makers.</>
+              <>Bonjour, je suis <em>Matthew LE</em>, étudiant en 4e année à SUPINFO Lyon (Master of Engineering, Ingénierie Data) et alternant développeur & <span className="hl">ingénieur BI</span> à la SNCF. Mon objectif : un premier poste de <span className="hl">data engineer</span> en <span className="hl">Suisse</span>.</>,
+              <>Hi, I'm <em>Matthew LE</em>, a fourth-year student at SUPINFO Lyon (Master of Engineering, Data Engineering) and a work-study developer & <span className="hl">BI engineer</span> at SNCF. My goal: a first <span className="hl">data engineer</span> role in <span className="hl">Switzerland</span>.</>
             )}</p>
             <p className="about-body reveal" data-d="1">{t(
               <>Je suis en 2e année d'alternance : ingénieur DevOps chez VICAT, puis développeur et ingénieur BI à la SNCF. Ces deux grands groupes m'ont appris ce que demande un système d'information de grande taille&nbsp;: comprendre l'existant, documenter, tester, ne rien casser. Avant ça, il y a eu le web, avec la cofondation de WebDesign&amp;Co, et la vidéo&nbsp;: montage et drone FPV.</>,

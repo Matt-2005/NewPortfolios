@@ -147,8 +147,8 @@ export default function Showreel() {
             </h2>
             <div className="reel-actions" data-l>
               <p>{t(
-                "Pilote de drone FPV et monteur vidéo. Préparer le vol, l'exécuter sans filet, vérifier chaque image : la même rigueur que dans un pipeline.",
-                'FPV drone pilot and video editor. Plan the flight, fly it with no safety net, check every frame: the same rigour I bring to a pipeline.'
+                "Pilote de drone FPV et monteur vidéo : je prépare les vols, je filme, puis je monte et j'étalonne moi-même.",
+                'FPV drone pilot and video editor: I plan the flights, film them, then edit and colour-grade the footage myself.'
               )}</p>
               {hasVideo && (
                 <button className="reel-play" onClick={openFilm} data-cursor="play">

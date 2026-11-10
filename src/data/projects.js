@@ -97,8 +97,8 @@ export const PROJECTS = [
       ],
       results: [
         T(
-          'Les responsables cybersécurité retrouvent en un seul endroit l’état d’avancement de tous les projets de leur périmètre, et la direction dispose d’une vue d’ensemble dans Power BI. Ici, la valeur se mesure au nombre d’utilisateurs qui s’appuient sur PCM, à la qualité des données et à l’usage des tableaux de bord.',
-          'Security officers find the progress of every project in their scope in one place, and senior management gets an overall view in Power BI. Here, value is measured by how many users rely on PCM, by data quality and by dashboard usage.'
+          'Les responsables cybersécurité retrouvent en un seul endroit l’état d’avancement de tous les projets de leur périmètre, et la direction dispose d’une vue d’ensemble dans Power BI. Les indicateurs suivis : le nombre d’utilisateurs de PCM, la qualité des données et l’usage des tableaux de bord.',
+          'Security officers find the progress of every project in their scope in one place, and senior management gets an overall view in Power BI. What we track: the number of PCM users, data quality and dashboard usage.'
         ),
       ],
       learned: [
@@ -168,8 +168,8 @@ export const PROJECTS = [
         {
           title: T('Fiabilité des pipelines CI/CD', 'CI/CD pipeline reliability'),
           text: T(
-            'J’ai repris les pipelines GitLab de l’ancien alternant : analyser, trouver les points bloquants, corriger les configurations YAML ou Terraform. Un travail peu visible mais essentiel, car un pipeline défaillant bloque toutes les équipes de développement.',
-            'I took over the GitLab pipelines from the previous work-study student: analysing them, finding the blockers, fixing YAML or Terraform configurations. Low-visibility but essential work, since a broken pipeline blocks every development team.'
+            'J’ai repris les pipelines GitLab de l’ancien alternant : analyser, trouver les points bloquants, corriger les configurations YAML ou Terraform. Un pipeline en échec bloque toutes les équipes de développement.',
+            'I took over the GitLab pipelines from the previous work-study student: analysing them, finding the blockers, fixing YAML or Terraform configurations. A failing pipeline blocks every development team.'
           ),
         },
         {
@@ -182,14 +182,14 @@ export const PROJECTS = [
       ],
       results: [
         T(
-          'Ici, la valeur se mesure surtout à l’absence d’incident : des pipelines qui passent à nouveau, moins d’erreurs, des déploiements réussis, et une gestion des API plus robuste et plus sûre grâce à la mise à jour de WSO2. J’ai reçu de très bons retours de l’équipe à mon départ.',
-          'Here, value is measured mainly by the absence of incidents: pipelines passing again, fewer errors, successful deployments, and a more robust, secure API management thanks to the WSO2 upgrade. The team gave me very positive feedback when I left.'
+          'Les pipelines repassent, les erreurs de déploiement ont diminué, et la gestion des API est plus robuste et plus sûre depuis la mise à jour de WSO2. L’équipe m’a fait de très bons retours à mon départ.',
+          'Pipelines pass again, deployment errors went down, and API management is more robust and secure since the WSO2 upgrade. The team gave me very positive feedback when I left.'
         ),
       ],
       learned: [
         T(
-          'La sécurité se prévoit dès le début : décrire une infrastructure en Terraform oblige à penser chaque règle réseau et chaque permission, et aucun secret ne doit apparaître en clair dans un pipeline. J’ai aussi appris qu’une simple migration a toujours beaucoup d’impact : il faut tester, anticiper et documenter.',
-          'Security is planned from day one: describing infrastructure in Terraform forces you to think through every network rule and permission, and no secret should ever appear in plain text in a pipeline. I also learned that even a simple migration always has a wide impact: you have to test, anticipate and document.'
+          'Décrire une infrastructure en Terraform oblige à penser chaque règle réseau et chaque permission dès le départ, et aucun secret ne doit apparaître en clair dans un pipeline. J’ai aussi appris qu’une simple migration a toujours beaucoup d’impact : il faut tester, anticiper et documenter.',
+          'Describing infrastructure in Terraform forces you to think through every network rule and permission from the start, and no secret should ever appear in plain text in a pipeline. I also learned that even a simple migration always has a wide impact: you have to test, anticipate and document.'
         ),
       ],
     },

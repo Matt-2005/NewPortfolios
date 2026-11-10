@@ -42,8 +42,8 @@ export default function Projets() {
         <div className="eyebrow">{t('(03) — Expériences & projets', '(03) — Experience & projects')}</div>
         <h1>{t(<>Expériences <em>&amp; projets</em></>, <>Experience <em>&amp; projects</em></>)}</h1>
         <p className="page-intro">{t(
-          <>Deux alternances en grand groupe, une agence web cofondée et une sélection de <em>projets</em>. Ouvrez une expérience pour voir le détail des missions.</>,
-          <>Two work-study roles in large groups, a web agency I co-founded and a selection of <em>projects</em>. Open an experience to see the key missions.</>
+          <>Deux alternances en grand groupe, une agence web cofondée et une sélection de <em>projets</em>. Chaque carte ouvre le détail des missions.</>,
+          <>Two work-study roles in large groups, a web agency I co-founded and a selection of <em>projects</em>. Each card opens the full list of missions.</>
         )}</p>
       </section>
 
@@ -82,8 +82,8 @@ export default function Projets() {
           <div>
             <h2 className="line-mask"><span>{t(<>Un poste<br /><em>data&nbsp;?</em></>, <>A data<br /><em>role?</em></>)}</span></h2>
             <p className="lead reveal" data-d="1">{t(
-              'Parlons-en. Je suis ouvert aux échanges dès maintenant, et disponible pour un premier poste à la fin de mon Master (2028).',
-              "Let's talk. I'm open to a chat right now, and available for a first full-time role after my Master's (2028)."
+              'Je suis ouvert aux échanges dès maintenant, et disponible pour un premier poste à la fin de mon Master, en 2028.',
+              "I'm open to a conversation now, and available for a first full-time role after my Master's, in 2028."
             )}</p>
             <a
               className="contact-mail reveal"

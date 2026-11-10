@@ -37,7 +37,7 @@ export default function Footer() {
               <a key={l.to} href={l.to} onClick={e => { e.preventDefault(); go(l.to); }}>{t(l.label)}</a>
             ))}
           </nav>
-          <small>{t('© 2026 Matthew LE — conçu & développé par mes soins.', '© 2026 Matthew LE — designed & built by me.')}<br />{t('Lyon — cap sur la Suisse', 'Lyon — heading for Switzerland')}</small>
+          <small>{t('© 2026 Matthew LE — conçu & développé par mes soins.', '© 2026 Matthew LE — designed & built by me.')}<br />{t('Lyon · mobile en Suisse romande', 'Lyon · open to French-speaking Switzerland')}</small>
           <a
             href="#top"
             className="totop"

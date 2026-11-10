@@ -33,8 +33,8 @@ export default function APropos() {
           <div className="eyebrow">{t('(02) — À propos', '(02) — About')}</div>
           <h1>{t(<>Qui <em>je suis</em></>, <>Who <em>I am</em></>)}</h1>
           <p className="page-intro">{t(
-            <>Étudiant en Ingénierie Data à SUPINFO Lyon, alternant à la SNCF, futur <em>data engineer</em>. J'aime quand la donnée circule proprement — de la source au tableau de bord.</>,
-            <>Data Engineering student at SUPINFO Lyon, work-study at SNCF, future <em>data engineer</em>. I like data that flows cleanly — from source to dashboard.</>
+            <>Étudiant en Ingénierie Data à SUPINFO Lyon et alternant à la SNCF. Sur cette page : mon parcours année par année, mes compétences, et ce que je fais <em>en dehors du code</em>.</>,
+            <>Data Engineering student at SUPINFO Lyon, on a work-study contract at SNCF. On this page: my background year by year, my skills, and what I do <em>away from the keyboard</em>.</>
           )}</p>
         </section>
 
