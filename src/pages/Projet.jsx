@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { useLang } from '../i18n/lang';
 import { useReveals } from '../hooks/useReveals';
@@ -10,6 +10,7 @@ import MotionScene from '../components/MotionScene';
 import ProjectCard from '../components/ProjectCard';
 import NextPage from '../components/NextPage';
 import Footer from '../components/Footer';
+import NotFound from './NotFound';
 import Icon from '../components/Icon';
 
 const DEV = import.meta.env.DEV;
@@ -18,7 +19,7 @@ const DEV = import.meta.env.DEV;
 export default function Projet() {
   const { id } = useParams();
   const p = findProject(id);
-  if (!p) return <Navigate to="/projets" replace />;
+  if (!p) return <NotFound />; // projet inconnu ou brouillon : vraie page 404
   return <ProjetPage p={p} key={p.id} />;
 }
 

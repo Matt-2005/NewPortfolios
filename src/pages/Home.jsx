@@ -24,8 +24,8 @@ export default function Home() {
   useDocumentTitle(
     t('Matthew LE — Data Engineer & BI · Lyon · Suisse', 'Matthew LE — Data Engineer & BI · Lyon · Switzerland'),
     t(
-      'Matthew LE — étudiant en Master of Engineering (Ingénierie Data) à SUPINFO Lyon, alternant développeur & ingénieur BI à la SNCF. SQL, Power BI, AWS. Mobile en Suisse.',
-      'Matthew LE — Master of Engineering student (Data Engineering) at SUPINFO Lyon, work-study developer & BI engineer at SNCF. SQL, Power BI, AWS. Open to Switzerland.'
+      'Matthew LE, futur data engineer et ingénieur BI : alternant à la SNCF, Master Ingénierie Data à SUPINFO Lyon. SQL, Power BI, AWS. Mobile en Suisse.',
+      "Matthew LE, aspiring data engineer and BI engineer: work-study at SNCF, Master's in Data Engineering at SUPINFO Lyon. SQL, Power BI, AWS. Open to Switzerland."
     )
   );
   useReveals(mainRef, lang);

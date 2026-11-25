@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AppContext } from './context/AppContext';
@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import APropos from './pages/APropos';
 import Projets from './pages/Projets';
 import Projet from './pages/Projet';
+import NotFound from './pages/NotFound';
 import Contact from './pages/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -110,7 +111,7 @@ export default function App() {
         <Route path="/projets" element={<Projets />} />
         <Route path="/projets/:id" element={<Projet />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AppContext.Provider>
   );

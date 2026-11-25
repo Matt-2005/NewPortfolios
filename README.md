@@ -45,6 +45,13 @@ legacy/                 l'ancienne version statique (référence — supprimable
 
 ## Notes
 
+- **SEO** : balises de partage (Open Graph / Twitter, image `public/og-image.jpg`),
+  fiche schema.org « Person » et contenu de secours sans JavaScript dans
+  `index.html` ; titre, description, adresse canonique et indexation mis à
+  jour à chaque page (`src/hooks/useDocumentTitle.js`) ; `public/robots.txt` ;
+  `sitemap.xml` généré à chaque build (`scripts/sitemap.mjs`, brouillons exclus).
+  Le domaine est défini dans `SITE_URL` et dans `index.html` (matthewle.fr).
+
 - **Infos perso** : tout ce qu'un recruteur cherche (email, téléphone,
   statut, langues, disponibilité, LinkedIn/GitHub, CV) est dans
   `src/data/profile.js`.

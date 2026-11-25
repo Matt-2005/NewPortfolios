@@ -19,8 +19,8 @@ export default function Contact() {
   useDocumentTitle(
     t('Contact — Matthew LE', 'Contact — Matthew LE'),
     t(
-      'Contacter Matthew LE — futur Data Engineer / ingénieur BI, basé à Lyon, mobile en Suisse.',
-      'Contact Matthew LE — aspiring Data Engineer / BI Engineer based in Lyon, open to Switzerland.'
+      'Contacter Matthew LE, futur data engineer et ingénieur BI basé à Lyon et mobile en Suisse romande : e-mail, téléphone, LinkedIn.',
+      'Contact Matthew LE, aspiring data engineer and BI engineer based in Lyon and open to French-speaking Switzerland: email, phone, LinkedIn.'
     )
   );
   useReveals(mainRef, lang);
