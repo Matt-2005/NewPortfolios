@@ -464,3 +464,26 @@ html.anim-ready .line-mask.in-view > * { transform: translateY(0); }
 .lang-toggle:hover span:not(.on) { opacity: 0.8; }
 
 .fsmenu-list a .arrow .icon { width: 100%; height: 100%; }
+
+/* ============================================================
+   MOBILE — performance du dessin
+   Sur téléphone (surtout iPhone), le flou d'arrière-plan oblige à
+   re-flouter la page à chaque image pendant le défilement. On le
+   retire et on rend le « verre » presque opaque : même allure, sans
+   le coût. Idem pour le grand flou du dégradé du hero.
+   ============================================================ */
+@media (max-width: 900px), (hover: none) {
+  :root {
+    --glass-bf: none; --glass-bf-lens: none; --glass-bf-lens-sm: none;
+    --glass:        oklch(0.99 0.005 95 / 0.72);
+    --glass-strong: oklch(0.99 0.005 95 / 0.9);
+    --glass-d:        oklch(0.21 0.006 260 / 0.78);
+    --glass-d-strong: oklch(0.21 0.006 260 / 0.9);
+  }
+  [data-theme="dark"] {
+    --glass:        oklch(0.24 0.006 260 / 0.74);
+    --glass-strong: oklch(0.21 0.006 260 / 0.9);
+  }
+  *, *::before, *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .hero-bg::after { filter: none; }
+}

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { clamp, easeOutCubic, onFrame, reduce, smooth } from '../../lib/motion';
+import { clamp, coarse, easeOutCubic, onFrame, reduce, smooth } from '../../lib/motion';
 import { createFlight } from '../../lib/flight';
 import { startScroll, stopScroll } from '../../lib/scroller';
 import { useLang } from '../../i18n/lang';
@@ -66,7 +66,7 @@ export default function Showreel() {
     const lines = copyRef.current ? Array.from(copyRef.current.querySelectorAll('[data-l]')) : [];
     const p2 = n => String(n).padStart(2, '0');
 
-    let idle = 0, last = performance.now();
+    let idle = 0, last = performance.now(), skip = false;
 
     const off = onFrame(() => {
       if (!track) return;
@@ -115,9 +115,10 @@ export default function Showreel() {
       if (metaRef.current) metaRef.current.style.opacity = (smooth(u, 0.7, 1.1) * (1 - outP)).toFixed(3);
 
       // vol procédural : avance au scroll + dérive lente en continu
+      // (téléphone : une image sur deux, ~30 images/s, plein écran oblige)
       if (flight) {
         idle += dt * 0.09;
-        flight.draw(clamp(u / Math.max(total - 1, 1), 0, 1), 0, idle);
+        if (!coarse || (skip = !skip)) flight.draw(clamp(u / Math.max(total - 1, 1), 0, 1), 0, idle);
       }
     });
 

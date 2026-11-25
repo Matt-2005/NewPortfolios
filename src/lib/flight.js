@@ -3,7 +3,7 @@
    Sert de séquence immersive tant qu'aucune vidéo n'est déposée
    dans public/media/immersive.mp4.
    ============================================================ */
-import { clamp, smooth } from './motion';
+import { clamp, coarse, smooth } from './motion';
 
 export function createFlight(canvas) {
   const ctx = canvas.getContext('2d');
@@ -18,7 +18,7 @@ export function createFlight(canvas) {
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = coarse ? 1 : Math.min(window.devicePixelRatio || 1, 2); // téléphone : résolution standard
     W = w; H = h;
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);

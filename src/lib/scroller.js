@@ -5,14 +5,16 @@
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { reduce } from './motion';
+import { coarse, reduce } from './motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
 let lenis = null;
 
+/* Écrans tactiles : défilement natif du téléphone (Lenis n'y lisse rien
+   et tournerait pour rien à chaque image). */
 export function initScroller() {
-  if (reduce || lenis) return () => {};
+  if (reduce || coarse || lenis) return () => {};
   try {
     lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
