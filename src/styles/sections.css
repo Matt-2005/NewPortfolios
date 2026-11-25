@@ -57,12 +57,6 @@
   opacity: 0.55; transform-origin: left center; pointer-events: none;
 }
 /* Halo lumineux qui suit le curseur (dérive seul au tactile) */
-.hero-light {
-  position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none;
-  width: min(58vw, 660px); aspect-ratio: 1; border-radius: 50%;
-  background: radial-gradient(closest-side, color-mix(in oklch, var(--fpv) 17%, transparent), transparent 72%);
-  filter: blur(26px); opacity: 0; will-change: transform, opacity;
-}
 /* Repères éditoriaux verticaux sur les bords */
 .hero-side {
   position: absolute; top: 50%; z-index: 2;
@@ -560,23 +554,13 @@ html.anim-ready .proj-card { opacity: var(--rv, 0); transform: translateY(calc((
   box-shadow: inset 0 1px 0 0 var(--glass-d-hi); transition: 0.4s var(--ease);
 }
 .contact-info .socials a:hover { background: oklch(0.58 0.20 264 / 0.85); color: var(--fpv-ink); border-color: oklch(0.58 0.20 264 / 0.5); }
-.contact-orb {
-  position: absolute; right: -10%; top: 50%; translate: 0 -50%;
-  width: min(46vw, 580px); aspect-ratio: 1; z-index: 0; pointer-events: none;
-  opacity: 0.85;
+.contact-glow {
+  /* lueur bleue statique (remplace l'orbe 3D) : élégant et sans calcul */
+  position: absolute; right: -12%; top: 50%; translate: 0 -50%; z-index: 0; pointer-events: none;
+  width: min(60vw, 760px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(closest-side, oklch(0.58 0.2 264 / 0.32), oklch(0.58 0.2 264 / 0.08) 55%, transparent 72%);
 }
-@media (max-width: 900px) {
-  .contact-orb { right: -30%; width: 78vw; opacity: 0.55; }
-}
-.contact-blob {
-  position: absolute; right: -10%; top: 50%; translate: 0 -50%;
-  width: 60vw; max-width: 760px; aspect-ratio: 1; z-index: 0; opacity: 0.5; pointer-events: none;
-  animation: blobfloat 11s var(--ease-io) infinite alternate;
-}
-@keyframes blobfloat {
-  0%   { transform: scale(0.92) translate(0, -2%); opacity: 0.42; }
-  100% { transform: scale(1.12) translate(-4%, 3%); opacity: 0.6; }
-}
+@media (max-width: 900px) { .contact-glow { right: -40%; width: 110vw; opacity: 0.7; } }
 
 /* ============================================================
    FOOTER
@@ -703,14 +687,12 @@ html.anim-ready .proj-card { opacity: var(--rv, 0); transform: translateY(calc((
 /* ============================================================
    SANS ANIMATION (pas de JS ou reduced-motion)
    ============================================================ */
-html:not(.anim-ready) .hero-light { display: none; }
 html:not(.anim-ready) .hero-side { opacity: 1; }
 html:not(.anim-ready) .reel-copy [data-l],
 html:not(.anim-ready) .reel-meta { opacity: 1; }
 html:not(.anim-ready) .reel-shade { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-light { display: none !important; }
   .reel-copy [data-l], .reel-meta { opacity: 1 !important; transform: none !important; }
   .reel-shade { opacity: 0 !important; }
   html.anim-ready .proj-card { opacity: 1 !important; transform: none !important; }
@@ -970,3 +952,19 @@ html:not(.anim-ready) .reel-shade { opacity: 0; }
 .pp-banner.is-exp:has(.motion-scene) .proj-mark {
   color: var(--on-void); text-shadow: 0 0 30px var(--void), 0 0 10px var(--void);
 }
+
+/* ============================================================
+   PERFORMANCE — pas de flou d'arrière-plan sur les petits éléments
+   répétés ou mobiles (pastilles des cartes, liens, curseur) : le
+   navigateur devait re-flouter ce qu'il y a derrière à chaque image.
+   Le verre reste sur la nav, le menu et les boutons.
+   ============================================================ */
+.proj-num, .proj-go, .proj-card .proj-yr,
+.contact-info .socials a, .cinfo .socials a, .cursor.is-text {
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+}
+.proj-num, .proj-go, .proj-card .proj-yr { background: color-mix(in oklch, var(--paper) 84%, transparent); }
+.proj-card.is-exp .proj-num, .proj-card.is-exp .proj-yr { background: color-mix(in oklch, var(--void) 74%, transparent); }
+.contact-info .socials a { background: rgba(255,255,255,0.07); }
+.cinfo .socials a { background: color-mix(in oklch, var(--paper) 70%, var(--ink) 6%); }
+.cursor.is-text { background: color-mix(in oklch, var(--void) 82%, transparent); }

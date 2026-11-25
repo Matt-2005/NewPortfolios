@@ -2,9 +2,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useApp } from '../../context/AppContext';
-import { lerp, onFrame, reduce, coarse } from '../../lib/motion';
+import { reduce } from '../../lib/motion';
 import { scrollToEl } from '../../lib/scroller';
-import HeroField from '../../three/HeroField';
 import CvButton from '../../components/CvButton';
 import { useLang } from '../../i18n/lang';
 
@@ -48,7 +47,6 @@ export default function Hero() {
   const { ready } = useApp();
   const { lang, t } = useLang();
   const heroRef = useRef(null);
-  const lightRef = useRef(null);
 
   /* — états initiaux posés avant peinture (l'intro les animera) — */
   useLayoutEffect(() => {
@@ -132,50 +130,12 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  /* — halo lumineux : suit le curseur, dérive seul au tactile — */
-  useEffect(() => {
-    if (reduce) return;
-    const hero = heroRef.current, light = lightRef.current;
-    let mx = -1, my = -1, x = window.innerWidth * 0.6, y = window.innerHeight * 0.4, oo = 0;
-    const onMove = e => {
-      const r = hero.getBoundingClientRect();
-      mx = e.clientX - r.left; my = e.clientY - r.top;
-    };
-    const onLeave = () => { mx = -1; };
-    if (!coarse) {
-      hero.addEventListener('mousemove', onMove);
-      hero.addEventListener('mouseleave', onLeave);
-    }
-    const off = onFrame(() => {
-      const r = hero.getBoundingClientRect();
-      if (r.bottom < 0) { if (oo > 0.01) { oo = 0; light.style.opacity = '0'; } return; }
-      let tx, ty, o;
-      if (mx >= 0) { tx = mx; ty = my; o = 0.95; }
-      else {
-        const t = performance.now();
-        tx = r.width * (0.5 + 0.3 * Math.sin(t * 0.00021));
-        ty = r.height * (0.42 + 0.26 * Math.cos(t * 0.00017));
-        o = 0.6;
-      }
-      x = lerp(x, tx, 0.07); y = lerp(y, ty, 0.07);
-      oo = lerp(oo, o, 0.04);
-      light.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%)';
-      light.style.opacity = oo.toFixed(3);
-    });
-    return () => {
-      off();
-      if (!coarse) { hero.removeEventListener('mousemove', onMove); hero.removeEventListener('mouseleave', onLeave); }
-    };
-  }, []);
-
   return (
     <section className="hero" ref={heroRef}>
       <div className="hero-bg">
         <div className="hero-grid" />
         <div className="hero-sweep" />
       </div>
-      <div className="hero-light" ref={lightRef} aria-hidden="true" />
-      <HeroField heroRef={heroRef} />
       <div className="hero-side left mono" aria-hidden="true">46.2044° N — 6.1432° E <span className="tick">/</span> {t('GENÈVE', 'GENEVA')}</div>
       <div className="hero-side right mono" aria-hidden="true">Data Engineering <span className="tick">/</span> Business Intelligence</div>
 

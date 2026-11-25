@@ -12,10 +12,13 @@ export default function ScrollTop() {
   const shownRef = useRef(false);
 
   useEffect(() => {
+    let lastY = -1, lastMax = -1;
     const off = onFrame(() => {
       const doc = document.documentElement;
       const max = doc.scrollHeight - window.innerHeight;
       const y = window.scrollY || doc.scrollTop || 0;
+      if (y === lastY && max === lastMax) return; // rien n'a bougé
+      lastY = y; lastMax = max;
       const p = max > 0 ? Math.min(Math.max(y / max, 0), 1) : 0;
       if (btnRef.current) btnRef.current.style.setProperty('--p', p.toFixed(4));
       const next = y > window.innerHeight * 0.75;

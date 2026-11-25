@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { lerp, coarse } from '../lib/motion';
 
-/* Curseur magnétique — délégation globale : aucun rebind par page. */
+/* Curseur — délégation globale : aucun rebind par page.
+   La boucle d'animation s'arrête dès que l'anneau a rejoint la souris. */
 export default function Cursor() {
   const ringRef = useRef(null);
   const dotRef = useRef(null);
@@ -11,11 +12,12 @@ export default function Cursor() {
     const ring = ringRef.current, dot = dotRef.current;
     if (!ring || !dot) return;
     let mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
-    let alive = true;
+    let alive = true, running = false;
 
     const onMove = e => {
       mx = e.clientX; my = e.clientY;
       dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+      if (!running) { running = true; requestAnimationFrame(loop); }
     };
     const onDown = () => ring.classList.add('is-down');
     const onUp = () => ring.classList.remove('is-down');
@@ -31,12 +33,13 @@ export default function Cursor() {
     window.addEventListener('mouseup', onUp);
     document.addEventListener('mouseover', onOver, { passive: true });
 
-    (function loop() {
-      if (!alive) return;
+    function loop() {
+      if (!alive) { running = false; return; }
       rx = lerp(rx, mx, 0.18); ry = lerp(ry, my, 0.18);
       ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      if (Math.abs(mx - rx) < 0.15 && Math.abs(my - ry) < 0.15) { running = false; return; } // au repos
       requestAnimationFrame(loop);
-    })();
+    }
 
     return () => {
       alive = false;

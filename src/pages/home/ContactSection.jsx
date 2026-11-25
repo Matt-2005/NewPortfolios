@@ -1,4 +1,3 @@
-import ContactOrb from '../../three/ContactOrb';
 import { PROFILE } from '../../data/profile';
 import { useLang } from '../../i18n/lang';
 import Socials from '../../components/Socials';
@@ -8,7 +7,7 @@ export default function ContactSection() {
   const { t } = useLang();
   return (
     <section className="contact" id="contact" data-navdark>
-      <ContactOrb />
+      <div className="contact-glow" aria-hidden="true" />
       <div className="wrap contact-grid">
         <div>
           <h2 className="line-mask"><span>{t(<>Parlons<br /><em>data</em></>, <>Let's talk<br /><em>data</em></>)}</span></h2>

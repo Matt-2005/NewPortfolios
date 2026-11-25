@@ -7,7 +7,6 @@ import { useProjectMotion } from '../hooks/useProjectMotion';
 import { VISIBLE_PROJECTS, FILTERS } from '../data/projects';
 import { PROFILE } from '../data/profile';
 import ProjectCard from '../components/ProjectCard';
-import ContactOrb from '../three/ContactOrb';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 
@@ -77,7 +76,7 @@ export default function Projets() {
       </section>
 
       <section className="contact" data-navdark>
-        <ContactOrb />
+        <div className="contact-glow" aria-hidden="true" />
         <div className="wrap contact-grid">
           <div>
             <h2 className="line-mask"><span>{t(<>Un poste<br /><em>data&nbsp;?</em></>, <>A data<br /><em>role?</em></>)}</span></h2>

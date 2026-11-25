@@ -42,13 +42,15 @@ export default function Nav() {
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
-    let sc = null, dk = null, lastY = -1, n = 0;
+    let sc = null, dk = null, lastCheck = 0;
     const off = onFrame(() => {
       const y = window.scrollY || 0;
       const s = y > 24;
       if (s !== sc) { sc = s; nav.classList.toggle('scrolled', s); }
-      if (y === lastY && (n++ % 20)) return;
-      lastY = y;
+      // test du fond sous la nav : 10 fois par seconde suffit (coûteux à chaque image)
+      const now = performance.now();
+      if (now - lastCheck < 100) return;
+      lastCheck = now;
       let dark = false;
       const hits = document.elementsFromPoint(window.innerWidth / 2, 40);
       for (let i = 0; i < hits.length; i++) {

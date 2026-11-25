@@ -14,7 +14,11 @@ export default function Marquee({ seg, dark = false, dir = 'left', speed = 0.5, 
     const measure = () => { segW = track.scrollWidth / 4; };
     measure();
     window.addEventListener('resize', measure);
+    let visible = false; // en pause hors de l'écran
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
+    io.observe(track);
     const off = onFrame(() => {
+      if (!visible) return;
       if (!segW) measure();
       const boost = clamp(Math.abs(getVel()) * 0.05, 0, 2.6);
       x += d * (speed + boost);
@@ -22,7 +26,7 @@ export default function Marquee({ seg, dark = false, dir = 'left', speed = 0.5, 
       if (d > 0 && x >= 0) x -= segW;
       track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
     });
-    return () => { window.removeEventListener('resize', measure); off(); };
+    return () => { window.removeEventListener('resize', measure); io.disconnect(); off(); };
   }, [dir, speed]);
 
   return (

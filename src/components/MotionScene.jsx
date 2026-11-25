@@ -49,7 +49,7 @@ export default function MotionScene({ scene, seed = 1, accent, logo }) {
       if (flight) { flight.resize(); return; }
       const w = canvas.clientWidth, h = canvas.clientHeight;
       if (!w || !h) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (w !== W || h !== H) { W = w; H = h; inst = make(W, H, rng(seed), seed); }
@@ -83,7 +83,16 @@ export default function MotionScene({ scene, seed = 1, accent, logo }) {
     resize();
     let off = null;
     if (reduce) still();
-    else off = onFrame(() => { if (visible) render((performance.now() - t0) / 1000); });
+    else {
+      let last = 0; // 30 images/s : fluide pour ces scènes, deux fois moins de calcul
+      off = onFrame(() => {
+        if (!visible) return;
+        const now = performance.now();
+        if (now - last < 32) return;
+        last = now;
+        render((now - t0) / 1000);
+      });
+    }
 
     return () => { alive = false; if (off) off(); ro.disconnect(); io.disconnect(); mo.disconnect(); };
   }, [scene, seed, accent, logoSrc, logoTone]);

@@ -37,8 +37,8 @@
   --glass-shadow: 0 14px 40px -12px oklch(0.20 0.01 260 / 0.22);  /* ombre neutre */
   /* backdrop : version simple (repli) + version réfractée (lentille) */
   --glass-bf:         blur(14px) saturate(1.9);
-  --glass-bf-lens:    blur(11px) saturate(1.9) url(#glassDistort);
-  --glass-bf-lens-sm: blur(10px) saturate(1.9) url(#glassDistortSm);
+  --glass-bf-lens:    blur(11px) saturate(1.9);
+  --glass-bf-lens-sm: blur(10px) saturate(1.9);
 
   /* Verre neutre toujours posé sur fond sombre (séquence, contact, menu) */
   --glass-d:        oklch(0.90 0.004 260 / 0.10);
@@ -147,25 +147,6 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 @keyframes pagefade { from { opacity: 0; } to { opacity: 1; } }
 html.js body { animation: pagefade 0.55s ease both; }
 @media (prefers-reduced-motion: reduce) { html.js body { animation: none; } }
-
-/* ============================================================
-   Grain cinéma — texture globale subtile
-   ============================================================ */
-.grain {
-  position: fixed; inset: -120%; z-index: 320; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
-  opacity: 0.05; mix-blend-mode: overlay;
-  animation: grain 1.1s steps(6) infinite;
-}
-@keyframes grain {
-  0%   { transform: translate3d(0,0,0); }
-  20%  { transform: translate3d(-6%,4%,0); }
-  40%  { transform: translate3d(4%,-7%,0); }
-  60%  { transform: translate3d(-3%,-4%,0); }
-  80%  { transform: translate3d(6%,5%,0); }
-  100% { transform: translate3d(0,0,0); }
-}
-@media (prefers-reduced-motion: reduce) { .grain { animation: none; opacity: 0.035; } }
 
 /* ============================================================
    Rideau — transitions entre pages
@@ -341,7 +322,6 @@ body.menu-open .nav .nav-links { opacity: 0; pointer-events: none; }
   background: color-mix(in oklch, var(--void) 70%, transparent); color: var(--on-void);
   -webkit-backdrop-filter: blur(34px) saturate(1.7);
   backdrop-filter: blur(34px) saturate(1.7);
-  backdrop-filter: blur(28px) saturate(1.7) url(#glassDistort);
   clip-path: inset(0 0 100% 0);
   transition: clip-path 0.9s var(--ease);
   display: grid; grid-template-rows: 1fr auto;

@@ -100,7 +100,6 @@ export default function App() {
   return (
     <AppContext.Provider value={ctx}>
       <div className="curtain" ref={curtainRef} aria-hidden="true"><div className="c-mono">ML</div></div>
-      <div className="grain" aria-hidden="true" />
       <Cursor />
       <Nav />
       <FsMenu />

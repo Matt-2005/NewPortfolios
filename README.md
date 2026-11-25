@@ -1,6 +1,8 @@
 # Portfolio « En mouvement » — Matthew LE
 
-Portfolio immersif : React 19 + Vite, GSAP/ScrollTrigger, Lenis et Three.js.
+Portfolio : React 19 + Vite, GSAP/ScrollTrigger et Lenis. Pensé pour rester
+fluide : pas de WebGL, animations légères qui ne tournent que lorsqu'elles
+sont visibles.
 
 ## Commandes
 
@@ -26,10 +28,7 @@ src/
     motion.js           boucle rAF partagée + vélocité de scroll + easings
     scroller.js         Lenis (singleton) branché sur le ticker GSAP
     flight.js           vol FPV procédural (aperçu du showreel sans vidéo)
-    flow2d.js           champ de vecteurs 2D (repli si WebGL absent)
-  three/
-    HeroField.jsx       particules « vent » WebGL du hero (souris + scroll)
-    ContactOrb.jsx      orbe d'énergie vert FPV (bruit simplex + fresnel)
+    scenes.js           scènes animées des en-têtes de projet (canvas 2D)
   components/           Nav, FsMenu, Cursor, Marquee, Footer, ProjectCard,
                         ProfileFacts (profil en bref), CvButton, Socials…
   hooks/                useReveals, useProjectMotion, useDocumentTitle
